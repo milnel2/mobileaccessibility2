@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SoftKeypad</string>
+    
+	<!--  Required strings for MainMenu class -->
+    <string name="mainmenu_greeting">Keepad menu, select a keepad to display, fling down for instructions</string>
+    <string name="mainmenu_goodbye">Goodbye!</string>
+    <string name="mainmenu_redisplay">on main menu</string>
+      	
+  	<!--  All Menus -->
+  	<string name="no_more_options_label"></string>
+  	<string name="no_more_options_tag">End of Menu</string>
+	
+</resources>

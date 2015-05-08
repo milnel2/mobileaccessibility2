@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/petlayout"
+	android:orientation="vertical"
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent">
+	<TextView  
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/pet_name_label"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" />
+	<Button android:id="@+id/keypad_blank"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:focusableInTouchMode="true"
+		android:background="@color/background"
+		android:textSize="5sp"
+		android:tag=""
+		android:text=""
+	 />
+	<TextView 
+		android:id="@+id/pet_name"
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content"
+	  	android:focusableInTouchMode="true"
+	 	android:text="@string/pet_name" 
+		android:tag="@string/pet_name_summary"
+		android:textSize="20sp"
+		android:paddingBottom="5sp" 
+	/>
+	<Button android:id="@+id/change_name_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="25.0sp"
+		android:text="@string/change_name"
+		android:tag="@string/change_name_tag"
+		android:paddingBottom="3sp"
+		android:paddingTop="3sp" 
+	/> 	
+    <TextView  
+    	android:id="@+id/gender_title"
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/gender_title"
+	  	android:tag="@string/gender_tag"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" /> 
+	<RadioGroup
+		android:id="@+id/radio_gender"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+		<RadioButton android:id="@+id/radio_male"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/male" 
+			android:tag="@string/male_summary"
+			android:paddingRight="10sp"/>
+		<RadioButton android:id="@+id/radio_female"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/female"
+			android:tag="@string/female_summary" />	
+	</RadioGroup>
+	<TextView  
+		android:id="@+id/breed_title"
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/breed_title"
+	  	android:tag="@string/breed_tag"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" /> 
+	<RadioGroup
+		android:id="@+id/radio_breed"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+		<RadioButton android:id="@+id/radio_pomeranian"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/pomeranian" 
+			android:tag="@string/pomeranian_summary"/>
+		<RadioButton android:id="@+id/radio_retriever"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/retriever"
+			android:tag="@string/retriever_summary" />
+		<RadioButton android:id="@+id/radio_pitbull"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/pitbull"
+			android:tag="@string/pitbull_summary" />		
+	</RadioGroup>
+	<Button android:id="@+id/finish_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="25.0sp"
+		android:text="@string/finish"
+		android:tag="@string/finish_tag"
+
+ 	/> 
+ 	
+</LinearLayout>

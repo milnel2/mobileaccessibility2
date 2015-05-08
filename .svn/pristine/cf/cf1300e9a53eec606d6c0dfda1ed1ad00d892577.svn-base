@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+   <LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical"
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"	>	
+	<Button android:id="@+id/biscuit_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/biscuit_button_label"
+		android:tag="@string/biscuit_button_tag"
+	/> 	
+  	<Button android:id="@+id/can_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/can_button_label"
+		android:tag="@string/can_button_tag"
+	/> 
+	<Button android:id="@+id/beef_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/beef_button_label"
+		android:tag="@string/beef_button_tag"
+	/>
+</LinearLayout>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tckeypad"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_0">
+		<Button android:id="@+id/keypad_blank"
+			android:focusableInTouchMode="true"
+			android:tag=""
+			android:text=""
+			android:background="@color/background"
+			android:layout_marginTop="-3dip"
+    		android:layout_marginRight="-3dip"
+    		android:layout_marginBottom="-3dip"
+    		android:layout_marginLeft="-3dip">
+		</Button>
+		<Button android:id="@+id/keypad_blank2"
+			android:focusableInTouchMode="true"
+			android:tag=""
+			android:text=""
+			android:background="@color/background"
+			android:layout_marginTop="-3dip"
+    		android:layout_marginRight="-3dip"
+    		android:layout_marginBottom="-3dip"
+    		android:layout_marginLeft="-3dip">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_1">
+		<Button android:id="@+id/keypad_a"
+			android:focusableInTouchMode="true"
+			android:tag="eh"
+			android:text="A"
+    		android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_n"
+			android:focusableInTouchMode="true"
+			android:tag="N"
+			android:text="N"
+    		android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_2">	
+		<Button android:id="@+id/keypad_b"
+			android:focusableInTouchMode="true"
+			android:tag="bee"
+			android:text="B"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_o"
+			android:focusableInTouchMode="true"
+			android:tag="O"
+			android:text="O"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_3">	
+		<Button android:id="@+id/keypad_c"
+			android:focusableInTouchMode="true"
+			android:tag="see"
+			android:text="C"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_p"
+			android:focusableInTouchMode="true"
+			android:tag="pee"
+			android:text="P"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_4">	
+		<Button android:id="@+id/keypad_d"
+			android:focusableInTouchMode="true"
+			android:tag="dee"
+			android:text="D"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_q"
+			android:focusableInTouchMode="true"
+			android:tag="Q"
+			android:text="Q"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_5">	
+		<Button android:id="@+id/keypad_e"
+			android:focusableInTouchMode="true"
+			android:tag="ee"
+			android:text="E"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_r"
+			android:focusableInTouchMode="true"
+			android:tag="are"
+			android:text="R"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_6">
+		<Button android:id="@+id/keypad_f"
+			android:focusableInTouchMode="true"
+			android:tag="eff"
+			android:text="F"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_s"
+			android:focusableInTouchMode="true"
+			android:tag="ess"
+			android:text="S"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_7">
+		<Button android:id="@+id/keypad_g"
+			android:focusableInTouchMode="true"
+			android:tag="G"
+			android:text="G"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_t"
+			android:focusableInTouchMode="true"
+			android:tag="tee"
+			android:text="T"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_8">		
+		<Button android:id="@+id/keypad_h"
+			android:focusableInTouchMode="true"
+			android:tag="H"
+			android:text="H"
+			android:background="@drawable/custom_button">
+		</Button>
+		
+		<Button android:id="@+id/keypad_u"
+			android:focusableInTouchMode="true"
+			android:tag="you"
+			android:text="U"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_9">
+		<Button android:id="@+id/keypad_i"
+			android:focusableInTouchMode="true"
+			android:tag="I"
+			android:text="I"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_v"
+			android:focusableInTouchMode="true"
+			android:tag="vee"
+			android:text="V"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_10">
+		<Button android:id="@+id/keypad_j"
+			android:focusableInTouchMode="true"
+			android:tag="jay"
+			android:text="J"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_w"
+			android:focusableInTouchMode="true"
+			android:tag="double you"
+			android:text="W"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_11">
+		
+		<Button android:id="@+id/keypad_k"
+			android:focusableInTouchMode="true"
+			android:tag="kay"
+			android:text="K"
+			android:background="@drawable/custom_button">
+		</Button>	
+		<Button android:id="@+id/keypad_x"
+			android:focusableInTouchMode="true"
+			android:tag="ex"
+			android:text="X"
+			android:background="@drawable/custom_button">
+		</Button>
+		
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_12">
+		<Button android:id="@+id/keypad_l"
+			android:focusableInTouchMode="true"
+			android:tag="L"
+			android:text="L"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_y"
+			android:focusableInTouchMode="true"
+			android:tag="why"
+			android:text="Y"
+			android:background="@drawable/custom_button">
+		</Button>
+	</TableRow>
+</TableLayout>
+
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_13">
+		<Button android:id="@+id/keypad_m"
+			android:focusableInTouchMode="true"
+			android:tag="M"
+			android:text="M"
+			android:background="@drawable/custom_button">
+		</Button>
+		<Button android:id="@+id/keypad_z"
+			android:focusableInTouchMode="true"
+			android:tag="zee"
+			android:text="Z"
+			android:background="@drawable/custom_button">
+		</Button>	
+	</TableRow>
+</TableLayout>
+
+</LinearLayout>
+

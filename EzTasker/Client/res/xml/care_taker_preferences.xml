@@ -1,0 +1,31 @@
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+	<EditTextPreference
+            android:id="@+id/care_taker_preferences_password"
+            android:key="care_taker_password"
+            android:defaultValue=""
+            android:title="Care Taker Password"
+            android:dialogTitle="Change Password" />
+    
+    <EditTextPreference
+    		android:id="@+id/care_taker_preferences_ct_phone_num"
+            android:key="care_taker_phone_num"
+            android:defaultValue=""
+            android:title="Care Taker Phone Number"
+            android:dialogTitle="Change Phone Number" />
+            
+    <EditTextPreference
+            android:id="@+id/care_taker_preferences_user_name"
+            android:key="user_name"
+            android:defaultValue=""
+            android:title="User's Name"
+            android:dialogTitle="Change User Name" />
+            
+    <EditTextPreference
+    		android:id="@+id/care_taker_preferences_user_phone_num"
+            android:key="user_phone_num"
+            android:defaultValue=""
+            android:title="User Phone Number"
+            android:dialogTitle="Change Phone Number" /> 
+                                     
+</PreferenceScreen>

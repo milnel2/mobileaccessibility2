@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Your Location:</string>
+    <string name="app_name">Location Demo</string>
+    <string name="location">Touch the screen to find your location</string>
+</resources>

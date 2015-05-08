@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<color id="background" name="background">#00000000</color>
+	<color name="black">#00000000</color>
+	<color name="pleasant">#79CEe3</color>
+	<color name="dkgray">#030303</color>
+	<color name="blue">#99ccff</color>
+	<color name="charcoal">#0d0d0d0d</color>
+	<color name="toastfill">#ee444444</color>
+	<color name="toastborder">#ee777777</color>
+	<color name="text">#ffffff</color>
+	<color name="text_highlight">#ffff00</color>
+</resources>

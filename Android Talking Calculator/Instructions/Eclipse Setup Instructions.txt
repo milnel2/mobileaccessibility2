@@ -1,0 +1,13 @@
+Eclipse Setup Instructions
+
+The ATC was created in Eclipse and can easily be imported into Eclipse for modification by performing the following steps (assuming that the code has already been downloaded and saved to a location):
+
+1. Open Eclipse.
+2. On the file menu, select “Import”, “Existing Projects into Workspace”.
+3. Type the location of the source code or use the browse button to find it.
+4. Make sure that Android Talking Calculator appears in the project selection box. If so, select finish.
+5. If you have not done so already, download the TTT code, and perform steps 2 and 3 for the TTT code.
+6. In the properties for the ATC, change the file paths on the Java Build Path, Source for the res and TTTCode folders so that they refer to the appropriate locations rather than the ones that are there.
+
+Eclipse may show an error for the ATC project missing the gen folder. To fix this, open any of the files, make and then erase a modification, and then select save to trigger a rebuild.
+Send any questions to: ntorcoli@cs.washington.edu

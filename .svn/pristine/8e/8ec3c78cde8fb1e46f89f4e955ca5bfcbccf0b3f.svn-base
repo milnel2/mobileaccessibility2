@@ -1,0 +1,373 @@
+//
+//  ttsViewController.m
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import <AudioToolbox/AudioServices.h>
+#import "PlayerViewController.h"
+#import "FliteTTS.h"
+#import "MainViewController.h"
+
+
+@interface PlayerViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *instr;
+
+@property (weak, nonatomic) IBOutlet UILabel *enterLetter;
+
+@property (weak, nonatomic) IBOutlet UILabel *fragmentSay;
+
+@property (weak, nonatomic) IBOutlet UILabel *challenge;
+
+@property (nonatomic, strong) NSTimer * timer;
+
+@end
+int count; //This is used to keep track of the table (word list) row that is being accessed
+int numTouches;
+BOOL haveTouch;
+
+//Set all of the buttons to not be selected
+BOOL singleInstrSelected = NO;
+BOOL fragmentSelected = NO;
+BOOL enterLetterSelected = NO;
+BOOL challengeSelected = NO;
+
+@implementation PlayerViewController
+@synthesize timer;
+
+//Open the database (we only do this once during the whole program)
+-(BOOL)createDB{
+    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"wordsDB"ofType:@"sqlite"];
+
+    //Open sqlite db
+    if (sqlite3_open([filePath UTF8String], &database) != SQLITE_OK) {
+        sqlite3_close(database);
+        NSLog(@"Error");
+        return NO;
+    }
+    return YES;
+}
+
+//The computer's turn
+-(void)computerTurn:(NSTimer *)timer {
+    //The database statement
+    static sqlite3_stmt *statement = nil;
+
+    //We want to find a word from out database table whose first letters match the fragment letters
+    NSString *match = [NSString stringWithString:fragmentLetters];
+    NSArray *query = [[NSArray alloc] initWithObjects:@"select word from ", table, @" where word like '",match,@"%'", nil];
+    NSString *joinedString = [query componentsJoinedByString:@""];
+    const char *query_stmt = [joinedString UTF8String];    
+    //---------------------------
+    
+    NSString *word; //The word that the computer is thinkng of
+    BOOL isword = NO; //is the fragment a word
+    NSString *currWord = [NSString stringWithString:fragmentLetters]; //The fragment (converted into a sting)
+    
+    if (sqlite3_prepare_v2(database,
+                           query_stmt, -1, &statement, NULL) == SQLITE_OK)
+    {
+        //Go through all of the words that match
+        count = 0;
+        while (sqlite3_step(statement) == SQLITE_ROW)
+        {
+            //keep a count of how many words there are that match
+            count = count+1;
+            word = [[NSString alloc] initWithUTF8String:
+                    (const char *) sqlite3_column_text(statement, 0)];
+            //if it's equal to one of the words, then isword is true
+            if ([word isEqualToString:currWord]){
+                isword = YES;
+            }
+        }
+        
+        //if there are words that match
+        if (count > 0){
+            //then go through and pick one of the words at random 
+            count = (arc4random() % count)+1;
+            sqlite3_reset(statement);
+            int i = 0;
+            while ( i < count)
+            {
+                i = i+1;
+                sqlite3_step(statement);
+            }
+            word = [[NSString alloc] initWithUTF8String:
+                    (const char *) sqlite3_column_text(statement, 0)];
+        }
+        
+        
+        
+        
+                              
+    }
+    
+    //if there were no words that match, then the player loses
+    if (word == nil){
+        [self speak:@"The letter you have entered has made it so the fragment is no longer the prefix of any word. You lose."];
+        timer = [NSTimer scheduledTimerWithTimeInterval:5
+                                                 target:self
+                                               selector:@selector(gameOver:)
+                                               userInfo:nil
+                                                repeats:NO];
+        
+        return;
+    }
+    //If it is a word and is greater then 3 characters, then the player loses
+    else if (isword && ([fragmentLetters length] > 3)){
+        [self speak:@"The letter you have entered has made the fragment a complete english word. You lose"];
+        timer = [NSTimer scheduledTimerWithTimeInterval:5
+                                                 target:self
+                                               selector:@selector(gameOver:)
+                                               userInfo:nil
+                                                repeats:NO];
+        
+        return;
+    }
+    
+    //pick out the next letter for the computer to select
+    NSString *letter = [word substringWithRange:NSMakeRange(TURNS-1, 1)];
+    //there is a 1 in 4 chance that the computr selects a random letter
+    if ((arc4random()%4)==0){
+        letter = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
+    }
+    
+    //figure out the letter's place in the alphabet
+    int letterIndex = 0;
+    for (int j = 0; j <[alphabet count]; j++){
+        if ([letter isEqual:alphabet[j]]){
+            letterIndex = j;
+        }
+    }
+    
+    //announce the computer's selection
+    NSArray *computer = [[NSArray alloc] initWithObjects:@"the computer has selected the letter. ",alphabet[letterIndex],@". As in ",NATO[letterIndex],nil];
+    
+    [self speak:[computer componentsJoinedByString:@""]];
+    [fragmentLetters appendString:alphabet[letterIndex]];
+    
+    [fragment appendString:alphabet[letterIndex]];
+    [fragment appendString:@" as in "];
+    [fragment appendString:NATO[letterIndex]];
+    [fragment appendString:@". "];
+    TURNS=TURNS+1;
+    
+    
+}
+
+//Go to the VBWriter screen
+-(void)beginWriter:(UITapGestureRecognizer *)singlePTap
+{
+    [self performSegueWithIdentifier:@"singleToWriter" sender:self];
+}
+
+//Go back to the main menu
+-(void)gameOver:(NSTimer *)timer
+{
+    [self performSegueWithIdentifier:@"singleToMain" sender:self];
+}
+
+//Open the challenge screen
+-(void)beginChallenge:(UITapGestureRecognizer *)challengeTap
+{
+    [self performSegueWithIdentifier:@"singleToChallenge" sender:self];
+}
+
+//Say the current fragment when 'word fragment' is double tapped
+-(void)speakFragment:(UITapGestureRecognizer *)fragmentTap
+{
+    NSString *msg = [NSString stringWithString:fragment];
+    if (![msg isEqualToString:@""]){
+        [self speak:msg];
+    }
+    else{
+        [self speak:@"No letters have been entered"];
+    }
+}
+
+-(void)speak:(NSString*)msg
+{
+	if (UIAccessibilityIsVoiceOverRunning()) {
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification,msg);
+    }
+    else{
+        [fliteEngine speakText:msg];
+    }
+}
+
+-(void) instructions:(NSTimer*) timer{
+}
+
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    //Make it so that the screen can be directly interacted with
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        self.view.accessibilityTraits=UIAccessibilityTraitAllowsDirectInteraction;
+    }
+    
+    //if this is the first turn of the first game, then create the database
+    if (firstQuery){
+        firstQuery=NO;
+        [self createDB];
+    }
+    
+    //increment the number of turns
+    TURNS = TURNS+1;
+    
+    //if it's single player, then check if it's the computer's turn
+    if (playingSingle){
+        if ((TURNS % 2) == 0){
+            timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                     target:self
+                                                   selector:@selector(computerTurn:)
+                                                   userInfo:nil
+                                                    repeats:NO];
+        }
+    }
+    
+    //set up the double tap gesture for all of the buttons
+    UITapGestureRecognizer *fragmentTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(speakFragment:)];
+    UITapGestureRecognizer *writerTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(beginWriter:)];
+    UITapGestureRecognizer *challengeTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(beginChallenge:)];
+    
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        fragmentTap.numberOfTapsRequired=1;
+        writerTap.numberOfTapsRequired=1;
+        challengeTap.numberOfTapsRequired=1;
+    }
+    else{
+        fragmentTap.numberOfTapsRequired=2;
+        writerTap.numberOfTapsRequired=2;
+        challengeTap.numberOfTapsRequired=2;
+    }
+    
+    [self.fragmentSay addGestureRecognizer:fragmentTap];
+    [self.enterLetter addGestureRecognizer:writerTap];
+    [self.challenge addGestureRecognizer:challengeTap];
+}
+
+- (void) noteTouches: (NSSet *) touches
+{
+    //The following is simply used to detect when a users finger is over a button and then to state the numbe of the button if the users finger begins to be over the button
+    //This is sort of lengthy, because whenever one button is selected, we have to make sure that the other buttons are unselected
+    for(UITouch *touch in touches) {
+        NSString *msg;
+        CGPoint p = [touch locationInView: self.view];
+        if (p.y < self.fragmentSay.frame.size.height){
+            if (!fragmentSelected){
+                msg=@"word fragment";
+                self.fragmentSay.highlighted=YES;
+                fragmentSelected = YES;
+                self.enterLetter.highlighted = NO;
+                enterLetterSelected = NO;
+                self.challenge.highlighted = NO;
+                challengeSelected = NO;
+                self.instr.highlighted = NO;
+                singleInstrSelected = NO;
+            }
+        }
+        else if (p.y < 2*self.fragmentSay.frame.size.height){
+            if (!enterLetterSelected){
+                msg=@"enter letter";
+                self.fragmentSay.highlighted=NO;
+                fragmentSelected = NO;
+                self.enterLetter.highlighted = YES;
+                enterLetterSelected = YES;
+                self.challenge.highlighted = NO;
+                challengeSelected = NO;
+                self.instr.highlighted = NO;
+                singleInstrSelected = NO;
+            }
+        }
+        else if (p.y < 3*self.fragmentSay.frame.size.height){
+            if (!challengeSelected){
+                msg=@"challenge";
+                self.fragmentSay.highlighted=NO;
+                fragmentSelected = NO;
+                self.enterLetter.highlighted = NO;
+                enterLetterSelected = NO;
+                self.challenge.highlighted = YES;
+                challengeSelected = YES;
+                self.instr.highlighted = NO;
+                singleInstrSelected = NO;
+            }
+        }
+        else if (p.y < 4*self.fragmentSay.frame.size.height){
+            if (!singleInstrSelected){
+                msg=@"instructions";
+                self.fragmentSay.highlighted=NO;
+                fragmentSelected = NO;
+                self.enterLetter.highlighted = NO;
+                enterLetterSelected = NO;
+                self.challenge.highlighted = NO;
+                challengeSelected = NO;
+                self.instr.highlighted = YES;
+                singleInstrSelected = YES;
+            }
+        }
+        if (msg){
+            [self speak:msg];
+        }
+    }
+}
+
+- (void) touchesBegan: (NSSet *) touches withEvent:(UIEvent *) event
+{
+    numTouches = numTouches+1;
+        [self noteTouches: touches];
+    
+    
+}
+
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+        [self noteTouches: touches];
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    singleInstrSelected = NO;
+    fragmentSelected = NO;
+    enterLetterSelected = NO;
+    challengeSelected = NO;
+    numTouches = numTouches-1;
+}
+
+- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    singleInstrSelected = NO;
+    fragmentSelected = NO;
+    enterLetterSelected = NO;
+    challengeSelected = NO;
+    numTouches=numTouches-1;
+}
+
+
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{    return NO;
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+
+@end

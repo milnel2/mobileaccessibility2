@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">VBGhost2</string>
+   	<!--  Required strings for generic accessible menu class.
+   		  For each subclass of AccessibleMenu, define the following
+   		  three strings, replacing 'accessiblemenu' in the name with 
+   		  the subclass name -->
+    <string name="accessiblemenu_greeting">Welcome to Accessible Menu, fling down for instructions</string>
+    <string name="accessiblemenu_goodbye">Goodbye!</string>
+    <string name="accessiblemenu_redisplay">on main menu</string>
+    
+    
+    <string name="voice_not_installed">voice recognition is not installed</string>
+    <string name="voice_network_error">a network error occurred</string>
+    <string name="voice_server_error">an error occurred on the voice recognition server</string>
+    <string name="voice_audio_error">an error occurred with the audio service</string>
+    <string name="voice_speech_timeout">speech was not heard before application timed out</string>
+    <string name="voice_no_match">could not find a match for the speech input</string>
+    <string name="voice_error">an unknown error occurred</string>
+
+    
+    
+    <!--  Required strings for MainMenu class -->
+    <string name="mainmenu_greeting">Welcome to the game of ghost. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+    <string name="mainmenu_goodbye">Goodbye!</string>
+    <string name="mainmenu_redisplay">Ghost Main Menu. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+
+    <string name="newgamemenu_greeting">New Game Menu. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+    <string name="newgamemenu_goodbye">Goodbye!</string>
+    <string name="newgamemenu_redisplay">New Game Menu. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+    
+    <string name="singleplayermenu_greeting">Current Game Screen. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+    <string name="singleplayermenu_goodbye">Goodbye!</string>
+    <string name="singleplayermenu_redisplay">Current Game Screen. </string>
+    
+    <string name="multiplayermenu_greeting">Current Game Screen. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+    <string name="multiplayermenu_goodbye">Goodbye!</string>
+    <string name="multiplayermenu_redisplay">Current Game Screen.</string>
+    
+    <string name="continuegamemenu_greeting">Continue Game Screen. Touch and drag down screen to hear options. Double tap to select last heard option</string>
+    <string name="continuegamemenu_goodbye">Goodbye!</string>
+    <string name="continuegamemenu_redisplay">Continue Game Screen.</string>
+    
+    <string name="challengegamemenu_greeting">Challenge Screen. Select type of challenge to make.</string>
+    <string name="challengegamemenu_goodbye">Goodbye!</string>
+    <string name="challengegamemenu_redisplay">Challenge Screen. Select type of challenge to make</string>
+    
+	<string name="receivemessage_greeting">V B Ghost: Player Two has entered a letter.</string>
+    <string name="receivemessage_goodbye">Goodbye!</string>
+    <string name="receivemessage_redisplay">V B Ghost: Player two has entered a letter</string>
+    
+  	<!--  All Menus -->
+  	<string name="no_more_options_label"></string>
+  	<string name="no_more_options_tag">End of Menu</string>
+  	
+  	<string name="empty">No Games</string>
+
+</resources>

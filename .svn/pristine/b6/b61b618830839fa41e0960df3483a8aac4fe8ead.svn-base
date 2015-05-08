@@ -1,0 +1,56 @@
+// ************************** PhoneWand ToDoList: ************************** //
+// ******************************* Michael: ******************************** //
+- TODO post demo day: (in general, for all of us)
+	- For the list screen, add something like "1 of 6." add the beginning of speech
+		so user knows which item she's at.
+	- Double tap any where to select for lists
+
+
+// ******************************** Chris: ********************************* //
+TODO:
+- add directions functionality that levi describes.
+- organize the beast called RouteOrienter.
+- get rid of all the extra annoying TODOs
+
+RouteInput:
+- swiping up to the keyboard should put the current route address in the keyboard initially
+
+TouchKeyboard:
+- a clear route button? maybe with a double tap confirm?
+
+RouteOrienter:
+- organize the monolithic mess called this code...
+- TTS indicating a swipe has been made
+- extract hidden swipe code into methods like rest of program
+- get rid of commented out code...
+
+CurrentLocation:
+-- distance to end of route (if there is a route)
+-- nearest intersection... meh
+-- nearby places... double meh
+
+DirectionsDisplay:
+- keep a go back to map view at the very top of the list
+- upon a double click, dump information about that route point
+-- distance to that point from current location
+-- expected time of arrival
+
+Reference:
+Address of Chipotle:
+4229 University Way NE
+Seattle, WA 98105
+
+Observable Bugs:
+-compass heading or Compass drawing seem off a few degrees... could be the drawings...
+
+// ********************************* Levi: ********************************* //
+
+----- THE USER SHOULD BE ABLE TO DOUBLE TAP ANYWHERE TO SELECT AN ITEM IN THE SLIDERULE LIST
+
+--- some day, we need to display Google Maps copyright information in conjunction with the directions...
+
+- some day, implement efficient way for Chris's code to JUST redraw the current location icon when orientation changes (not the whole route)
+- some day, implement a way for the code to ensure that the user's phone has the Google Maps library, and if not, to use the Google Maps Web API
+
+
+// ************************************************************************* //

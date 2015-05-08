@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="speak_alphabet_array">
+		<item>eh</item>
+		<item>bee</item>
+		<item>see</item>
+		<item>dee</item>
+		<item>ee</item>
+		<item>eff</item>
+		<item>g</item>
+		<item>h</item>
+		<item>I</item>
+		<item>jay</item>
+		<item>kay</item>
+		<item>L</item>
+		<item>M</item>
+		<item>N</item>
+		<item>O</item>
+		<item>pee</item>
+		<item>Q</item>
+		<item>are</item>
+		<item>ess</item>
+		<item>tee</item>
+		<item>you</item>
+		<item>vee</item>
+		<item>double you</item>
+		<item>ex</item>
+		<item>why</item>
+		<item>zee</item>
+	</string-array>
+	<string-array name="value_alphabet_array">
+		<item>A</item>
+		<item>B</item>
+		<item>C</item>
+		<item>D</item>
+		<item>E</item>
+		<item>F</item>
+		<item>G</item>
+		<item>H</item>
+		<item>I</item>
+		<item>J</item>
+		<item>K</item>
+		<item>L</item>
+		<item>M</item>
+		<item>N</item>
+		<item>O</item>
+		<item>P</item>
+		<item>Q</item>
+		<item>R</item>
+		<item>S</item>
+		<item>T</item>
+		<item>U</item>
+		<item>V</item>
+		<item>W</item>
+		<item>X</item>
+		<item>Y</item>
+		<item>Z</item>
+	</string-array>
+</resources>

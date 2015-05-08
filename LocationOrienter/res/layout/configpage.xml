@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent" android:layout_width="fill_parent">
+<TableRow android:id="@+id/ConfigTableRow01" android:layout_height="wrap_content" android:layout_weight=".5" android:layout_width="fill_parent">
+	<Button android:id="@+id/ConfigButtonBW" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight=".3" android:textColor="#FFFFFF" android:background="#000000" android:textSize="20px" android:text="White on Black"/>
+	<Button android:id="@+id/ConfigButtonWB" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight=".3" android:textSize="20px" android:background="#FFFFFF" android:text="Black on White"/>
+	<Button android:id="@+id/ConfigButtonYB" android:layout_width="wrap_content" android:layout_weight=".3" android:layout_height="fill_parent" android:textSize="20px" android:background="#FFFF00" android:textColor="#0000FF" android:text="Blue on Yellow"></Button>
+</TableRow>
+<TableRow android:id="@+id/ConfigTableRow02" android:layout_height="wrap_content" android:layout_weight=".5" android:layout_width="fill_parent">
+	<Button android:id="@+id/ConfigButtonBlind" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight=".5" android:text="No Screen Display"/>
+</TableRow>
+
+</TableLayout>

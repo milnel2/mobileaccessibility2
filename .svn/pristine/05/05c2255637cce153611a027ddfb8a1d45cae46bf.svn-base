@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/slayout"
+	android:orientation="vertical"
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent">
+	<TextView  
+		android:textSize="0.5sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text=" "
+	  	android:background="@color/blue" /> 
+	<CheckBox 
+		android:id="@+id/read_menus"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent"
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/read_menus" 
+		android:tag="@string/read_menus_summary" />
+ 	<TextView  
+		android:textSize="0.5sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:focusableInTouchMode="true"
+	  	android:layout_gravity="center" 
+	  	android:text=" "
+	  	android:background="@color/blue" />    
+   	<CheckBox
+        android:id="@+id/replay_symbol"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:text="@string/replay_symbol" 
+		android:tag="@string/replay_symbol_summary" />
+    <TextView  
+		android:textSize="0.5sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text=" "
+	  	android:background="@color/blue" />    
+   	<CheckBox
+        android:id="@+id/qwerty_keypad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:text="@string/qwerty_keypad" 
+		android:tag="@string/qwerty_keypad_summary" />
+    <TextView  
+    	android:id="@+id/symbol_mode"
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/symbol_mode_title"
+	  	android:tag="@string/symbol_mode_tag"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" /> 
+	<RadioGroup
+		android:id="@+id/radio_symbol"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+		<RadioButton android:id="@+id/radio_alphabet"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/alphabet" 
+			android:tag="@string/alphabet_summary"
+			android:paddingRight="30sp"/>
+		<RadioButton android:id="@+id/radio_numbers"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/numbers"
+			android:tag="@string/numbers_summary"
+			android:paddingRight="30sp" />
+		<RadioButton android:id="@+id/radio_punctuation"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/punctuation"
+			android:tag="@string/punctuation_summary"
+			android:paddingRight="30sp" />		
+	</RadioGroup>
+	<TextView  
+		android:id="@+id/word_level"
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/word_level_title"
+	  	android:tag="@string/word_level_tag"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" /> 
+	<RadioGroup
+		android:id="@+id/radio_level"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" >
+		<RadioButton android:id="@+id/radio_easy"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/easy" 
+			android:tag="@string/easy_summary"
+			android:paddingRight="25sp"/>
+		<RadioButton android:id="@+id/radio_medium"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/medium"
+			android:tag="@string/medium_summary"
+			android:paddingRight="25sp" />
+		<RadioButton android:id="@+id/radio_hard"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/hard"
+			android:tag="@string/hard_summary"
+			android:paddingRight="25sp" />		
+	</RadioGroup>
+	<TextView  
+		android:id="@+id/max_tries"
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/max_tries_title"
+	  	android:tag="@string/max_tries_tag"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" /> 
+	<RadioGroup
+		android:id="@+id/radio_tries"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<RadioButton android:id="@+id/radio_one_try"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/one_try" 
+			android:tag="@string/one_try_summary"
+			android:paddingRight="30sp" />
+		<RadioButton android:id="@+id/radio_two_try"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/two_tries" 
+			android:tag="@string/two_tries_summary"
+			android:paddingRight="30sp" />
+		<RadioButton android:id="@+id/radio_three_try"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/three_tries" 
+			android:tag="@string/three_tries_summary"
+			android:paddingRight="30sp" />		
+	</RadioGroup>
+	<TextView  
+		android:id="@+id/speech_rate"
+		android:textSize="16sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text="@string/speech_rate_title"
+	  	android:tag="@string/speech_rate_tag"
+	  	android:background="@color/blue"
+	  	android:textColor="@color/dkgray"
+	  	android:paddingLeft="5sp" /> 
+	<RadioGroup
+		android:id="@+id/radio_speech"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<RadioButton android:id="@+id/radio_half"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/half" 
+			android:tag="@string/half_summary"
+			android:paddingRight="30sp" />
+		<RadioButton android:id="@+id/radio_normal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/normal" 
+			android:tag="@string/normal_summary"
+			android:paddingRight="30sp" />
+		<RadioButton android:id="@+id/radio_twice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/twice" 
+			android:tag="@string/twice_summary"
+			android:paddingRight="30sp" />
+		<RadioButton android:id="@+id/radio_thrice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:text="@string/thrice" 
+			android:tag="@string/thrice_summary"
+			android:paddingRight="30sp" />		
+	</RadioGroup>
+	<TextView  
+		android:textSize="0.5sp"
+	  	android:layout_height="wrap_content" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_gravity="center" 
+	  	android:focusableInTouchMode="true"
+	  	android:text=" "
+	  	android:background="@color/blue" /> 
+	<Button android:id="@+id/keypad_blank"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:background="@color/background"
+			android:tag=""
+			android:text=""
+	 />
+</LinearLayout>

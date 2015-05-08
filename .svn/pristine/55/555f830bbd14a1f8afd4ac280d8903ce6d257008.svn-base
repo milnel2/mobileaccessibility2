@@ -1,0 +1,15 @@
+//
+//  VBWriterAppDelegate.h
+//  VBWriter
+//
+//  Created by Aric Hunter on 7/6/13.
+//  Copyright (c) 2013 Aric Hunter. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface VBWriterAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
+@end

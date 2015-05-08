@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contents for the menu used in Pic2Speech
+	The contents of this menu are different depending on whether the
+	application is in user or editor mode -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_home"
+          android:icon="@drawable/nav_home"
+          android:title="@string/menu_home_button"/>
+    <item android:id="@+id/menu_type"
+          android:icon="@drawable/nav_type"
+          android:title="@string/menu_type_button"/>
+    <item android:id="@+id/menu_cam"
+          android:icon="@drawable/nav_cam"
+          android:title="@string/menu_cam_button"/>
+    <item android:id="@+id/menu_options"
+          android:icon="@drawable/nav_options"
+          android:title="@string/menu_options_button"/>
+</menu>

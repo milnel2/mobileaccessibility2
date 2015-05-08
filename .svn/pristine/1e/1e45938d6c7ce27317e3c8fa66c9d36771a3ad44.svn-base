@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--  DATA FOR MAIN MENU -->
+	<!-- array for text that's written on menu option.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_text_array" 
+		Only include as many items as there are options on the menu. -->
+	<string-array name="mainmenu_option_text_array">
+		<item>VBReader</item>
+		<item>VBWriter</item>
+		<item>Instructions (2)</item>
+		<item>Settings</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_tag_array"
+		Only include as many items as there are options on the menu. -->
+	<string-array name="mainmenu_option_tag_array">
+		<item>Play VB Reader</item>
+		<item>Play VB Rye Ter</item>
+		<item>Instructions 2 sub options</item>
+		<item>Settings</item>
+	</string-array>
+	
+	<!--  option attribute arrays.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_attributes_array" -->
+	<array name="mainmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  suboption arrays (text that's spoken when suboption is touched). 
+	  Add suboptions arrays named with the name of the AccessibleMenu subclass (in
+	  lower case) followed by 
+	  		"_option{option number, starting at 1 for first option}_suboptions_array" 
+	  Only include arrays for options that have suboptions.  -->
+	<string-array name="mainmenu_option3_suboptions_array">
+		<item>VB Reader instructions</item>
+		<item>VB Rye Ter instructions</item>
+	</string-array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu). Add action arrays named with the name of the AccessibleMenu 
+		  subclass (in lower case) followed by 
+		  		"_option{option number, starting at 1 for first option}_action_array" 
+		  Include one array for each option.  First element of array is action that
+		  is taken if option is selected.  For options with suboptions, add an item to
+		  the option's array for each action taken if the suboption is selected.  (Add
+		  actions in the order the suboptions appear.  If action is activity developed
+		  by you, include package name with action.
+		  In manifest XML file, be sure that the activity corresponding to each menu option 
+		  or suboption has an intent filter defined for the action listed below.)  -->
+	<string-array name="mainmenu_option1_action_array">
+		<item>cs.washington.edu.vbreadwrite.PLAY_VBR</item>
+	</string-array>
+	<string-array name="mainmenu_option2_action_array">
+		<item>cs.washington.edu.vbreadwrite.PLAY_VBW</item>
+	</string-array>
+	<string-array name="mainmenu_option3_action_array">
+		<item>cs.washington.edu.vbreadwrite.GET_INSTRUCTIONS</item>
+		<item>cs.washington.edu.vbreadwrite.GET_INSTRUCTIONS_VBR</item>
+		<item>cs.washington.edu.vbreadwrite.GET_INSTRUCTIONS_VBW</item>
+	</string-array>
+	<string-array name="mainmenu_option4_action_array">
+		<item>cs.washington.edu.vbreadwrite.SETTINGS</item>
+	</string-array>
+	
+	
+	<!--  DATA FOR INSTRUCTIONS MENU -->
+	<!-- array for text that's written on menu option.  -->
+	<string-array name="instructionsmenu_option_text_array">
+		<item>VBReader</item>
+		<item>VBWriter</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched. -->
+	<string-array name="instructionsmenu_option_tag_array">
+		<item>VB Reader</item>
+		<item>VB Rye Ter</item>
+	</string-array>
+	
+	<!--  option attribute arrays. -->
+	<array name="instructionsmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu).  -->
+	<string-array name="instructionsmenu_option1_action_array">
+		<item>cs.washington.edu.vbreadwrite.GET_INSTRUCTIONS_VBR</item>
+	</string-array>
+	<string-array name="instructionsmenu_option2_action_array">
+		<item>cs.washington.edu.vbreadwrite.GET_INSTRUCTIONS_VBW</item>
+	</string-array>
+	
+	
+	<!--  DATA FOR SETTINGS MENU -->
+	<!-- array for text that's written on menu option.  -->
+	<string-array name="settingsmenu_option_text_array">
+		<item>Current Settings</item>
+		<item>Set Version</item>
+		<item>Set Input Screen</item>
+		<item>Set Speech Rate</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched. -->
+	<string-array name="settingsmenu_option_tag_array">
+		<item>Current Settings</item>
+		<item>Set Version</item>
+		<item>Set Inn Put Screen</item>
+		<item>Set Speech Rate</item>
+	</string-array>
+	
+	<!--  option attribute arrays. -->
+	<array name="settingsmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu).  -->
+	<string-array name="settingsmenu_option1_action_array">
+		<item>cs.washington.edu.vbreadwrite.GIVE_SETTINGS</item>
+	</string-array>
+	<string-array name="settingsmenu_option2_action_array">
+		<item>cs.washington.edu.vbreadwrite.SET_VERSION</item>
+	</string-array>
+	<string-array name="settingsmenu_option3_action_array">
+		<item>cs.washington.edu.vbreadwrite.SET_INPUT_TYPE</item>
+	</string-array>
+	<string-array name="settingsmenu_option4_action_array">
+		<item>cs.washington.edu.vbreadwrite.SET_SPEECH_RATE</item>
+	</string-array>
+	
+
+	<!--  DATA FOR INPUT TYPE MENU -->
+	<!-- array for text that's written on menu option.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_text_array" 
+		Only include as many items as there are options on the menu. -->
+	<string-array name="inputselectionmenu_option_text_array">
+		<item>QWERTY Keypad</item>
+		<item>Alphabetic Keypad</item>
+		<item>Simple AlphaKeypad</item>
+		<item>Speech Input</item>
+		<item>Tap Hold Input</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_tag_array"
+		Only include as many items as there are options on the menu. -->
+	<string-array name="inputselectionmenu_option_tag_array">
+		<item>QWURTY Keepad</item>
+		<item>Alphabetic Keepad</item>
+		<item>Simple AlphaKeepad</item>
+		<item>Speech Inn put</item>
+		<item>Tap Hold Inn put</item>
+	</string-array>
+	
+	<!--  option attribute arrays.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_attributes_array" -->
+	<array name="inputselectionmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu). Add action arrays named with the name of the AccessibleMenu 
+		  subclass (in lower case) followed by 
+		  		"_option{option number, starting at 1 for first option}_action_array" 
+		  Include one array for each option.  First element of array is action that
+		  is taken if option is selected.  For options with suboptions, add an item to
+		  the option's array for each action taken if the suboption is selected.  (Add
+		  actions in the order the suboptions appear.  If action is activity developed
+		  by you, include package name with action.
+		  In manifest XML file, be sure that the activity corresponding to each menu option 
+		  or suboption has an intent filter defined for the action listed below.)  -->
+	<string-array name="inputselectionmenu_option1_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="inputselectionmenu_option2_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="inputselectionmenu_option3_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="inputselectionmenu_option4_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="inputselectionmenu_option5_action_array">
+		<item></item>
+	</string-array>
+			
+	
+	<!--  DATA FOR VERSION SELECTION MENU -->
+	<!-- array for text that's written on menu option.  -->
+	<string-array name="versionselectionmenu_option_text_array">
+		<item>Parent</item>
+		<item>Child</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched. -->
+	<string-array name="versionselectionmenu_option_tag_array">
+		<item>Parent Non-logging version</item>
+		<item>Child Logging version</item>
+	</string-array>
+	
+	<!--  option attribute arrays. -->
+	<array name="versionselectionmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu).  -->
+	<string-array name="versionselectionmenu_option1_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="versionselectionmenu_option2_action_array">
+		<item></item>
+	</string-array>
+	
+	
+	<!--  DATA FOR SPEECH RATE SELECTION MENU -->
+	<!-- array for text that's written on menu option.  -->
+	<string-array name="speechrateselectionmenu_option_text_array">
+		<item>Slowest</item>
+		<item>Normal</item>
+		<item>Fast</item>
+		<item>Fastest</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched. -->
+	<string-array name="speechrateselectionmenu_option_tag_array">
+		<item>Slowest 0.75</item>
+		<item>Normal 1.0</item>
+		<item>Fast 1.25</item>
+		<item>Fastest 1.75</item>
+	</string-array>
+	
+	<!--  option attribute arrays. -->
+	<array name="speechrateselectionmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu).  -->
+	<string-array name="speechrateselectionmenu_option1_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="speechrateselectionmenu_option2_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="speechrateselectionmenu_option3_action_array">
+		<item></item>
+	</string-array>
+	<string-array name="speechrateselectionmenu_option4_action_array">
+		<item></item>
+	</string-array>
+	
+	
+	
+</resources>

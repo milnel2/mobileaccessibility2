@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<android.gesture.GestureOverlayView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gestures"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"   
+    android:eventsInterceptionEnabled="false"
+    android:gestureStrokeType="multiple"
+    android:orientation="horizontal"    >
+    <LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/playout"
+	android:orientation="vertical"
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"	>	
+  	</LinearLayout>
+  		
+</android.gesture.GestureOverlayView>

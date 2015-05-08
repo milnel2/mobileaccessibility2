@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contents for EditTile.java -->
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent"
+	android:orientation="vertical"
+	android:gravity="center_horizontal"
+	android:padding="10dp"
+	android:background="#000000">
+
+  	<!-- Page title -->
+	<TextView 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:textSize="24dp"
+		android:padding="10dp"
+		android:text="Edit Tile" />
+	
+	<View style="@style/Divider" 
+			android:background="#88AAFF" />
+				
+	<LinearLayout
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+	
+		<!-- Spacer -->
+		<LinearLayout
+			android:layout_height="fill_parent"
+			android:layout_width="0dp"
+			android:layout_weight="0.8" />
+				
+		<TableLayout
+			android:layout_height="fill_parent" 
+			android:layout_width="0dp"
+			android:layout_weight="1">
+	
+		  	<!-- Tile name -->
+			<TableRow 
+				android:background="#3388AAFF"
+				android:padding="10dp">
+				<TextView 
+					android:layout_width="0dp"
+					android:layout_weight="1" 
+					android:layout_height="wrap_content"
+					android:text="Tile Name: " />
+				<EditText 
+					android:text="" 
+					android:layout_width="0dp"
+					android:layout_weight="2" 
+					android:layout_height="wrap_content" 
+					android:id="@+id/edit_tile_name" />
+			</TableRow>
+			
+		  	<View style="@style/Divider" />
+	
+		  	<!-- Tile Speech -->
+			<TableRow 
+				android:background="#3388AAFF"
+				android:padding="10dp">
+				<TextView 
+					android:text="Speech: " 
+					android:padding="5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1" 
+					android:layout_height="wrap_content" />
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="0dp"
+					android:layout_weight="2" 
+					android:orientation="vertical"
+					android:gravity="center">
+					<ToggleButton
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="5dp"
+						android:defaultValue="true"
+						android:textOn="Record Speech"
+						android:textOff="Enter Text"
+						android:id="@+id/edit_tile_speech_toggle" />
+					<EditText 
+						android:text="" 
+						android:layout_width="fill_parent" 
+						android:layout_height="wrap_content" 
+						android:id="@+id/edit_tile_speech_text" />
+					<Button 
+						android:id="@+id/edit_tile_speech_record"
+						android:layout_width="wrap_content"
+						android:visibility="gone"
+						android:layout_height="wrap_content"
+						android:text="Record Speech" />
+				</LinearLayout>
+				
+			</TableRow>
+						
+		  	<View style="@style/Divider" />
+	
+		  	<!-- Parent folder -->
+			<TableRow 
+				android:background="#3388AAFF"
+				android:padding="10dp">
+				<TextView 
+					android:layout_width="0dp"
+					android:layout_weight="1" 
+					android:layout_height="wrap_content"
+					android:text="Parent Folder: " />
+				<TextView 
+					android:id="@+id/edit_tile_parent_folder" 
+					android:layout_width="0dp"
+					android:layout_weight="2" 
+					android:layout_height="wrap_content"
+					android:padding="6dp"
+					android:textColor="#000000"
+					android:text="Root"
+					android:background="#FFFFFF" />
+			</TableRow>
+		  	
+		  	<View style="@style/Divider" />
+	
+		  	<!-- Folder -->
+			<TableRow 
+				android:background="#3388AAFF"
+				android:padding="10dp">
+				<TextView 
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="Folder? " />	
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_weight="2" 
+					android:layout_height="wrap_content"
+					android:gravity="center_horizontal">
+					<ToggleButton
+						android:id="@+id/edit_tile_isfolder" 
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_margin="5dp"
+						android:textOn="Folder"
+						android:gravity="center"
+						android:textOff="Not a Folder" />
+				</LinearLayout>
+			</TableRow>
+
+		</TableLayout>
+
+
+		<!-- Spacer -->
+		<LinearLayout
+			android:layout_height="fill_parent"
+			android:layout_width="0dp"
+			android:layout_weight="0.2" />
+			
+
+	  	<!-- Tile image -->
+		<LinearLayout
+			android:layout_height="fill_parent"
+			android:layout_width="0dp"
+			android:layout_weight="0.7"
+			android:gravity="center"
+			android:background="#3388AAFF"
+			android:padding="10dp">
+			<TextView 
+				android:layout_width="0dp"
+				android:layout_weight="1" 
+				android:layout_height="wrap_content"
+				android:padding="5dp"
+				android:text="Tile Picture:" />
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_weight="2" 
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_margin="5dp"
+				android:gravity="center">
+				<ImageView 
+					android:id="@+id/edit_tile_pic"
+					android:layout_width="fill_parent"
+					android:layout_height="100dp" />
+				<Button 
+					android:text="Take Picture"
+					android:id="@+id/edit_tile_pic_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+		</LinearLayout>
+			
+		<!-- Spacer -->
+		<LinearLayout
+			android:layout_height="fill_parent"
+			android:layout_width="0dp"
+			android:layout_weight="0.8" />
+		
+	</LinearLayout>
+		
+	<View style="@style/Divider" 
+		android:background="#88AAFF" />
+	
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal">
+		<!-- Save button -->
+		<Button 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:text="Save Tile" 
+			android:id="@+id/edit_tile_save" 
+			android:textSize="20dp"
+			android:padding="12dp" />	
+			
+		<!-- Delete button -->
+		<Button 
+			android:text="Delete Tile" 
+			android:id="@+id/edit_tile_delete" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:textSize="20dp"
+			android:padding="12dp" />	
+	</LinearLayout>		
+		
+</LinearLayout>

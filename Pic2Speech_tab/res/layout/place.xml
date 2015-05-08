@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contents for Place.java -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/place_layout"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="horizontal"
+	android:padding="5dp"
+	android:background="@drawable/main_background_radial"> 
+	<FrameLayout android:paddingLeft="0dp" android:layout_height="fill_parent" android:id="@+id/select_frame" android:layout_width="wrap_content">
+		<ImageView
+			android:id="@+id/placepic"
+			android:src="@drawable/blank"
+			android:layout_width="1000dp"
+			android:layout_height="fill_parent" 
+			android:scaleType="centerCrop"/>
+	</FrameLayout>
+	<LinearLayout
+        android:orientation="vertical"
+    	android:id="@+id/place_buttonPane"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="fill_parent">
+		<Button
+			android:id="@+id/place_pic_button"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:textSize="18dp"
+			android:text="Take Picture" />	
+		<Button
+			android:id="@+id/place_deletePlace_button"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:textSize="18dp"
+			android:visibility="gone"
+			android:text="Delete Place" />	
+		<Button
+			android:id="@+id/place_newButton_button"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:textSize="18dp"		
+			android:visibility="gone"
+			android:text="New Button" />			
+		<Button
+			android:id="@+id/place_savePlace_button"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:textSize="18dp"
+			android:visibility="gone"
+			android:text="Save Place" />	
+		<Button
+			android:id="@+id/place_deleteButton_button"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:visibility="gone"
+			android:textSize="18dp"
+			android:text="Reset Button" />	
+		<ToggleButton
+			android:id="@+id/place_speech_toggle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:defaultValue="true"
+			android:textSize="18dp"
+			android:visibility="gone"
+			android:textOn="Record Speech"
+			android:textOff="Enter Text" />
+		<EditText 
+			android:id="@+id/place_speech_text"
+			android:text="" 
+			android:visibility="gone"
+			android:textSize="18dp"
+			android:layout_width="match_parent" 
+			android:layout_height="100dp" />
+		<Button 
+			android:id="@+id/place_speech_audio"
+			android:layout_width="match_parent"
+			android:visibility="gone"
+			android:layout_height="100dp"
+			android:textSize="18dp"
+			android:text="Record Audio" />
+		<Button
+			android:id="@+id/place_saveButton_button"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:visibility="gone"
+			android:textSize="18dp"
+			android:text="Save Place" />	
+
+            
+    </LinearLayout>
+	
+</LinearLayout>

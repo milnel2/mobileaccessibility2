@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector 
+	xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item 
+		android:state_enabled="false" >
+		<shape>
+			<gradient 
+				android:startColor="@color/item_start_disabled"
+				android:centerColor="@color/item_center_disabled"
+				android:endColor="@color/item_end_disabled"
+				android:type="linear"
+				android:centerY="@dimension/item_gradient_centerY"
+				android:angle="@dimension/item_gradient_angle" />
+			<stroke 
+				android:width="@dimension/item_stroke_width"
+				android:color="@color/item_stroke_disabled" />
+		</shape>
+	</item>
+	<item 
+		android:state_pressed="true" >
+		<shape>
+			<gradient 
+				android:startColor="@color/item_start_pressed"
+				android:centerColor="@color/item_center_pressed"
+				android:endColor="@color/item_end_pressed"
+				android:type="linear"
+				android:centerY="@dimension/item_gradient_centerY"
+				android:angle="@dimension/item_gradient_angle" />
+			<stroke 
+				android:width="@dimension/item_stroke_width"
+				android:color="@color/item_stroke_pressed" />
+		</shape>
+	</item>
+	<item 
+		android:state_focused="true" >
+		<shape>
+			<gradient 
+				android:startColor="@color/item_start_focused"
+				android:centerColor="@color/item_center_focused"
+				android:endColor="@color/item_end_focused"
+				android:type="linear"
+				android:centerY="@dimension/item_gradient_centerY"
+				android:angle="@dimension/item_gradient_angle" />
+			<stroke 
+				android:width="@dimension/item_stroke_width"
+				android:color="@color/item_stroke_focused" />
+		</shape>
+	</item>
+	<item>
+		<shape>
+			<gradient 
+				android:startColor="@color/item_start_normal"
+				android:centerColor="@color/item_center_normal"
+				android:endColor="@color/item_end_normal"
+				android:type="linear"
+				android:centerY="@dimension/item_gradient_centerY"
+				android:angle="@dimension/item_gradient_angle" />
+			<stroke 
+				android:width="@dimension/item_stroke_width"
+				android:color="@color/item_stroke_normal" />
+		</shape>
+	</item>
+</selector>

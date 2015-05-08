@@ -1,0 +1,19 @@
+//
+//  ttsViewController.h
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import "FliteTTS.h"x
+#import <AVFoundation/AVAudioPlayer.h>
+#import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h>
+@class VBWriterTTS;
+
+@interface VBWriterViewController : UIViewController {
+}
+
+@end
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="@color/background">
+	<LinearLayout 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" 
+		android:orientation="horizontal" 
+		android:paddingLeft="6dip" 
+		android:paddingRight="6dip" 
+		android:paddingTop="8dip" 
+		android:paddingBottom="2dip"
+		android:background="@drawable/search_gradient">
+  	<EditText 
+  		android:id="@+id/search_task_query" 
+  		android:layout_width="0dip" 
+  		android:layout_height="wrap_content" 
+  		android:layout_weight="1.0" 
+  		android:singleLine="true" /> 
+  	<ImageButton 
+  		android:id="@+id/search_task_button" 
+  		android:layout_width="wrap_content" 
+  		android:layout_height="fill_parent" 
+  		android:src="@drawable/ic_btn_search"/> 
+	</LinearLayout>
+  	<ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"/>
+  	<TextView android:id="@+id/android:empty"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1.0"
+        	android:text="No data!"/>
+  	<LinearLayout
+   			    android:orientation="horizontal"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content">
+		<Button android:id="@+id/search_task_help"
+	   			android:layout_width="wrap_content"
+		   		android:layout_height="fill_parent"
+	   			android:textColor="#000000"
+	   			android:textSize="18dp" 
+ 	  			android:text="Help"
+ 	  			android:layout_weight="0.5"/>
+		<Button android:id="@+id/search_task_goback"
+   				android:text="@string/go_back"
+	   			android:layout_width="wrap_content"
+   				android:layout_height="fill_parent"
+   				android:textColor="#000000"
+    			android:gravity="center"
+	   			android:textSize="18dp"
+   				android:layout_weight="0.5"/>
+   		</LinearLayout>
+ </LinearLayout>

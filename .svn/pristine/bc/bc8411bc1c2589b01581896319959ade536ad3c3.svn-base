@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<android.gesture.GestureOverlayView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gestures"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"   
+    android:gestureStrokeType="multiple"
+    android:eventsInterceptionEnabled="false"
+    android:orientation="horizontal"    >
+    <LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@+id/llayout"
+	android:orientation="vertical"
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"	>	
+		<Button android:id="@+id/keypad_blank"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="true"
+			android:background="@color/background"
+			android:textSize="1sp"
+			android:tag=""
+			android:text=""
+	 	/>
+    	<Button android:id="@+id/play_button" 
+		  	android:focusableInTouchMode="true"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:textSize="30.0sp"
+			android:text="@string/play_label"
+			android:tag="@string/play_tag"
+			android:layout_weight="2"
+ 		/> 
+  		<Button android:id="@+id/instructions_button" 
+		  	android:focusableInTouchMode="true"
+		  	android:layout_width="fill_parent" 
+		  	android:layout_height="wrap_content" 
+		  	android:textSize="30.0sp"
+		  	android:text="@string/instructions_label"
+		  	android:tag="@string/instructions_tag"
+		  	android:layout_weight="2"
+		/> 
+  		<Button android:id="@+id/settings_button" 
+		  	android:focusableInTouchMode="true"
+		  	android:layout_width="fill_parent" 
+		  	android:layout_height="wrap_content" 
+		  	android:textSize="30.0sp"
+		  	android:text="@string/settings_label"
+		  	android:tag="@string/settings_tag"
+		  	android:layout_weight="2"
+ 		/> 
+  		<Button android:id="@+id/exit_button" 
+		  	android:focusableInTouchMode="true"
+		  	android:layout_width="fill_parent" 
+		  	android:layout_height="wrap_content" 
+		  	android:textSize="30.0sp"
+		  	android:text="@string/exit_label"
+		  	android:tag="@string/exit_tag"
+		  	android:layout_weight="2"
+ 		/> 
+  		
+  	</LinearLayout>
+  		
+</android.gesture.GestureOverlayView>

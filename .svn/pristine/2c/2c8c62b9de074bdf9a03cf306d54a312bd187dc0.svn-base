@@ -1,0 +1,178 @@
+//
+//  ttsViewController.m
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import <AudioToolbox/AudioServices.h>
+#import "SettingsViewController.h"
+#import "FliteTTS.h"
+#import "MainViewController.h"
+
+@interface SettingsViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *wordListB;
+@property (weak, nonatomic) IBOutlet UILabel *backButton;
+
+@end
+
+int numTouches;
+BOOL haveTouch;
+BOOL wordListSelected = NO;
+BOOL backButtonSelected = NO;
+
+@implementation SettingsViewController
+
+
+-(void)changeList:(UITapGestureRecognizer *)wordListTap
+{
+    NSString* msg;
+    if (!self.wordListB.isSelected){
+        self.wordListB.selected = YES;
+        table = @"smallDict";
+        msg = @"small";
+    }
+    else{
+        table = @"largeDict";
+        self.wordListB.selected = NO;
+        msg=@"large";
+    }
+    [self speak:msg];
+}
+
+-(void)goBack:(UITapGestureRecognizer *)backButtonTap
+{
+    [self performSegueWithIdentifier:@"settingsToMain" sender:self];
+}
+
+-(void)speak:(NSString*)msg
+{
+	if (UIAccessibilityIsVoiceOverRunning()) {
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification,msg);
+    }
+    else{
+        [fliteEngine speakText:msg];
+    }
+}
+
+-(void) instructions:(NSTimer*) timer{
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        self.view.accessibilityTraits=UIAccessibilityTraitAllowsDirectInteraction;
+    }
+    
+    if ([table isEqualToString:@"largeDict"]) {
+        self.wordListB.selected = NO;
+    }
+    else{
+        self.wordListB.selected = YES;
+    }
+    
+    UITapGestureRecognizer *wordListTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(changeList:)];
+    UITapGestureRecognizer *backButtonTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(goBack:)];
+    
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        wordListTap.numberOfTapsRequired=1;
+        backButtonTap.numberOfTapsRequired=1;
+    }
+    else{
+        wordListTap.numberOfTapsRequired=2;
+        backButtonTap.numberOfTapsRequired=2;
+    }
+
+    [self.wordListB addGestureRecognizer:wordListTap];
+    [self.backButton addGestureRecognizer:backButtonTap];
+
+}
+
+- (void) noteTouches: (NSSet *) touches
+{
+    for(UITouch *touch in touches) {
+        NSString *msg;
+        CGPoint p = [touch locationInView: self.view];
+        if (p.y < self.wordListB.frame.size.height){
+            if (!wordListSelected){
+                if (!self.wordListB.isSelected){
+                    msg = @"Word list. Large. Double tap to toggle.";
+                }
+                else{
+                    msg=@"Word list. Small. Double tap to toggle.";
+                }
+                wordListSelected = YES;
+                backButtonSelected = NO;
+                self.backButton.highlighted=NO;
+                
+            }
+        }
+        else if (p.y < 2*self.wordListB.frame.size.height){
+            if (!backButtonSelected){
+                msg = @"back button";
+                wordListSelected = NO;
+                backButtonSelected = YES;
+                self.backButton.highlighted=YES;
+            }
+        }
+        if (msg){
+            [self speak:msg];
+        }
+    }
+ 
+}
+
+- (void) touchesBegan: (NSSet *) touches withEvent:(UIEvent *) event
+{
+    numTouches = numTouches+1;
+    if (numTouches < 2){
+        [self noteTouches: touches];
+    }
+    
+    
+}
+
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self noteTouches: touches];
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    wordListSelected = NO;
+    backButtonSelected = NO;
+    numTouches = numTouches-1;
+}
+
+- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    wordListSelected = NO;
+    backButtonSelected = NO;
+    numTouches=numTouches-1;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{    return NO;
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+
+@end

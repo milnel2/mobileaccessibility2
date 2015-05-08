@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<SeekBar android:id="@+id/ThresholdBarLand1"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5px"
+			android:max="255"
+			android:progress="128"
+			></SeekBar>
+	<edu.washington.cs.streetsignreader.EnhancedImageView android:id="@+id/EnhancedImageLand"
+		android:layout_width="320px"
+		android:layout_height="430px"
+		android:scaleType="centerCrop" />
+</LinearLayout>

@@ -1,0 +1,17 @@
+Android Talking Calculator
+
+The Android Talking Calculator is a simple calculator that can perform basic mathematical functions while providing verbal, sound, and haptic feedback through the Talking Tap Twice interface.
+
+Layout
+
+The ATC has the following layout from top to bottom:
+
+Row 0: display
+Row 1: open parenthesis, close parenthesis, exponent, divide
+Row 2: 7, 8, 9 times
+Row 3: 4, 5, 6, minus
+Row 4: 1, 2, 3, plus
+Row 5: 0, decimal, backspace, clear
+Row 6: equals
+
+When the calculator first starts, the display has a zero on it, which will be replaced by the first value that is entered. To input a value, first tap the desired value and then tap any of the buttons twice quickly. The calculator will first speak the tapped number. Upon tapping twice, the calculator will speak “value” entered, where value is the tapped button, if the button is a number or operator. Otherwise, if the entered button is backspace, clear, or equals, the calculator will speak the name of the button, perform the appropriate function, and then read the display.

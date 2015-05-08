@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="@color/background">
+	<TextView
+            android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="center"
+        	android:text="@string/task_list"
+        	android:textSize="25dp"
+			android:padding="10dp"
+        	android:gravity = "center"
+        	android:background = "@color/grey"
+        	android:textColor="#000000"/>
+  	<ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"/>
+  	<TextView android:id="@+id/android:empty"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1.0"
+        	android:text="You have no tasks. Why not create some?"/>
+  	<LinearLayout
+   			    android:orientation="horizontal"
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content">
+		<Button android:id="@+id/tasks_modifier_new"
+	   			android:layout_width="wrap_content"
+		   		android:layout_height="fill_parent"
+	   			android:textColor="#000000"
+	   			android:textSize="18dp" 
+ 	  			android:text="@string/add"
+ 	  			android:layout_weight="0.3"/>
+		<Button android:id="@+id/tasks_modifier_help"
+   				android:text="@string/help"
+	   			android:layout_width="wrap_content"
+   				android:layout_height="fill_parent"
+   				android:textColor="#000000"
+    			android:gravity="center"
+	   			android:textSize="18dp"
+   				android:layout_weight="0.3"/>
+   		<Button android:id="@+id/tasks_modifier_done"
+   				android:text="@string/exit"
+	   			android:layout_width="wrap_content"
+   				android:layout_height="fill_parent"
+   				android:textColor="#000000"
+    			android:gravity="center"
+	   			android:textSize="18dp"
+   				android:layout_weight="0.3"/>	
+   		</LinearLayout>
+ </LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello, I am the Android Talking Level!</string>
+    <string name="app_name">Android Talking Level</string>
+    <string name="exit_label">Exit</string>
+    <string name="options_label">Options</string>
+    <string name="options_window_label">Options</string>
+    <string name="okay_label">Okay</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="rotation_x_label">Rotation\nabout\nX axis</string>
+    <string name="repeat_x_label">Ten\nsecond\nrepeat\nX axis</string>
+    <string name="angle_x_label">Angle\nX axis</string>
+    <string name="from_x_label">Degrees\nfrom\nhorizontal\nvertical\nX axis</string>
+    <string name="at_x_label">Horizontal\nvertical\nX axis</string>
+    <string name="rotation_z_label">Rotation\nabout\nZ axis</string>
+    <string name="repeat_z_label">Ten\nsecond\nrepeat\nZ axis</string>
+    <string name="angle_z_label">Angle\nZ axis</string>
+    <string name="from_z_label">Degrees\nfrom\nhorizontal\nvertical\nZ axis</string>
+    <string name="at_z_label">Horizontal\nvertical\nZ axis</string>
+    <string name="pronounciation_dictionary_entries">H~horzontal~V~vertical</string>
+    <string name="default_selection"></string>
+    <string name="speak_display"></string>
+    <string name="default_selected"></string>
+    <string name="default_method"></string>
+</resources>

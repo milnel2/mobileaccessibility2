@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Main Menu Strings -->
+    <string name="app_name">EzTasker</string>
+    <string name="main_moto">Bringing independence through organization.</string>
+    <string name="my_schedule">My Schedule</string>
+    <string name="other_tools">Other Tools</string>
+    <string name="help">Help</string>
+    <string name="exit">Exit</string>
+    <string name="care_taker_menu">CareTaker Menu</string>
+<!-- Other Tools Menu Strings -->
+    <string name="search_task">Search for a Task</string>
+    <string name="go_back">Go Back</string>
+<!-- Care Taker Menu Strings -->
+	<string name="care_taker">CareTakers Only</string>
+	<string name="tasks_modifier">Task Builder</string>
+    <string name="build_schedule">Schedule Builder</string>
+<!-- Schedule Menu Strings -->
+<!-- Schedule Menu Row Strings -->
+	<string name="no_task_available">No title available</string>
+	<string name="no_time_available">Time</string>
+	<string name="no_preview_available">Preview</string>
+<!-- Tasks Modifier -->
+	<string name="task_list">Tasks Available</string>
+	<string name="add">New</string>
+	<string name="modify">Modify</string>
+	<string name="cancel">Cancel</string>
+	<string name="confirm">Confirm</string>
+	<string name="delete">Delete</string>
+	<string name="ok">OK</string>
+<!-- Task Modifier Menu  -->
+	<string name="task_modifier">New Task</string>
+	<string name="task_modifier_inst">Give your task a name and add a picture</string>
+	<string name="type_task">Type a task name</string>
+	<string name="take_thumnail">Take a picture</string>
+	<string name="add_steps">Steps</string>
+<!-- Task Step Modifier -->
+	<string name="step_modifier">Record step data</string>
+	<string name="previous">Previous</string>
+	<string name="preview">Preview</string>
+	<string name="quit">Quit</string>
+	<string name="next">Next</string>
+	<string name="done">Finish</string>
+	<string name="step_x">Step X</string>
+	<string name="type_step_inst">Type the instructions.</string>
+	<string name="take_step_thumnail">Take a picture.</string>
+	<string name="take_step_video">Record a video.</string>
+	<string name="take_step_audio">Record audio.</string>
+<!-- Task Step View -->
+	<string name ="task_step_view_inst">Instruction</string>
+	<string name="task_step_view_play_audio">Play audio</string>
+	<string name="task_step_view_play_video">Play video</string>
+<!-- Schedule List Tab -->
+	<string name="upcoming">Up-coming</string>
+	<string name="passed">Passed</string>
+	<string name="all">All</string>
+<!-- AlarmDialogActivity -->
+	<string name="start">Start</string>
+	<string name="ignore">Ignore</string>
+<!-- Help dialog -->
+	<string name="search_task_user_help">Scroll up and down to search for the task you would like to add.\nYou can also type the name into the search bar if you know the name.\nOnce you find the task you want just tap it and confirm.</string>
+	<string name="main_menu_help">Click "My Schedule" to check your schedule.\nClick Other Tools for if you would like to search for an activity.\nDo not click the menu button unless you are a Care giver.</string>
+	<string name="my_schedule_help">The up-coming tab shows your tasks that need to be performed later the passed tab displays tasks that should be completed.\nIf there is a red X next to the task, this means you haven't done it yet.\nIf there is a green check, this means you have completed it.\nThe all tab shows all tasks that have been scheduled for today.</string>
+	<string name="other_tools_help">If you would like to search for an activity, click the Search for a task button.\nIf you would like to browse your face library, click the face library button.\nIf you would like to take some notes using your phone, click the notepad button.</string>
+	<string name="search_task_care_taker_help">You can scroll up and down to look for a task.\nIf you would like to perform a certain task, just click it.</string>
+	<string name="care_taker_help">If you want to create a task guide, click task creator.\nYou can then build customized schedules using the schedule builder and the tasks that you have created in the task creator.</string>
+	<string name="add_schedule_help">Choose a task, then pick a time at which the task should is due.\nThen, scroll down to confirm.\nIf you the tasks is important, and you would like to receive a text message if it is skipped, be sure to check the SMS box.</string>
+	<string name="delete_schedule_help">If you would like to delete a task in the schedule, just tap it and confirm.</string>
+	<string name="task_list_help">You can modify an existing task by clicking it in the list.\nIf you want to make a new task just click new.</string>
+	<string name="new_or_edit_task_help">Type a short task name, this will show up in the schedule so make sure it is intuitive.\nThen add a picture as a visual aid to the user. </string>
+	<string name="edit_step_help">You can add multiple steps to help guide the user through a task.\nWithin each task step you can add text, picture, video and audio.\nIf you are unhappy with a step, you can delete or modify it in step list at any time.</string>
+</resources>

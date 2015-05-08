@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">AccessibleMenu</string>
+   	<!--  Required strings for generic accessible menu class.
+   		  For each subclass of AccessibleMenu, define the following
+   		  three strings, replacing 'accessiblemenu' in the name with 
+   		  the subclass name -->
+    <string name="accessiblemenu_greeting">Welcome to Accessible Menu, fling down for instructions</string>
+    <string name="accessiblemenu_goodbye">Goodbye!</string>
+    <string name="accessiblemenu_redisplay">on main menu</string>
+
+  	<!--  All Menus -->
+  	<string name="no_more_options_label"></string>
+  	<string name="no_more_options_tag">End of Menu</string>
+
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This file contains the base resources needed for any subclass of accessible menu.
+	 Set the subclass' content pane to this file.  The accessible menu code will
+	 use the subclass value/*.xml files to build the menu within this base. -->
+	 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/accessiblemenu_fullscreen_layout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/accessiblemenu_options_layout"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:focusableInTouchMode="true"
+	    android:focusable="true"
+	    >
+	</LinearLayout>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/accessiblemenu_offmenu_layout"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:focusableInTouchMode="true"
+	    android:focusable="true"
+	    >
+		<Button android:id="@+id/no_more_options" 
+			  	android:focusableInTouchMode="true"
+			  	android:focusable="true"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="fill_parent" 
+			  	android:text=""
+			  	android:tag="End of menu"
+		/> 
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ttt="http://schemas.android.com/apk/res/android_talking_software.development.talking_tap_twice"
+	android:layout_height="fill_parent" android:layout_width="fill_parent"
+	android:padding="15dip" android:orientation="vertical">
+	<LinearLayout android:orientation="vertical"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:layout_gravity="center" android:paddingLeft="20dip"
+		android:paddingRight="20dip">
+		
+		<TextView
+		android:id="@+id/title"
+		android:text="Options"
+			android:layout_height="fill_parent" android:layout_width="wrap_content"
+			android:layout_gravity="center" android:layout_marginBottom="20dip"
+			android:textSize="24sp" />
+		<TableLayout 
+		android:layout_height="fill_parent"
+			android:layout_width="fill_parent" 
+			android:layout_gravity="center"
+			android:orientation="horizontal"
+			android:background="#ff0000">
+			<TableRow android:background="#99ffff" android:layout_margin="2dip">
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/rotation_x_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Rotation\nabout\nX axis"
+					android:layout_weight="1" android:textColor = "#000000"
+					android:layout_height="wrap_content"
+					android:layout_width="0dip" 
+					/>
+								<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/rotation_z_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Rotation\nabout\nZ axis" 
+					android:layout_height="wrap_content"
+					android:layout_weight="1" android:textColor = "#000000"
+					android:layout_width="0dip" />
+			</TableRow>
+			
+			<TableRow android:background="#99ffff" android:layout_margin="2dip">
+			  								<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/at_x_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Horizontal\nvertical\nX axis"
+					android:layout_weight="1" android:textColor = "#000000"
+					android:layout_height="wrap_content"
+					android:layout_width="0dip" />
+
+			  <android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/at_z_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Horizontal\nvertical\nZ axis"
+					android:layout_weight="1" android:textColor = "#000000"
+android:layout_height="wrap_content"
+										android:layout_width="0dip" />
+				></TableRow>
+
+			<TableRow android:background="#99ffff" android:layout_margin="2dip">
+			<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/angle_x_checkbox"
+										ttt:method="toggleCheckBox"
+					android:text="Angle\nX axis"
+					android:layout_weight="1" android:textColor = "#000000"
+					android:layout_height="wrap_content"
+					android:layout_width="0dip" />
+
+								<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/angle_z_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Angle\nZ axis" 
+					android:layout_weight="1" android:textColor = "#000000"
+android:layout_height="wrap_content"
+										android:layout_width="0dip" />
+										</TableRow>	
+										
+<TableRow android:background="#99ffff" android:layout_margin="2dip">
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/from_x_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Degrees\nfrom\nhorizontal\nvertical\nX axis"
+					android:layout_weight="1" android:textColor = "#000000"
+android:layout_height="wrap_content"
+										android:layout_width="0dip" />
+
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.CheckBoxTTT
+					android:id="@+id/from_z_checkbox" 
+										ttt:method="toggleCheckBox"
+					android:text="Degrees\nfrom\nhorizontal\nvertical\nZ axis"
+					android:layout_weight="1" android:textColor = "#000000"
+android:layout_height="wrap_content"
+										android:layout_width="0dip" />
+			</TableRow>
+			
+			<TableRow android:background="#99ffff" android:layout_margin="2dip">
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT
+					android:id="@+id/okay_button" 
+ttt:method="okay"
+ttt:whenSelected="+pressed"
+android:text="Okay"
+					android:layout_height="wrap_content"
+					android:layout_weight="1" android:textColor = "#000000"
+					android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT
+					android:id="@+id/cancel_button" 
+					ttt:method="cancel"
+					ttt:whenSelected="+pressed" 
+					android:text="Cancel"
+android:layout_height="wrap_content"
+										android:layout_weight="1" android:textColor = "#000000"
+					android:layout_width="0dip"/>
+			</TableRow>
+		<TableRow 
+								android:layout_height="fill_parent">
+								</TableRow>
+</TableLayout>
+	</LinearLayout>
+</LinearLayout>

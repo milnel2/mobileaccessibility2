@@ -1,0 +1,61 @@
+<?php
+	$con = mysql_connect("vergil.u.washington.edu:21988", "root", "capstone");
+	if (!$con){
+		die('Could not connect: ' . mysql_error());
+	}
+	mysql_select_db("DTT", $con);
+	$result = mysql_query("SELECT * FROM `Patients`");
+	
+	
+?>
+<html>
+	<link rel="stylesheet" href="DTT.css" />
+	<head>
+		<title>Patients<title/>
+	</head>
+	<body>
+
+		<div id = "header"><h1> ezTasker Patient Manager</h1> </div>
+		
+		<div id = "main">
+			<div id = "left">
+				<div id="navigation">
+				<h1> Navigate </h1>
+				<a href=newPatient.php> Add new Patient </a>
+				<br />
+				<a href=removePatient.php> Remove a Patient </a>
+				<br />
+				<a href=login.php> Logout </a>
+				<br /><br />
+				<a href=support.php>Contact Support</a>
+				</div>
+			</div>
+			
+			<div id = "p_table">
+				<table CELLPADDING="7" CELLSPACING="3" border = "1">
+					<h1>Patients</h1>
+					<tr>
+						<th align="center">Patient ID</th>
+						<th align="center">Name</th>
+						<th align="center">DOB</th>
+						<th align="center">Gender</th>
+					</tr>
+					<tr>
+					<?php 
+					while($row = mysql_fetch_array($result)){
+						$p_id = $row['patientId'];
+						echo "<td align = center>" . $p_id . "</td>";
+						echo "<td align = center><a href=\"patient.php?p_id=" . $row['patientId'] . "\">" . $row['firstName'] . " " . $row['lastName'] . "</a></td>";
+						echo "<td align = center>" . $row['dob'] . "</td>";
+						echo "<td align = center>" . $row['gender'] . "</td></tr>";
+					}
+					?>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
+
+<?php
+	mysql_close($con);
+?>

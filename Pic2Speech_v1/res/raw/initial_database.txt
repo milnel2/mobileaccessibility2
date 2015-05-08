@@ -1,0 +1,36 @@
+Places	Opening Places	places	root	category
+Photos	Opening Misc	photos	root	category
+Food	Opening Food	food	root	category
+Animals	Opening Animals	animals	root	category
+Concepts	Opening Concepts	concepts	root	category
+Items	Opening Items	items	root	category
+Bathroom	I want to go to the bathroom	bathroom	places	tile
+Bedroom	I want to go to the bedroom	bedroom	places	tile
+Burger	I want a burger	burger	food	tile
+Cat	I like cats	cat	animals	tile
+Chips	I want chips	chips	food	tile
+Classroom	I want to go to the classroom	classroom	places	tile
+Cow	I like cows	cow	animals	tile
+Dog	I like dogs	dog	animals	tile
+Fish	I like fish	fish	animals	tile
+Fly	There is a fly	fly	animals	tile
+Help	I need help	help	concepts	tile
+Home	I want to go home	home	places	tile
+Horse	I like horses	horse	animals	tile
+I'm Angry	I'm angry	imangry	concepts	tile
+I'm Happy	I'm happy	imhappy	concepts	tile
+I'm Sad	I'm sad	imsad	concepts	tile
+Kitchen	I want to go to the kitchen	kitchen	places	tile
+Milk	I want some milk	milk	food	tile
+No	No	no	concepts	tile
+Yes	Yes	yes	concepts	tile
+Paper	I want some paper	paper	items	tile
+Pencil	I want a pencil	pencil	items	tile
+Pizza	I want some pizza	pizza	food	tile
+Playground	I want to go to the playground	playground	places	tile
+Please	Please	please	concepts	tile
+Ruler	I want a ruler	ruler	items	tile
+Soda	I want some soda	soda	food	tile
+Tomato	I want a tomato	tomato	food	tile
+Water	I want some water	watercup	food	tile
+Kittens	I love kittens	cat	root	tile

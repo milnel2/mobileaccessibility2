@@ -1,0 +1,522 @@
+//
+//  ttsViewController.m
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import <AudioToolbox/AudioServices.h>
+#import "VBWriterViewController.h"
+#import "FliteTTS.h"
+
+@interface VBWriterViewController ()
+
+//The braille buttons
+@property (weak, nonatomic) IBOutlet UIImageView *button1;
+@property (weak, nonatomic) IBOutlet UIImageView *button2;
+@property (weak, nonatomic) IBOutlet UIImageView *button3;
+@property (weak, nonatomic) IBOutlet UIImageView *button4;
+@property (weak, nonatomic) IBOutlet UIImageView *button5;
+@property (weak, nonatomic) IBOutlet UIImageView *button6;
+
+@property (nonatomic) NSArray *alphadots; //braille representation of alphabet
+@property (nonatomic) NSArray *alphabet; //the alphabet (list of strings
+@property (nonatomic) NSArray *nato; //list of words to identity letters
+@property (nonatomic) NSMutableArray *userInput; //The dots selected by user
+@property (nonatomic) int letter; //the index of the letter selected (e.g. 6 is f)
+@property (nonatomic) int lettersUsed; //the number of letters used
+@property (nonatomic) NSMutableArray *numbers; //list of nubmers from 0 to 25
+@property (nonatomic, strong) NSTimer * timer;
+@end
+
+
+@implementation VBWriterViewController
+@synthesize timer;
+
+//booleans for if the buttons are selected
+BOOL button1selected = NO;
+BOOL button2selected = NO;
+BOOL button3selected = NO;
+BOOL button4selected = NO;
+BOOL button5selected = NO;
+BOOL button6selected = NO;
+BOOL vibrating = NO; //True if the user has their finger over a selected button
+int numTouches = 0; //number of fingers on teh screen
+SystemSoundID soundId;
+
+//instructions for when the game starts
+NSString *startInstr = @"Hold phone vertically with buttons at bottom. Listen for the letter to enter. Double tap to add and remove braille dots. Tap once with 3 fingers to hear letter again. Fling down with two fingers for instructions. Two-finger swipe right to submit answer. ";
+BOOL haveTouch = NO;
+
+//instructions for when the user swipes down with 2 fingers
+NSString *wbInstr1 = @"Hold phone vertically with buttons at bottom, listen for the letter to enter, The screen displays an empty Braille cell with dots won through three down the left side and dots four through six down the right side, a dot's number is spoken when the dot is touched. double tap to add and remove Braille dots. tap once with 3 fingers to hear the letter again, two-finger swipe right to submit your answer.";
+
+//callback to get the phone to continually vibrate while finger is over a selected button
+static void vibrate(SystemSoundID  mySSID, void* data) {
+    if (vibrating && haveTouch){
+        AudioServicesPlayAlertSound(soundId);
+    }
+}
+
+//speak a string
+-(void)speak:(NSString*)msg
+{
+	if (UIAccessibilityIsVoiceOverRunning()) {
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification,msg);
+    }
+    else{
+        [fliteEngine speakText:msg];
+    }
+}
+
+//shuffle list of numbers so that letters can be picked at random without reusing a letter until
+//all other letters are used
+- (void)shuffle
+{
+    NSUInteger count = [self.numbers count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        // Select a random element between i and end of array to swap with.
+        NSInteger nElements = count - i;
+        NSInteger n = (arc4random() % nElements) + i;
+        [self.numbers exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+}
+
+//get a random letter
+-(NSString*) randomSymbol{
+    //if we have used 26 letters, then shuffle the numbers around and start reusing letters
+    if (self.lettersUsed==25){
+        [self shuffle];
+        self.lettersUsed = 0;
+    }
+    else{
+        self.lettersUsed = self.lettersUsed+1;
+    }
+    self.letter = [self.numbers[self.lettersUsed] intValue];
+    NSArray *myStrings = [[NSArray alloc] initWithObjects:@"     The next letter to enter is. ", self.alphabet[self.letter], @". As in ", self.nato[self.letter], nil];
+    NSString *joinedString = [myStrings componentsJoinedByString:@""];
+    return joinedString;
+}
+
+//check if the user submitted the right letter
+-(void) checkAnswer:(UITapGestureRecognizer *)twoSwipe{
+    //convert the array of 0 and 1 strigns into a single string to see if it matches any of the alphadots
+    NSString *result = [self.userInput componentsJoinedByString:@""];
+    if ([result isEqualToString:self.alphadots[self.letter]]){
+        NSArray *msg = [[NSArray alloc] initWithObjects:@" That is correct!.",[self randomSymbol],nil];
+        NSString *joinedString = [msg componentsJoinedByString:@""];
+        [self speak:joinedString];
+    }
+    else{
+        //figure out what letter was entered
+        NSString *string = [self.userInput componentsJoinedByString:@""];
+        BOOL isLetter = NO;
+        for (int i = 0; i < self.alphadots.count; i++) {
+            if ([string isEqualToString:self.alphadots[i]]) {
+                isLetter = YES;
+                NSArray *msg = [[NSArray alloc] initWithObjects:@"Sorry. You entered. ", self.alphabet[i], @". As in ", self.nato[i],[self randomSymbol], nil];
+                NSString *joinedString = [msg componentsJoinedByString:@""];
+                [self speak:joinedString];
+            }
+        }
+        //if no letter was entered
+        if (!isLetter){
+            NSArray *msg = [[NSArray alloc] initWithObjects:@"Sorry. That is incorrect. ",[self randomSymbol], nil];
+            NSString *joinedString = [msg componentsJoinedByString:@""];
+            [self speak:joinedString];
+        }
+    }
+    
+    //reset all of the buttons so that none of them are selected
+    self.button1.highlighted = NO;
+    self.button2.highlighted = NO;
+    self.button3.highlighted = NO;
+    self.button4.highlighted = NO;
+    self.button5.highlighted = NO;
+    self.button6.highlighted = NO;
+    for (NSInteger i = 0; i < 6; i++){
+        [self.userInput replaceObjectAtIndex:i withObject:@"0"];
+    }
+}
+
+//speak the instructions once the game starts
+-(void) instructions:(UITapGestureRecognizer *)instrTap{
+    
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        NSArray *myStrings = [[NSArray alloc] initWithObjects:startInstr, @"the letter to enter is. ", self.alphabet[self.letter], @". As in", self.nato[self.letter], nil];
+        NSString *joinedString = [myStrings componentsJoinedByString:@""];
+        [self speak:joinedString];
+    }
+    else{
+        [self speak:@"For this app to work properly, you need to activate Voice Over."];
+        timer = [NSTimer scheduledTimerWithTimeInterval:5
+                                                 target:self
+                                               selector:@selector(end:)
+                                               userInfo:nil
+                                                repeats:NO];
+        
+    }
+}
+
+
+//Repeat the letter to enter when user taps with 3 fingers
+-(void) repeatLetter:(UITapGestureRecognizer *)threeTap{
+    NSArray *myStrings = [[NSArray alloc] initWithObjects:@"     The letter to enter is. ", self.alphabet[self.letter], @". As in ", self.nato[self.letter], nil];
+    NSString *joinedString = [myStrings componentsJoinedByString:@""];
+    [self speak:joinedString];
+}
+
+//read the instructions when user swipes down with 2 figners
+-(void) readInstructions:(UISwipeGestureRecognizer *)twoSwipeDown{
+    [self speak:wbInstr1];
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    self.view.accessibilityTraits = UIAccessibilityTraitAllowsDirectInteraction;
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                             target:self
+                                           selector:@selector(instructions:)
+                                           userInfo:nil
+                                            repeats:NO];
+    
+    
+    self.numbers = [NSMutableArray array];
+    
+    for (NSInteger i = 0; i < 26; i++)
+        [self.numbers addObject:[NSNumber numberWithInteger:i]];
+    [self shuffle];
+    self.letter = [self.numbers[self.lettersUsed] intValue];
+    self.userInput = [NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",@"0",@"0",nil];
+    self.alphadots = [NSArray arrayWithObjects:@"100000",@"101000",@"110000",@"110100",@"100100",@"111000",@"111100",@"101100",@"011000",@"011100",@"100010",@"101010",@"110010",@"110110",@"100110",@"111010",@"111110",@"101110",@"011010",@"011110",@"100011",@"101011",@"011101",@"110011",@"110111",@"100111", nil];
+    self.alphabet =
+    [NSArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z",nil];
+    self.nato =
+    [NSArray arrayWithObjects:@"apple",@"but",@"can",@"do",@"every",@"from",@"go",@"hav",@"india",@"just",@"knowledge",@"like",@"more",@"not",@"oscar",@"people", @"quite",@"rather",@"so",@"that",@"us",@"very",@"will",@"ex-ray",@"you",@"zebra",nil];
+    
+    [super viewDidLoad];
+	fliteEngine = [[FliteTTS alloc] init];
+    [fliteEngine setVoice:@"cmu_us_slt"];
+    
+    
+    UITapGestureRecognizer *threeTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(repeatLetter:)];
+    
+    UITapGestureRecognizer *tap1Rec = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tap1:)];
+    UITapGestureRecognizer *tap2Rec = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tap2:)];
+    UITapGestureRecognizer *tap3Rec = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tap3:)];
+    UITapGestureRecognizer *tap4Rec = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tap4:)];
+    UITapGestureRecognizer *tap5Rec = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tap5:)];
+    UITapGestureRecognizer *tap6Rec = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tap6:)];
+    
+    threeTap.numberOfTouchesRequired = 3;
+    
+    tap1Rec.numberOfTapsRequired = 2;
+    tap2Rec.numberOfTapsRequired = 2;
+    tap3Rec.numberOfTapsRequired = 2;
+    tap4Rec.numberOfTapsRequired = 2;
+    tap5Rec.numberOfTapsRequired = 2;
+    tap6Rec.numberOfTapsRequired = 2;
+    
+    [self.button1 addGestureRecognizer:tap1Rec];
+    [self.button2 addGestureRecognizer:tap2Rec];
+    [self.button3 addGestureRecognizer:tap3Rec];
+    [self.button4 addGestureRecognizer:tap4Rec];
+    [self.button5 addGestureRecognizer:tap5Rec];
+    [self.button6 addGestureRecognizer:tap6Rec];
+    [self.view addGestureRecognizer:threeTap];
+    
+    UISwipeGestureRecognizer *twoSwipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self  action:@selector(readInstructions:)];
+    UISwipeGestureRecognizer *twoSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self  action:@selector(checkAnswer:)];
+    twoSwipe.numberOfTouchesRequired=2;
+    twoSwipeDown.numberOfTouchesRequired=2;
+    [twoSwipeDown setDirection:(UISwipeGestureRecognizerDirectionDown)];
+    [twoSwipe setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:twoSwipe];
+    [self.view addGestureRecognizer:twoSwipeDown];
+    
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"buzz" ofType: @"aiff"];
+    NSURL *url = [NSURL fileURLWithPath:path isDirectory: NO];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef) url, &soundId);
+    
+    AudioServicesAddSystemSoundCompletion(soundId, nil, nil,vibrate, nil);
+}
+
+- (void)tap1:(UITapGestureRecognizer *)tap1Rec
+{
+    if (self.button1.highlighted){
+        self.button1.highlighted = NO;
+        self.userInput[0] = @"0";
+    }
+    else {
+        self.button1.highlighted = YES;
+        self.userInput[0] = @"1";
+    }
+}
+
+- (void)tap2:(UITapGestureRecognizer *)tap2Rec
+{
+    if (self.button2.highlighted){
+        self.button2.highlighted = NO;
+        self.userInput[2]=@"0";
+    }
+    else {
+        self.button2.highlighted = YES;
+        self.userInput[2]=@"1";
+    }
+}
+
+- (void)tap3:(UITapGestureRecognizer *)tap3Rec
+{
+    if (self.button3.highlighted){
+        self.button3.highlighted = NO;
+        self.userInput[4]=@"0";
+    }
+    else {
+        self.userInput[4]=@"1";
+        self.button3.highlighted = YES;
+    }
+}
+
+- (void)tap4:(UITapGestureRecognizer *)tap4Rec
+{
+    if (self.button4.highlighted){
+        self.button4.highlighted = NO;
+        self.userInput[1]=@"0";
+    }
+    else {
+        self.userInput[1]=@"1";
+        self.button4.highlighted = YES;
+    }
+}
+
+- (void)tap5:(UITapGestureRecognizer *)tap5Rec
+{
+    if (self.button5.highlighted){
+        self.userInput[3]=@"0";
+        self.button5.highlighted = NO;
+    }
+    else {
+        self.userInput[3]=@"1";
+        self.button5.highlighted = YES;
+    }
+}
+
+- (void)tap6:(UITapGestureRecognizer *)tap6Rec
+{
+    if (self.button6.highlighted){
+        self.button6.highlighted = NO;
+        self.userInput[5]=@"0";
+    }
+    else {
+        self.userInput[5]=@"1";
+        self.button6.highlighted = YES;
+    }
+}
+
+- (void) noteTouches: (NSSet *) touches
+{
+    for(UITouch *touch in touches) {
+        NSString *button;
+        CGPoint p = [touch locationInView: self.view];
+        if (p.y < self.button1.frame.size.height){
+            haveTouch = YES;
+            if (p.x < self.button1.frame.size.width){
+                if (!button1selected){
+                    if (self.button1.highlighted && !vibrating){
+                        vibrating = YES;
+                        AudioServicesPlayAlertSound(soundId);
+                    }
+                    
+                    button=@"one";
+                    button1selected = YES;
+                    button2selected = NO;
+                    button3selected = NO;
+                    button4selected = NO;
+                    button5selected = NO;
+                    button6selected = NO;
+                }
+                if (!self.button1.highlighted){
+                    vibrating = NO;
+                }
+                
+            }
+            else{
+                if (!button4selected) {
+                    if (self.button4
+                        .highlighted && !vibrating){
+                        vibrating = YES;
+                        AudioServicesPlayAlertSound(soundId);
+                    }
+                    button=@"four";
+                    button1selected = NO;
+                    button2selected = NO;
+                    button3selected = NO;
+                    button4selected = YES;
+                    button5selected = NO;
+                    button6selected = NO;
+                }
+                if (!self.button4.highlighted){
+                    vibrating = NO;
+                }
+            }
+        }
+        else if (p.y < 2*self.button1.frame.size.height){
+            haveTouch = YES;
+            if (p.x < self.button1.frame.size.width){
+                if (!button2selected){
+                    if (self.button2
+                        .highlighted && !vibrating){
+                        vibrating = YES;
+                        AudioServicesPlayAlertSound(soundId);
+                    }
+                    button=@"two";
+                    button1selected = NO;
+                    button2selected = YES;
+                    button3selected = NO;
+                    button4selected = NO;
+                    button5selected = NO;
+                    button6selected = NO;
+                    
+                }
+                if (!self.button2.highlighted){
+                    vibrating = NO;
+                }
+            }
+            else{
+                if (!button5selected) {
+                    if (self.button5
+                        .highlighted && !vibrating){
+                        vibrating = YES;
+                        AudioServicesPlayAlertSound(soundId);
+                    }
+                    button=@"five";
+                    button1selected = NO;
+                    button2selected = NO;
+                    button3selected = NO;
+                    button4selected = NO;
+                    button5selected = YES;
+                    button6selected = NO;
+                }
+                if (!self.button5.highlighted){
+                    vibrating = NO;
+                }
+            }
+        }
+        else if (p.y < 3*self.button1.frame.size.height){
+            haveTouch = YES;
+            if (p.x < self.button1.frame.size.width){
+                if (!button3selected){
+                    if (self.button3
+                        .highlighted && !vibrating){
+                        vibrating = YES;
+                        AudioServicesPlayAlertSound(soundId);
+                    }
+                    button=@"three";
+                    button1selected = NO;
+                    button2selected = NO;
+                    button3selected = YES;
+                    button4selected = NO;
+                    button5selected = NO;
+                    button6selected = NO;
+                }
+                if (!self.button3.highlighted){
+                    vibrating = NO;
+                }
+            }
+            else{
+                if (!button6selected) {
+                    if (self.button6
+                        .highlighted && !vibrating){
+                        vibrating = YES;
+                        AudioServicesPlayAlertSound(soundId);
+                    }
+                    button=@"six";
+                    button1selected = NO;
+                    button2selected = NO;
+                    button3selected = NO;
+                    button4selected = NO;
+                    button5selected = NO;
+                    button6selected = YES;
+                }
+                if (!self.button6.highlighted){
+                    vibrating = NO;
+                }
+            }
+        }
+        
+        if (button){
+            [self speak:button];
+        }
+    }
+}
+
+- (void) touchesBegan: (NSSet *) touches withEvent:(UIEvent *) event
+{
+    numTouches = numTouches+1;
+    if (numTouches < 2){
+        [self noteTouches: touches];
+    }
+    
+    
+}
+
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (numTouches <2){
+        [self noteTouches: touches];
+    }
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    vibrating = NO;
+    button1selected = NO;
+    button2selected = NO;
+    button3selected = NO;
+    button4selected = NO;
+    button5selected = NO;
+    button6selected = NO;
+    numTouches = numTouches-1;
+}
+
+- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    vibrating = NO;
+    button1selected = NO;
+    button2selected = NO;
+    button3selected = NO;
+    button4selected = NO;
+    button5selected = NO;
+    button6selected = NO;
+    numTouches=numTouches-1;
+}
+
+
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+
+@end

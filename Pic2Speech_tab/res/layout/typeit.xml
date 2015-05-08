@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contents for TypeIt.java -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:padding="5dp"
+	android:background="@drawable/main_background_radial"
+	android:gravity="center">
+	<TextView 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textSize="26dp"
+		android:padding="5px"
+		android:textColor="#000000"
+		android:text="Type some stuff!" />
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:orientation="horizontal"
+		android:gravity="center_horizontal">
+		<EditText
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:textSize="18dp"
+			android:padding="3dp"
+			android:id="@+id/box_input"
+			android:gravity="left"
+			android:text="@string/type_box" />
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="18dp"
+			android:id="@+id/button_speak"
+			android:text="@string/type_button" />		
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1" />
+	
+</LinearLayout>

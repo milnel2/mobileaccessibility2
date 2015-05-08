@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/softkeypad"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_1">
+		<Button android:id="@+id/keypad_apos"
+			android:focusableInTouchMode="true"
+			android:tag="apostrophe"
+			android:text="' (apostrophe)">
+		</Button>
+		<Button android:id="@+id/keypad_bracket"
+			android:focusableInTouchMode="true"
+			android:tag="bracket or parenthesis"
+			android:text="[ ] or ( )">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_2">
+		<Button android:id="@+id/keypad_cap"
+			android:focusableInTouchMode="true"
+			android:tag="capital"
+			android:text="capital">
+		</Button>
+		<Button android:id="@+id/keypad_close_quote"
+			android:focusableInTouchMode="true"
+			android:tag="close quote"
+			android:text="close '">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_3">
+		<Button android:id="@+id/keypad_comma"
+			android:focusableInTouchMode="true"
+			android:tag="comma"
+			android:text=", (comma)">
+		</Button>
+		<Button android:id="@+id/keypad_ex_pt"
+			android:focusableInTouchMode="true"
+			android:tag="exclamation point"
+			android:text="!">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_4">
+		<Button android:id="@+id/keypad_hyphen"
+			android:focusableInTouchMode="true"
+			android:tag="hyphen"
+			android:text="-">
+		</Button>
+
+		<Button android:id="@+id/keypad_open_quote"
+			android:focusableInTouchMode="true"
+			android:tag="open quote or question mark"
+			android:text="open ' or ?">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_5">
+		<Button android:id="@+id/keypad_period"
+			android:focusableInTouchMode="true"
+			android:tag="period or full stop"
+			android:text=".">
+		</Button>
+		<Button android:id="@+id/keypad_semicolon"
+			android:focusableInTouchMode="true"
+			android:tag="semicolon"
+			android:text=";">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_6">
+		<Button android:id="@+id/keypad_ans"
+			android:focusableInTouchMode="true"
+			android:tag="Get Correct Answer"
+			android:text="Get Correct Answer">
+		</Button>
+		<Button android:id="@+id/keypad_replay"
+			android:focusableInTouchMode="true"
+			android:tag="Go back and replay symbol"
+			android:text="Replay symbol">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_7">
+		<Button android:id="@+id/keypad_blank"
+			android:focusableInTouchMode="true"
+			android:background="@color/background"
+			android:tag=""
+			android:text="">
+		</Button>
+	</TableRow>
+</TableLayout>
+</LinearLayout>
+

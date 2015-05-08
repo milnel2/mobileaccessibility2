@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:background="@color/background">
+		<TextView
+			android:id="@+id/task_step_view_num"  
+	   		android:layout_width="fill_parent" 
+	   		android:layout_height="wrap_content" 		 			
+	   		android:textColor="#000000"
+   			android:textSize="25dp"
+			android:padding="10dp"
+	   		android:layout_marginBottom="10dp"
+	   		android:background = "@color/grey"
+	   		android:gravity="center"/>
+		<ScrollView 
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+			android:layout_weight="1.0">
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:gravity="center">
+			
+	   		<ImageView 
+	   			android:id="@+id/task_step_view_picture" 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxWidth="200dp"
+				android:maxHeight="200dp"
+				android:adjustViewBounds="true"
+                android:keepScreenOn="true"/>
+	   		<TextView  
+	   			android:id="@+id/task_step_view_inst"
+	   			android:layout_width="fill_parent" 
+	   			android:layout_height="wrap_content" 
+	 			android:textColor="#000000"
+	   			android:textSize="20dp"
+		  		android:text="@string/task_step_view_inst"
+		  		android:layout_marginLeft="10dp"
+		  		android:layout_marginRight="10dp"
+		  		android:layout_marginTop="10dp"
+		  		android:layout_marginBottom="10dp"
+	   			android:gravity="left"/>
+	   		<Button android:id="@+id/task_step_view_play_video"
+		   		android:layout_width="fill_parent"
+	  			android:layout_height="wrap_content"
+	  			android:textColor="#000000"
+	 	   		android:layout_marginLeft="5dp"
+		  	 	android:layout_marginRight="5dp"
+		  	 	android:layout_marginBottom="10dp"			
+		 	  	android:textSize="20dp" 
+	   			android:text="@string/task_step_view_play_video"/>
+			<Button android:id="@+id/task_step_view_play_audio"
+		   		android:layout_width="fill_parent"
+	  			android:layout_height="wrap_content"
+	  			android:textColor="#000000"
+	 	   		android:layout_marginLeft="5dp"
+		  	 	android:layout_marginRight="5dp"	
+		  	 	android:layout_marginBottom="10dp"		
+		 	  	android:textSize="20dp" 
+	   			android:text="@string/task_step_view_play_audio"/>	   		
+		</LinearLayout>
+		</ScrollView>
+		<LinearLayout
+   			android:orientation="horizontal"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content">
+    		<Button android:id="@+id/task_step_view_prev"
+	   				android:layout_width="wrap_content"
+		   			android:layout_height="fill_parent"
+	   				android:textColor="#000000"
+	   				android:textSize="15dp" 
+ 	  				android:text="@string/previous"
+ 	  				android:layout_weight="1"/>
+ 	  		<Button android:id="@+id/task_step_view_done"
+	   				android:layout_width="wrap_content"
+		   			android:layout_height="fill_parent"
+	   				android:textColor="#000000"
+	   				android:textSize="15dp" 
+ 	  				android:text="@string/done"
+ 	  				android:layout_weight="1.5"/>
+ 	  		<Button android:id="@+id/task_step_view_next"
+	   				android:layout_width="wrap_content"
+		   			android:layout_height="fill_parent"
+	   				android:textColor="#000000"
+	   				android:textSize="15dp" 
+ 	  				android:text="@string/next"
+ 	  				android:layout_weight="2"/>
+   		</LinearLayout>	
+</LinearLayout>

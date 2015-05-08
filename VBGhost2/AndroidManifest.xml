@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cs.washington.edu.VBGhost2"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="8" />
+    
+    <permission android:name="cs.washington.edu.VBGhost2.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="cs.washington.edu.VBGhost2.permission.C2D_MESSAGE" /> 
+	
+	<!-- App receives GCM messages. -->
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<!-- GCM connects to Google Services. -->
+	<uses-permission android:name="android.permission.INTERNET" /> 
+	<!-- GCM requires a Google account. -->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<!-- Keeps the processor from sleeping when a message is received. -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:name="cs.washington.edu.VBGhost2.GlobalState">
+        
+        <activity android:name=".LoadingAct"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:screenOrientation="portrait"
+				  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>	
+        <activity
+            android:name=".MainMenu"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        
+                <!--  Retain this activity definition always as part of any AccessibleMenu package implementation -->
+        <activity android:name=".UnknownActivity"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:debuggable="true">
+            <intent-filter>
+                <action android:name="edu.uw_cse.ma.accessiblemenu.UNKNOWN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+        <activity android:name=".InstructionsReader"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+            <intent-filter>
+                <action android:name="cs_wa_edu.mobileaccessibility.accessiblemenu.GET_INSTRUCTIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".NewGameMenu"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+        </activity>
+        <activity android:name=".ReceiveMessage"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+        </activity>
+        <activity android:name=".ContinueGameMenu"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+        </activity>
+        <activity android:name=".SinglePlayerMenu"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+        </activity>
+        <activity android:name=".MultiPlayerMenu"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboardHidden|orientation"
+                  android:debuggable="true">
+        </activity>
+        <activity android:name=".VBWriter"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:debuggable="true"
+                  android:screenOrientation="portrait"
+                  android:configChanges="keyboardHidden|orientation">     
+        </activity>
+         <activity android:name="cs.washington.edu.VBGhost2.ChallengeGameMenu"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:debuggable="true"
+                  android:screenOrientation="portrait"
+                  android:configChanges="keyboardHidden|orientation">     
+        </activity>
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+  			<intent-filter>
+   				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+    			<category android:name="cs.washington.edu.VBGhost2" />
+  			</intent-filter>
+		</receiver>
+        
+        <service android:name=".GCMIntentService" />
+    </application>
+    
+
+</manifest>

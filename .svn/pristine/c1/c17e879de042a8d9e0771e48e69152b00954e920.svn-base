@@ -1,0 +1,10 @@
+<resources>
+	<color name="about">#99CCCCBB</color>
+	<color name="white">#FFFFFF</color>
+	<color name="medium">#999999</color>
+	
+	<color name="splash_button_text">#000000</color>
+	<color name="splash_button_bg">#8888aa</color>
+	
+	
+</resources>

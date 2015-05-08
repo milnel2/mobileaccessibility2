@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.gesture.GestureOverlayView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gestures"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"   
+	android:gestureStrokeType="multiple"
+    android:eventsInterceptionEnabled="false"
+    android:orientation="horizontal"    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/glayout"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <Button android:id="@+id/blank_button"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:focusableInTouchMode="true"
+		android:background="@color/background"
+		android:tag=""
+		android:text=""
+		android:textSize="1sp"	 />
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:id="@+id/status_info"
+	    android:orientation="horizontal"
+	    android:focusableInTouchMode="true"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+    	<TableRow>
+			<TextView  
+				android:id="@+id/feed_status_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/feed_status_label"
+			    android:textSize="20.0sp"
+			    
+			/>
+			<TextView  
+				android:id="@+id/feed_status"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/feed_status"
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+		<TableRow>
+			<TextView  
+				android:id="@+id/play_status_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/play_status_label"
+			    android:textSize="20.0sp"
+			/>
+			<TextView  
+				android:id="@+id/play_status"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/play_status"
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+		<TableRow>
+			<TextView  
+				android:id="@+id/interact_status_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/interact_status_label"
+			    android:textSize="20.0sp"
+			/>
+			<TextView  
+				android:id="@+id/interact_status"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/interact_status"
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+		<TableRow>
+			<TextView  
+				android:id="@+id/bank_status_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/bank_status_label"
+			    android:textSize="20.0sp"
+			/>
+			<TextView  
+				android:id="@+id/bank_status"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="@string/bank_status"
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+		<TableRow>
+			<Button android:id="@+id/spacer"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:focusableInTouchMode="true"
+					android:background="@color/background"
+					android:tag=""
+					android:text=""
+			 />
+	 	</TableRow>
+	 </TableLayout>
+	<Button android:id="@+id/feed_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/feed_button_label"
+		android:tag="@string/feed_button_tag"
+		android:layout_weight="2"
+	/> 
+	<Button android:id="@+id/play_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/play_button_label"
+		android:tag="@string/play_button_tag"
+		android:layout_weight="2"
+	/> 
+	<Button android:id="@+id/interact_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/interact_button_label"
+		android:tag="@string/interact_button_tag"
+		android:layout_weight="2"
+	/> 
+		<Button android:id="@+id/money_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="28.0sp"
+		android:text="@string/money_button_label"
+		android:tag="@string/money_button_tag"
+		android:layout_weight="2"
+	/>
+		<Button android:id="@+id/exit_button" 
+		android:focusableInTouchMode="true"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:textSize="30.0sp"
+		android:text="@string/exit_button_label"
+		android:tag="@string/exit_button_tag"
+		android:layout_weight="2"
+	/> 
+</LinearLayout>
+</android.gesture.GestureOverlayView>
+
+

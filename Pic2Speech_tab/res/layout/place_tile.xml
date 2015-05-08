@@ -1,0 +1,23 @@
+<!-- Used by our tile GridView. Allows the GridView to hold both an image and a string-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:padding="1dp"
+	android:gravity="fill">
+	<ImageView
+		android:id="@+id/place_image"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" 
+		android:minHeight="1000dp"
+		android:adjustViewBounds="true"
+		android:cropToPadding="false"
+		android:scaleType="fitCenter"/>
+	<!-- Hidden elements to store data -->
+	<TextView
+		android:id="@+id/place_source"
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"
+		android:visibility="gone" />
+</LinearLayout>

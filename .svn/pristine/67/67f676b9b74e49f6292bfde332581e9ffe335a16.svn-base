@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, VBReader!</string>
+    <string name="app_name">Child VBRead</string>
+    <string name="greeting">Welcome to VBReader</string>
+    <string name="goodbye">Goodbye!</string>
+    <string name="redisplay">Braille cell displayed</string>
+    <string name="voice_not_installed">voice recognition is not installed</string>
+    <string name="voice_network_error">a network error occurred</string>
+    <string name="voice_server_error">an error occurred on the voice recognition server</string>
+    <string name="voice_audio_error">an error occurred with the audio service</string>
+    <string name="voice_speech_timeout">speech was not heard before application timed out</string>
+    <string name="voice_no_match">could not find a match for the speech input</string>
+    <string name="voice_error">an unknown error occurred</string>
+    
+    <!--  Required strings for MainMenu class -->
+    <string name="inputselectionmenu_greeting">Menu displayed, Please select an input method or fling down for instructions</string>
+    <string name="inputselectionmenu_goodbye">Returning</string>
+    <string name="inputselectionmenu_redisplay">on input selection menu</string>
+      	
+  	<!--  All Menus -->
+  	<string name="no_more_options_label"></string>
+  	<string name="no_more_options_tag">End of Menu</string>
+</resources>
+

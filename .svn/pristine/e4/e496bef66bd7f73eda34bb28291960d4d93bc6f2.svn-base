@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<string name="route_input_welcome">Route Input screen.</string>
+	<string name="route_input_instructions">Please enter a walking route destination.  
+											Double tap to here your currently entered destination.  
+											Swipe up to enter a new route destination.  
+											Swipe down to hear about current location and save as future route.  
+											Swipe left to search for the currently entered route.  
+											Swipe right to explore previously entered routes.  
+											Press and hold anywhere on the screen to hear these instructions again.</string>
+	<string name="route_archive_welcome">Route Arkive Screen.</string>
+	<string name="route_archive_instructions">Touch screen and drag up and down to hear choices for route destinations.  
+												Release and double tap to select choice.  
+												Swipe left to return without selecting any choice.  
+												Press and hold anywhere on the screen to hear these instructions again.</string>
+	<string name="current_location_welcome">Save current location screen.</string>
+	<string name="current_location_instructions">Double tap the screen to save your current location as a potential destination for later use.  
+													Press and hold anywhere on the screen to hear these instructions again.</string>
+	<string name="possible_addresses_welcome_1">Multiple possible matches were found for the destination you entered.</string>
+	<string name="possible_addresses_instructions_1">Touch screen and drag up and down to hear suggestions for route destinations.  
+														Release and double tap to select choice.  
+														Swipe right to return without selecting any choice.  
+														Press and hold anywhere on the screen to hear these instructions again.</string>
+	<string name="possible_addresses_welcome_2">Multiple possible addresses were found for your current location.</string>
+	<string name="possible_addresses_instructions_2">Touch screen and drag up and down to hear suggestions for your location\'s address.  
+														Release and double tap to select choice.  
+														Swipe right to return without selecting any choice.  
+														Press and hold anywhere on the screen to hear these instructions again.</string>
+	<string name="directions_display_welcome">Route directions list.</string>
+	<string name="directions_display_instructions">Touch screen and drag up and down to the various steps in the route to your destination.  
+													If your route has more steps than fit on the screen, then you can double tap the bottom item to hear more steps.  
+													Double tap the return item or swipe right to return to the route orienting screen.  
+													Press and hold anywhere on the screen to hear these instructions again.</string>
+	<string name="route_orienter_welcome">Route Orienter screen.</string>
+	<string name="route_orienter_instructions">Double tap screen to turn orienting vibration on.  
+												Double tap again to turn it off.  
+												Swipe up to recompute current route.  
+												Swipe down to hear about current location and save as future route.  
+												Swipe left to go to a list of directions for the current route.  
+												Swipe right to return to route input screen.  
+												Press and hold anywhere on the screen to hear these instructions again.</string>
+	
+	<string name="app_name">PhoneWand</string>
+	<string name="enter_destination">Enter Destination</string>
+	<string name="new_route_button">Enter New Route</string>
+	<string name="check_route_button">Check Route</string>
+	<string name="google_maps_result">The GET request to Google Maps returned:</string>
+	<string name="start_JSON_parsing">Beginning parsing of Google Maps JSON response</string>
+	<string name="parsing_new_step">Parsing a new step</string>
+	<string name="end_JSON_parsing">finished parsing Google Maps JSON response</string>
+	<string name="start_decoding">Beginning decoding of a new encoded Google Maps polyline</string>
+	<string name="end_decoding">Finished decoding Google Maps polyline</string>
+	<string name="added_geopoint">Added GeoPoint: </string>
+	<string name="finding_gps">Finding a GPS fix on your location...</string>
+	<string name="downloading_route">Downloading a route from Google Maps...</string>
+	<string name="url_created">URL String created: </string>
+	<string name="check_route">User pressed the Check Route button.</string>
+	<string name="get_directions_start">Starting direction retrieval.</string>
+	<string name="get_directions_end_success">Direction retrieval succeeded.</string>
+	<string name="get_directions_end_fail">Direction retrieval failed.</string>
+	<string name="please_connect_to_internet">We are unable to connect to Google Maps. Please double-check your Internet connection.</string>
+	<string name="unable_to_find_location">We are unable to get a fix on your current location.  Please wait while we continue trying.</string>
+	<string name="end_of_route">You\'ve reached your destination!</string>
+	<string name="invalid_google_response">Sorry, but we couldn\'t make sense of Google\'s route!</string>
+	<string name="no_matches_found_toast">No matches were found for the destination you entered.  Are you sure you entered it correctly?</string>
+	<string name="no_matches_found_log">No matches were found for the destination entered by the user</string>
+	<string name="route_displayed_toast">Your route has been established.</string>
+	<string name="route_displayed_log">The user\'s route has been established</string>
+	<string name="invalid_destination_string_toast">Please first enter a valid destination.</string>
+	<string name="invalid_destination_string_log">The user entered an invalid destination String</string>
+	<string name="multiple_addresses_found">Multiple addresses were found which match the destination you entered.  Please select your desired address from below.</string>
+	<string name="address_retrieval_started">Address retrieval started for the destination String entered by the user: </string>
+	<string name="old_destination_button">Find Previous Destination</string>
+	<string name="one_address_found_log">Only one address was found which matches the user\'s destination: </string>
+	<string name="multiple_addresses_found_log">Multiple addresses were found which match the user\'s destination.</string>
+	<string name="enter_destination_prompt">Enter new destination</string>
+	<string name="at_sign">"@"</string>
+	<string name="question_mark">"?"</string>
+	<string name="num_punct">"?123"</string>
+	<string name="default_destination_string">No destination currently entered</string>
+	<string name="tts_advance_route">Advancing route step</string>
+	<string name="tts_advance_geo">Advancing geo step</string>
+	<string name="tts_orienter_off">Orienting Off</string>
+	<string name="tts_orienter_on">Orienting On</string>
+	<string name="latitude_string">Latitude: </string>
+	<string name="longitude_string">Longitude: </string> 
+	<string name="distance_string">Distance to Destination: </string>
+	<string name="nearest_address_string">Nearest Address: </string>
+	<string name="none_of_these">None of these</string>
+	<string name="go_back_to_input">Go back to Input Screen</string>
+	<string name="go_back_to_orienter">Back to route orienting screen</string>
+	<string name="pressed_home">You pressed the phone\s home button and have left the phone wand application</string>
+	<string name="tts_add">Saving the location</string>
+	<string name="tts_fail_add_cur_loc">Failed to save current location. Current location is empty. Please wait and try again.</string>
+	
+	
+	<!-- ============= -->
+	<!--    Errors     -->
+	<!-- ============= -->
+	
+	<string name="db_fail">Error: unable to get writable database</string>
+	<string name="decode_fail">Error: unable to decode the String returned from the Google Maps Get request</string>
+	<string name="get_route_address_fail">Error: an error occurred while retrieving the route or address: </string>
+	<string name="get_gps_fail">Error: unable to get a fix on the user\'s current location</string>
+	<string name="invalid_message_fail">Error: invalid Message given to Handler: </string>
+	<string name="get_extra_fail">Error: a problem occurred with getting the Intent extras that should have been passed from the RouteFinder Activity to the RouteChecker Activity</string>
+	<string name="unknown_notification_fail">Error: An unknown notification was passed: </string>
+	<string name="delete_fail">Error: unable to delete records from the database</string>
+	<string name="add_fail">Error: record not added to the database</string>
+	<string name="get_fail">Error: unable to get record from database</string>
+	<string name="route_parsing_fail">Error: the JSON response returned from Google Maps was in an unexpected format</string>
+	<string name="local_service_disconnected_fail">Error: local service disconnected</string>
+	<string name="invalid_request_code_fail">Error: invalid request code given to onActivityResult: </string>
+	<string name="address_id_extra_fail">Error: address id extra not passed correctly</string>
+	<string name="address_index_extra_fail">Error: address index extra not passed correctly</string>
+	
+</resources>

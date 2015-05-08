@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:id="@+id/setting_info"
+	    android:orientation="horizontal"
+	    android:focusableInTouchMode="true"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+    	<TableRow>
+			<TextView  
+				android:id="@+id/version_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="Version:"
+			    android:textSize="20.0sp"
+			    
+			/>
+			<TextView  
+				android:id="@+id/version"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text=""
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+		<TableRow>
+			<TextView  
+				android:id="@+id/input_type_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="Input Type:"
+			    android:textSize="20.0sp"
+			/>
+			<TextView  
+				android:id="@+id/input_type"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text=""
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+		<TableRow>
+			<TextView  
+				android:id="@+id/speech_rate_label"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text="Speech Rate:"
+			    android:textSize="20.0sp"
+			/>
+			<TextView  
+				android:id="@+id/speech_rate"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="fill_parent" 
+			    android:text=""
+			    android:textSize="20.0sp"
+			    android:paddingLeft="10sp"
+			/>
+		</TableRow>
+	</TableLayout>
+</LinearLayout>
+
+

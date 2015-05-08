@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<color name="background">#000000</color>
+	<color name="ltblue">#3399cc</color>
+	<color name="dkgray">#030303</color>
+	<color name="gray">#cccccc</color>
+	<color name="blue">#006699</color>
+	<color name="charcoal">#0d0d0d0d</color>
+	<color name="ltyellow">#ffff99</color>
+	<color name="yellow">#ffff33</color>
+	<color name="white">#ffffff</color>
+	<color name="black">#00000000</color>
+	<color name="pleasant">#79CEe3</color>
+	<color name="toastfill">#ee444444</color>
+	<color name="toastborder">#ee777777</color>
+	<color name="text">#ffffff</color>
+	<color name="text_highlight">#ffff00</color>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    >
+		<Button android:text="Reset"
+			android:id="@+id/ResetButton"
+			android:textSize="10px"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5px"></Button>
+	<TextView android:text="Zoom"
+			android:id="@+id/ZoomText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+    		android:textSize="10px"
+			android:gravity="center"
+			/>
+	<SeekBar android:id="@+id/ZoomBar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5px"
+			android:max="200"
+			android:progress="100"
+			/>	
+	<TextView android:text="Monochrome Threshold"
+			android:id="@+id/ThresholdText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+    		android:textSize="10px"
+			android:gravity="center"
+			/>
+	<SeekBar android:id="@+id/ThresholdBar"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="5px"
+			android:max="255"
+			android:progress="128"
+			/>
+	<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+		<Button android:text="Toggle Color"
+				android:id="@+id/ColorButton"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textSize="12px"
+				android:layout_weight="1" />
+		<Button android:text="Toggle Inversion"
+				android:id="@+id/InversionButton"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textSize="12px"
+				android:layout_weight="1" />
+	</LinearLayout>
+	<edu.washington.cs.streetsignreader.EnhancedImageView android:id="@+id/EnhancedImage"
+			android:layout_width="320px"
+			android:layout_height="307px" />
+</LinearLayout>

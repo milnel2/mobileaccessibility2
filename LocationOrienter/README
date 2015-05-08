@@ -1,0 +1,10 @@
+
+LocationFinder.java will keep track of your current location and heading and has methods to return pretty string representations of them
+
+BusinessFinder.java will find local Points-of-Interest for a given lat/long and search string.  It uses a couple pieces of Google's code for this.  Gsearch (http://code.google.com/p/gsearch-java-client/) is an easy to use Java client for Google's AJAX APIs.  We downloaded the source for it and included it in our project.  We had to slightly modify Client.java.  We changed the searchLocal function to accept a String query and an int page and also hardcoded some more parameters - diff against the online version if you want to see exact differences.  Gson (http://code.google.com/p/google-gson/) helps us get the JSON results from the web service into a usable Object representation, so make sure to include gson-1.4.jar in your build path.
+
+LocalEyes.java is the main screen that displays businesses
+
+LocationOrienter.java loads the app and decides what to initialize
+
+SettingsConfiguration.java is the setting screen.

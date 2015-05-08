@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+	<item name="Dog Biscuits" price="5" sound="dogbiscuitboxshake" use="0" />
+	<item name="Can of food" price="10" sound="can" use="0" />
+	<item name="Side of beef" price="20" sound="cow" use="0" />
+	<item name="Chew Toy" price="15" sound="chewtoy" use="1" />
+	<item name="Squeaky Ball" price="10" sound="squeakyball" use="1" />
+	<item name="Collar" price="20" sound="collar3" use="3" />
+	<item name="Bed" price="75" sound="petbed" use="2" />
+	<item name="Shampoo" price="15" sound="bubbles" use="2" />
+	<item name="Brush" price="15" sound="brush" use="2" />
+	<item name="Bandana" price="30" sound="bandana" use="3" />
+	<item name="Sweater" price="50" sound="jinglebells" use="3" />
+</products>

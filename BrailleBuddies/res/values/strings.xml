@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BrailleBuddies</string>
+    
+    <!--  Game screen -->
+    <string name="feed_status_label">Hungry:</string>
+    <string name="feed_status"></string>
+    <string name="feed_button_label">Feed Pet: O</string>
+    <string name="feed_button_tag">Feed Pet</string>
+    <string name="play_status_label">Needs Exercise:</string>
+    <string name="play_status"></string>
+    <string name="play_button_label">Exercise Pet: ∆</string>
+    <string name="play_button_tag">Exercise Pet</string>
+    <string name="interact_status_label">Happy?:</string>
+    <string name="interact_status"></string>
+    <string name="interact_button_label">Play with Pet: S</string>
+    <string name="interact_button_tag">Play with Pet</string>
+    <string name="bank_status_label">Bank Account:</string>
+    <string name="bank_status"></string>
+    <string name="money_status_label">Account Balance:</string>
+    <string name="money_status"></string>
+    <string name="money_button_label">Spend/Earn Tokens: |</string>
+    <string name="money_button_tag">spend and earn tokens</string>
+    <string name="exit_button_label">Back: X</string>
+    <string name="exit_button_tag">Go Back</string>
+    
+    <!-- Feed screen -->
+    <string name="biscuit_button_label">Dog Biscuit: 5</string>
+    <string name="biscuit_button_tag">Dog Biscuit: 5</string>   
+    <string name="can_button_label">Dog Canned Food: 10</string>
+    <string name="can_button_tag">Canned Food: 10</string>    
+    <string name="beef_button_label">Beef: 20</string>
+    <string name="beef_button_tag">Beef: 20</string>
+    
+    <!-- Spend/Earn Tokens screen -->
+    <string name="earn_title">Earn Money</string>
+    <string name="shop_button_label">Go Shopping: O</string>
+    <string name="play_read_label">Play Read Braille: ∆</string>
+    <string name="play_write_label">Play Write Braille: S</string>
+    <string name="play_word_label">Play Braille Words: |</string>
+    <string name="play_back_label">Back: X</string>
+    <string name="shop_button_tag">Go shopping</string>
+    <string name="play_read_tag">Play Reed Braille to earn 5 tokens for each correct symbol</string>
+    <string name="play_write_tag">Play Write Braille to earn 5 tokens for each correct symbol</string>
+    <string name="play_word_tag">Play Braille words to earn from 10 to 20 tokens per word</string>
+    
+    <!-- used on both money and instructions menus -->
+    <string name="back_tag">Go back</string>
+    
+    <!-- BrailleBuddiesMenu (Main) menu -->
+    <string name="play_label">Play: O</string> 
+ 	<string name="instructions_label">Instructions: ∆</string> 
+  	<string name="settings_label">Settings: S</string> 
+  	<string name="exit_label">Exit: X</string> 
+  	<string name="play_tag">Play Games</string> 
+ 	<string name="instructions_tag">Instructions Menu</string> 
+  	<string name="settings_tag">Settings Menu</string> 
+  	<string name="exit_tag">Exit BrailBuddies</string> 
+
+	<!-- SettingsGUI screen -->
+    <string name="read_menus">Read Menus When Touched</string>
+    <string name="read_menus_summary">Read Menus When Touched</string>
+    <string name="replay_symbol">Replay Symbol After Correct Answer</string>
+    <string name="replay_symbol_summary">Replay Symbol After Correct Answer is given</string>
+    <string name="symbol_mode_title">Symbol Mode</string>
+    <string name="symbol_mode_tag">Choose a symbol mode</string>
+    <string name="alphabet">Alpha</string>
+    <string name="alphabet_summary">Select letters from alphabet</string>
+    <string name="numbers">Num</string>
+    <string name="numbers_summary">Select numbers</string>
+    <string name="punctuation">Punct</string>
+    <string name="punctuation_summary">Select punctuation symbols</string>
+    <string name="max_tries_title">Maximum Number of Tries</string>
+    <string name="max_tries_tag">Choose the maximum number of tries</string>
+    <string name="one_try">One</string>
+    <string name="one_try_summary">Give correct answer after first wrong entry</string>
+    <string name="two_tries">Two</string>
+    <string name="two_tries_summary">Give correct answer after second wrong entry</string>
+    <string name="three_tries">Three</string>
+    <string name="three_tries_summary">Give correct answer after third wrong entry</string>
+    <string name="word_level_title">Word Level</string>
+    <string name="word_level_tag">Choose a word level</string>
+    <string name="easy">Easy</string>
+    <string name="easy_summary">Select words with 2 to 4 characters</string>
+    <string name="medium">Medium</string>
+    <string name="medium_summary">Select words with 5 or 6 characters</string>
+    <string name="hard">Hard</string>
+    <string name="hard_summary">Select words with 7 or more characters</string>
+    <string name="qwerty_keypad">Display QWERTY Keypad</string>
+    <string name="qwerty_keypad_summary">Display keypad with QWERTY layout instead of alphabetic layout</string>
+    <string name="speech_rate_title">Speech Rate</string>
+    <string name="speech_rate_tag">Choose a speech rate</string>
+    <string name="half">.5</string>
+    <string name="half_summary">Speak at one half normal speech rate</string>
+    <string name="normal">1</string>
+    <string name="normal_summary">Speak at normal speech rate</string>
+    <string name="twice">2</string>
+    <string name="twice_summary">Speak at two times normal speech rate</string>
+    <string name="thrice">3</string>
+    <string name="thrice_summary">Speak at three times normal speech rate</string>
+    
+    <!-- PetGUI screen -->
+    <string name="pet_name_label">Name: </string>
+    <string name="pet_name"></string>
+    <string name="pet_name_summary">your pet's name is </string>
+    <string name="gender_title">Gender:</string>
+    <string name="gender_tag">Choose a gender</string>
+    <string name="male">Male</string>
+    <string name="male_summary">Select male</string>
+    <string name="female">Female</string>
+    <string name="female_summary">Select female</string>
+    <string name="breed_title">Breed:</string>
+    <string name="breed_tag">Choose a breed</string>
+    <string name="pomeranian">Pomeranian</string>
+    <string name="pomeranian_summary">Select Pomeranian</string>
+    <string name="retriever">Golden Retriever</string>
+    <string name="retriever_summary">Select Golden Retriever</string>
+    <string name="pitbull">Pitbull</string>
+    <string name="pitbull_summary">Select Pitbull</string>
+    <string name="bark_title">Bark Pitch:</string>
+    <string name="bark_tag">Choose a bark pitch</string>
+    <string name="high">High</string>
+    <string name="high_summary">Select High</string>
+    <string name="middle">Medium</string>
+    <string name="middle_summary">Select medium</string>
+    <string name="low">Low</string>
+    <string name="low_summary">Select low</string>
+    <string name="change_name">Change Name</string>
+    <string name="change_name_tag">Change name of pet</string>
+    <string name="finish">Finish</string>
+    <string name="finish_tag">finnish editing pet</string>
+    
+    <!-- Store screen -->
+    <string name="food_product_label">Food</string>
+    <string name="food_aisle">Food Aisle</string>
+    <string name="play_product_label">Toys</string>
+    <string name="toy_aisle">Toy Aisle</string>
+    <string name="care_product_label">Care &amp; Comfort</string>
+    <string name="care_product_tag">care and comfort products</string>
+    <string name="care_aisle">Care and comfort aisle</string>
+    <string name="accessory_product_label">Accessories</string>
+    <string name="accessory_aisle">Accessory aisle</string>
+    <string name="exit_store">Exit Store</string>
+    <string name="exit_store_label">Exit the store</string>
+    
+    <!-- Products in Store -->
+    <string name="product_label">PRODUCT</string>
+    <string name="product_tag">product information</string>
+    <string name="product_name"></string>
+    <string name="price"></string>
+    <string name="price_tag">tokens</string>
+    <string name="purchased"></string>
+    <string name="purchased_tag">you currently have</string>
+    <string name="back_to_store_button">Back to Store</string>
+    
+    <!-- Instructions menu -->
+    <string name="instructions_title">How to play</string>
+    <string name="instructions_summary">The touchpad is divided into six cells. Touch each cell to determine whether it contains a dot. </string>
+    <string name="instr_read_label">Read Braille: O</string>
+    <string name="instr_write_label">Write Braille: ∆</string>
+    <string name="instr_words_label">Braille Words: S</string>
+    <string name="instr_back_label">Back: X</string>
+    <string name="instr_read_tag">Reed Braille Instructions</string>
+    <string name="instr_write_tag">Write Braille Instructions</string>
+    <string name="instr_words_tag">Braille Words instructions</string>
+	
+</resources>

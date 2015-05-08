@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- array for text that's written on menu option.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_text_array" 
+		Only include as many items as there are options on the menu. 
+		Following is an example: -->
+	<string-array name="accessiblemenu_option_text_array">
+		<item>Option 1</item>
+		<item>Option 2</item>
+		<item>Option 3</item>
+		<item>Option 4</item>
+		<item>Option 5</item>
+		<item>Option 6</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_tag_array"
+		Only include as many items as there are options on the menu. 
+		Following is an example: -->
+	<string-array name="accessiblemenu_option_tag_array">
+		<item>Option 1 3 sub options</item>
+		<item>Option 2</item>
+		<item>Option 3</item>
+		<item>Option 4 4 sub options</item>
+		<item>Option 5</item>
+		<item>Option 6</item>
+	</string-array>
+	
+	<!--  option attribute arrays.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_attributes_array" 
+		  Following is an example: -->
+	<array name="accessiblemenu_option_attributes_array">
+		<item>30</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>80</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  suboption arrays (text that's spoken when suboption is touched). 
+	  Add suboptions arrays named with the name of the AccessibleMenu subclass (in
+	  lower case) followed by 
+	  		"_option{option number, starting at 1 for first option}_suboptions_array" 
+	  Only include arrays for options that have suboptions.  
+	  Following are examples:  -->
+	 <string-array name="accessiblemenu_option1_suboptions_array">
+		<item>Sub option 1</item>
+		<item>Sub option 2</item>
+		<item>Sub option 3</item>
+	</string-array>
+	<string-array name="accessiblemenu_option4_suboptions_array">
+		<item>Sub option 1</item>
+		<item>Sub option 2</item>
+		<item>Sub option 3</item>
+		<item>Sub option 4</item>
+	</string-array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu). Add action arrays named with the name of the AccessibleMenu 
+		  subclass (in lower case) followed by 
+		  		"_option{option number, starting at 1 for first option}_action_array" 
+		  Include one array for each option.  First element of array is action that
+		  is taken if option is selected.  For options with suboptions, add an item to
+		  the option's array for each action taken if the suboption is selected.  (Add
+		  actions in the order the suboptions appear.  If action is activity developed
+		  by you, include package name with action.
+		  In manifest XML file, be sure that the activity corresponding to each menu option 
+		  or suboption has an intent filter defined for the action listed below.)  -->
+	<string-array name="accessiblemenu_option1_action_array">
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.OPTION1</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION1</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION2</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION3</item>
+	</string-array>
+	<string-array name="accessiblemenu_option2_action_array">
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.OPTION2</item>
+	</string-array>
+	<string-array name="accessiblemenu_option3_action_array">
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.OPTION3</item>
+	</string-array>
+	<string-array name="accessiblemenu_option4_action_array">
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.OPTION4</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION1</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION2</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION3</item>
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.SUBOPTION4</item>
+	</string-array>
+	<string-array name="accessiblemenu_option5_action_array">
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.OPTION5</item>
+	</string-array>
+	<string-array name="accessiblemenu_option6_action_array">
+		<item>cs_wa_edu.mobileaccessibility.accessiblemenu.OPTION6</item>
+	</string-array>
+</resources>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:ttt="http://schemas.android.com/apk/res/android_talking_software.development.talking_tap_twice"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent"
+	android:padding="15dip"
+	android:orientation="vertical">
+	<android_talking_software.development.talking_tap_twice.accessible_view_extensions.LinearLayoutTTT
+	ttt:defaultMethod="updateDisplay"
+	ttt:defaultSelected="entered"
+		android:orientation="vertical"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_gravity="center"
+		android:paddingLeft="20dip"
+		android:paddingRight="20dip">
+		<TextView
+		android:id="@+id/title"
+		android:text="Android Talking Calculator"
+			android:layout_height="fill_parent"
+			android:layout_width="fill_parent"
+			android:layout_gravity="center"
+			android:layout_marginBottom="20dip"
+			android:textSize="18sp"
+			android:layout_weight="1"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.TextViewTTT
+								android:id="@+id/display"
+				ttt:method="default"
+				ttt:label="display"
+		android:text="0"
+			android:layout_height="fill_parent"
+			android:layout_width="fill_parent"
+			android:layout_gravity="center"
+			android:layout_marginBottom="20dip"
+			android:textSize="18sp"/>
+		<TableLayout
+		android:layout_height="fill_parent"
+			android:layout_width="fill_parent"
+			android:layout_gravity="center"
+			android:orientation="horizontal">
+			<TableRow>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT
+				android:id="@+id/left_paren_button"
+				ttt:method="default"
+				ttt:label="open parenthesis"
+				ttt:whenSelected="default"
+				android:text="("
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+				android:id="@+id/right_paren_button"
+								 				ttt:method="default"
+				ttt:label="close parenthesis"
+				ttt:whenSelected="default"
+android:text=")"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT
+android:id="@+id/exponent_button"
+								ttt:method="default"
+				ttt:label="to the power of"
+				ttt:whenSelected="default"
+				android:text="^"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/divide_button"
+								ttt:method="default"
+				ttt:label="divided by"
+ttt:whenSelected="default"
+								android:text="/"
+								android:layout_weight="1"
+								android:layout_width="0dip"/>
+			</TableRow>
+			<TableRow>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/seven_button"
+				ttt:method="default"
+				ttt:whenSelected="default"
+				android:text="7"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/eight_button"
+								ttt:method="default"
+								ttt:whenSelected="default"
+				android:text="8"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/nine_button"
+								ttt:method="default"
+				ttt:whenSelected="default"
+android:text="9"
+android:layout_weight="1"
+android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/multiply_button"
+								ttt:method="default"
+				ttt:label="times"
+				ttt:whenSelected="default"
+				android:text="*"
+				 android:layout_weight="1"
+				 android:layout_width="0dip"/>
+			</TableRow>
+			<TableRow>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+				android:id="@+id/four_button"
+								ttt:method="default"
+				ttt:whenSelected="default"
+								android:text="4"
+								android:layout_weight="1"
+								android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+								android:id="@+id/five_button"
+				ttt:method="default"
+				ttt:whenSelected="default"
+				android:text="5"
+				 android:layout_weight="1"
+				 android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+								android:id="@+id/six_button"
+				ttt:method="default"
+				ttt:whenSelected="default"
+				android:text="6"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+												android:id="@+id/minus_button"
+								ttt:method="default"
+ttt:label="minus"
+				ttt:whenSelected="default"
+				android:text="-"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+			</TableRow>
+			<TableRow>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/one_button"
+												ttt:method="default"
+												ttt:whenSelected="default"
+												android:text="1"
+												android:layout_weight="1"
+												android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/two_button"
+								ttt:method="default"
+				ttt:whenSelected="default"
+								android:text="2"
+								android:layout_weight="1"
+								android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/three_button"
+												ttt:method="default"
+ttt:whenSelected="default"
+												android:text="3"
+												android:layout_weight="1"
+												android:layout_width="0dip"/>
+				<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+												android:id="@+id/plus_button"
+								ttt:method="default"
+				ttt:label="plus"
+				ttt:whenSelected="default"
+				android:text="+"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+			</TableRow>
+			<TableRow>
+								<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+												android:id="@+id/zero_button"
+				ttt:method="default"
+								ttt:whenSelected="default"
+				android:text="0"
+				android:layout_weight="1"
+				android:layout_width="0dip"/>
+							<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+											android:id="@+id/decimal_button"
+							ttt:method="default"
+				ttt:label="point"
+							ttt:whenSelected="default"
+							android:text="."
+							android:layout_weight="1"
+							android:layout_width="0dip"/>
+			<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/backspace_button"
+			ttt:method="processBackspace"
+			ttt:label="backspace"
+ttt:whenSelected="/"				 
+			android:text="Back"
+			android:layout_weight="1"
+			android:layout_width="0dip"/>
+<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+android:id="@+id/clear_button"
+ttt:method="processClear"
+android:text="Clear"
+android:layout_weight="1"
+android:layout_width="0dip"/>
+			</TableRow>
+		<TableRow>
+			<android_talking_software.development.talking_tap_twice.accessible_view_extensions.ButtonTTT 
+						android:id="@+id/equals_button"
+			ttt:method="evaluate"
+			ttt:label="equals"
+ttt:whenSelected="+pressed"
+			android:layout_span="4"
+			android:text="="
+			 android:layout_weight="1"
+			 android:layout_width="fill_parent"/>
+</TableRow>
+		</TableLayout>
+</android_talking_software.development.talking_tap_twice.accessible_view_extensions.LinearLayoutTTT>
+	</LinearLayout>
+			

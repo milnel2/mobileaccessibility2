@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file contains the contents for the Pic2Speech options, and 
+	is referenced by Options.java  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+			android:title="@string/opt_layout">
+			
+		<ListPreference
+				android:key="opt_layout_columns"
+				android:title="@string/opt_layout_columns_title"
+				android:summary="@string/opt_layout_columns_summary"
+				android:entries="@array/opt_layout_column_widths"
+				android:entryValues="@array/opt_layout_column_widths"
+				android:dialogTitle="@string/opt_layout_column_dialog" />
+
+		<CheckBoxPreference
+				android:key="opt_type"
+				android:title="Type It Screen"
+				android:defaultValue="true"
+				android:summary="Show typing screen?" />
+				
+		<CheckBoxPreference
+				android:key="opt_cam"
+				android:title="Camera Dump Screen"
+				android:defaultValue="true"
+				android:summary="Show camera dump utility?" />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+			android:title="Tile Options">
+			
+		<PreferenceScreen
+			android:title="New Tile"
+			android:summary="Add a new tile">
+			<intent 
+			    android:action="android.intent.action.MAIN" 
+			    android:targetPackage="edu.washington.cs.kittens" 
+			    android:targetClass="edu.washington.cs.kittens.NewTile" /> 
+		</PreferenceScreen>
+
+	</PreferenceCategory>
+
+
+	<PreferenceCategory
+			android:title="Password">
+			
+        <EditTextPreference
+                android:key="opt_password"
+                android:title="Change Password"
+                android:summary="Set password for editor mode"
+                android:dialogTitle="Enter a Password"
+                android:defaultValue="1234" />
+
+	</PreferenceCategory>
+
+	
+</PreferenceScreen>

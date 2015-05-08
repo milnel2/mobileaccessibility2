@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/softkeypad"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_1">
+		<Button android:id="@+id/keypad_1"
+			android:focusableInTouchMode="true"
+			android:tag="1"
+			android:text="1">
+		</Button>
+		<Button android:id="@+id/keypad_2"
+			android:focusableInTouchMode="true"
+			android:tag="2"
+			android:text="2">
+		</Button>
+		<Button android:id="@+id/keypad_3"
+			android:focusableInTouchMode="true"
+			android:tag="3"
+			android:text="3">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_2">
+		<Button android:id="@+id/keypad_4"
+			android:focusableInTouchMode="true"
+			android:tag="4"
+			android:text="4">
+		</Button>
+		<Button android:id="@+id/keypad_5"
+			android:focusableInTouchMode="true"
+			android:tag="5"
+			android:text="5">
+		</Button>
+		<Button android:id="@+id/keypad_6"
+			android:focusableInTouchMode="true"
+			android:tag="6"
+			android:text="6">
+		</Button>
+	</TableRow>
+	<TableRow android:id="@+id/row_3">
+		<Button android:id="@+id/keypad_7"
+			android:focusableInTouchMode="true"
+			android:tag="7"
+			android:text="7">
+		</Button>
+		<Button android:id="@+id/keypad_8"
+			android:focusableInTouchMode="true"
+			android:tag="8"
+			android:text="8">
+		</Button>
+		<Button android:id="@+id/keypad_9"
+			android:focusableInTouchMode="true"
+			android:tag="9"
+			android:text="9">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_4">
+		<Button android:id="@+id/keypad_0"
+			android:focusableInTouchMode="true"
+			android:tag="0"
+			android:text="0">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/keypad"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_5">
+		<Button android:id="@+id/keypad_ans"
+			android:focusableInTouchMode="true"
+			android:tag="Get Correct Answer"
+			android:text="Get Correct Answer">
+		</Button>
+		<Button android:id="@+id/keypad_replay"
+			android:focusableInTouchMode="true"
+			android:tag="Go back and replay symbol"
+			android:text="Replay symbol">
+		</Button>
+	</TableRow>
+</TableLayout>
+<TableLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="*">
+	<TableRow android:id="@+id/row_6">
+		<Button android:id="@+id/keypad_blank"
+			android:focusableInTouchMode="true"
+			android:background="@color/background"
+			android:tag=""
+			android:text="">
+		</Button>
+	</TableRow>
+</TableLayout>
+</LinearLayout>
+

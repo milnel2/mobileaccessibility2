@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, HangmanAct!</string>
+    <string name="app_name">Hangman</string>
+    <string name="label_start_game">Start Game</string>
+    <string name="label_enter_letter">Enter Letter</string>
+    <string name="label_game_main">Game Main</string>
+</resources>

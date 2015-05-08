@@ -1,0 +1,256 @@
+//
+//  ttsViewController.m
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import <AudioToolbox/AudioServices.h>
+#import "MainViewController.h"
+#import "FliteTTS.h"
+
+
+@interface MainViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *singleP; //single player button
+@property (weak, nonatomic) IBOutlet UILabel *multiP; //multi player button
+@property (weak, nonatomic) IBOutlet UILabel *instr; //instructions button
+@property (weak, nonatomic) IBOutlet UILabel *settings; //settings button
+
+
+@end
+
+sqlite3 *database = nil; //the dictionary database
+FliteTTS *fliteEngine;
+int TURNS = 0; //how many turns have gone by
+NSString *table = @"largeDict"; //which dictionary to use
+NSMutableString *fragmentLetters; //the current fragment letters
+NSMutableString *fragment; //The fragment (including the NATO
+NSArray *alphabet; //an array of the alphabet
+NSArray *NATO; //List of words that are used to clarify letters (e.g. "a" as in apple)
+int numTouches; //number of touches on the screen
+
+BOOL firstQuery = YES; //True until the database is opened for the first time
+BOOL playingSingle = NO;
+BOOL playingMulti = NO;
+BOOL goingBack = NO; //is the main menu being accessed from settings
+BOOL haveTouch;
+
+//Is each of the buttons selected
+BOOL singlePSelected = NO;
+BOOL multiPSelected = NO;
+BOOL instrSelected = NO;
+BOOL settingsSelected = NO;
+
+@implementation MainViewController
+
+
+//open the settings menu
+-(void)beginSettings:(UITapGestureRecognizer *)settingsTap
+{
+    [self performSegueWithIdentifier:@"mainToSettings" sender:self];
+}
+
+//begin single player 
+-(void)beginSingleP:(UITapGestureRecognizer *)singlePTap
+{
+    playingSingle = TRUE;
+    [self performSegueWithIdentifier:@"mainToSingle" sender:self];
+}
+
+//begin multi player
+-(void)beginMultiP:(UITapGestureRecognizer *)multiPTap
+{
+    playingMulti = TRUE;
+    [self performSegueWithIdentifier:@"mainToSingle" sender:self];
+}
+
+//speak the given string
+-(void)speak:(NSString*)msg
+{
+	if (UIAccessibilityIsVoiceOverRunning()) {
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification,msg);
+    }
+    else{
+        [fliteEngine speakText:msg];
+    }
+}
+
+-(void) instructions:(NSTimer*) timer{
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    //make the view accessible and make it so the user can interact with the view
+	if (UIAccessibilityIsVoiceOverRunning()) {
+        self.view.accessibilityTraits=UIAccessibilityTraitAllowsDirectInteraction;
+    }
+    
+    playingSingle = NO;
+    playingMulti = NO;
+    
+    //Create the fliteEngine for tts when voiceover is off
+    fliteEngine = [[FliteTTS alloc] init];
+    [fliteEngine setVoice:@"cmu_us_slt"];
+    
+    alphabet =
+    [NSArray arrayWithObjects:@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z",nil];
+    
+    NATO =
+    [NSArray arrayWithObjects:@"apple",@"but",@"can",@"do",@"every",@"from",@"go",@"have",@"india",@"just",@"knowledge",@"like",@"more",@"not",@"oscar",@"people", @"quite",@"rather",@"so",@"that",@"us",@"very",@"will",@"ex-ray",@"yang kee",@"zebra",nil];
+    
+    fragment = [[NSMutableString alloc] init];
+    [fragment setString:@""];
+    
+    fragmentLetters = [[NSMutableString alloc] init];
+    [fragmentLetters setString:@""];
+    
+    //reset the turns to 0
+    TURNS = 0;
+    
+    //set up the double tap gestures for the different buttons
+    UITapGestureRecognizer *singlePTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(beginSingleP:)];
+    [self.singleP addGestureRecognizer:singlePTap];
+    
+    UITapGestureRecognizer *multiPTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(beginMultiP:)];
+    multiPTap.numberOfTapsRequired=2;
+    [self.multiP addGestureRecognizer:multiPTap];
+    
+    UITapGestureRecognizer *settingsTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(beginSettings:)];
+    settingsTap.numberOfTapsRequired=2;
+    [self.settings addGestureRecognizer:settingsTap];
+    
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        singlePTap.numberOfTapsRequired=1;
+        multiPTap.numberOfTapsRequired=1;
+        settingsTap.numberOfTapsRequired=1;
+    }
+    else{
+        singlePTap.numberOfTapsRequired=2;
+        multiPTap.numberOfTapsRequired=2;
+        settingsTap.numberOfTapsRequired=2;
+    }
+}
+
+- (void) noteTouches: (NSSet *) touches
+{
+    //The following is simply used to detect when a users finger is over a button and then to state the numbe of the button if the users finger begins to be over the button
+    //This is sort of lengthy, because whenever one button is selected, we have to make sure that the other buttons are unselected 
+    for(UITouch *touch in touches) {
+        NSString *msg;
+        CGPoint p = [touch locationInView: self.view];
+        if (p.y < self.singleP.frame.size.height){
+            if (!singlePSelected){
+                msg=@"single player";
+                self.singleP.highlighted=YES;
+                singlePSelected = YES;
+                self.multiP.highlighted = NO;
+                multiPSelected = NO;
+                self.instr.highlighted = NO;
+                instrSelected = NO;
+                self.settings.highlighted = NO;
+                settingsSelected = NO;
+            }
+        }
+        else if (p.y < 2*self.singleP.frame.size.height){
+            if (!multiPSelected){
+                msg=@"multi-player";
+                self.singleP.highlighted=NO;
+                singlePSelected = NO;
+                self.multiP.highlighted = YES;
+                multiPSelected = YES;
+                self.instr.highlighted = NO;
+                instrSelected = NO;
+                self.settings.highlighted = NO;
+                settingsSelected = NO;
+            }
+        }
+        else if (p.y < 3*self.singleP.frame.size.height){
+            if (!settingsSelected){
+                msg=@"settings";
+                self.singleP.highlighted=NO;
+                singlePSelected = NO;
+                self.multiP.highlighted = NO;
+                multiPSelected = NO;
+                self.instr.highlighted = NO;
+                instrSelected = NO;
+                self.settings.highlighted = YES;
+                settingsSelected = YES;
+            }
+        }
+        else if (p.y < 4*self.singleP.frame.size.height){
+            if (!instrSelected){
+                msg=@"instructions";
+                self.singleP.highlighted=NO;
+                singlePSelected = NO;
+                self.multiP.highlighted = NO;
+                multiPSelected = NO;
+                self.instr.highlighted = YES;
+                instrSelected = YES;
+                self.settings.highlighted = NO;
+                settingsSelected = NO;
+            }
+        }
+        if (msg){
+            [self speak:msg];
+        }
+    }
+ 
+}
+
+- (void) touchesBegan: (NSSet *) touches withEvent:(UIEvent *) event
+{
+    numTouches = numTouches+1;
+    if (numTouches < 2){
+        [self noteTouches: touches];
+    }
+    
+    
+}
+
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self noteTouches: touches];
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    singlePSelected = NO;
+    multiPSelected = NO;
+    instrSelected = NO;
+    settingsSelected = NO;
+    numTouches = numTouches-1;
+}
+
+- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    singlePSelected = NO;
+    multiPSelected = NO;
+    instrSelected = NO;
+    settingsSelected = NO;
+    numTouches=numTouches-1;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{    return NO;
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+
+@end

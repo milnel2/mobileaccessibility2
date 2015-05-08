@@ -1,0 +1,332 @@
+//
+//  ttsViewController.m
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import <AudioToolbox/AudioServices.h>
+#import "FliteTTS.h"
+#import "ChallengeViewController.h"
+#import "MainViewController.h"
+
+@interface ChallengeViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *completeWord;
+@property (weak, nonatomic) IBOutlet UILabel *invalidPrefix;
+@property (weak, nonatomic) IBOutlet UILabel *goBack;
+@property (nonatomic, strong) NSTimer * timer;
+
+@end
+
+NSString *word; //a word that has the same starting letters as the gfragment does. 
+
+int count = 0; //the row of the word table that is being looked at
+int numTouches;
+BOOL haveTouch;
+BOOL isWord; //is the fragment a word
+BOOL isPrefix; //is the fragment a prefix of a word
+
+//Boolean for whether the buttons are selected
+BOOL prefixSelected = NO;
+BOOL completeSelected = NO;
+BOOL backSelected = NO;
+
+@implementation ChallengeViewController
+@synthesize timer;
+
+
+//Go back to Main menu
+-(void) gameOver:(NSTimer*) timer{
+    [self performSegueWithIdentifier:@"backToMain" sender:self];
+}
+
+//Go back to the player menu
+-(void)goBack:(UITapGestureRecognizer *)backTap
+{
+    TURNS = TURNS-1;
+    [self performSegueWithIdentifier:@"back" sender:self];
+}
+
+//check if the word is a valid prefix
+-(void)checkPrefix:(UITapGestureRecognizer *)prefixTap
+{
+    //Figure out which message to say based on whether it's single or multi-player and whose turn it is
+    if (isPrefix){
+        NSArray *stringArray;
+        
+        if (playingSingle){
+            stringArray = [[NSArray alloc] initWithObjects:@"Sorry. The current fragment is a valid prefix. For example ", word, @". You lose.", nil];
+            [self speak:[stringArray componentsJoinedByString:@""]];
+        }
+        else{
+            if ((TURNS % 2) == 0){
+                stringArray = [[NSArray alloc] initWithObjects:@"Sorry. The current fragment is a valid prefix. For example ", word, @". Player one wins.", nil];
+                [self speak:[stringArray componentsJoinedByString:@""]];            }
+            else{
+                stringArray = [[NSArray alloc] initWithObjects:@"Sorry. The current fragment is a valid prefix. For example ", word, @". Player two wins.", nil];
+                [self speak:[stringArray componentsJoinedByString:@""]];
+            }
+        }
+    }
+    else{
+        if (playingSingle){
+            [self speak:@"The current fragment is not a valid prefix. You win"];
+        }
+        else{
+            if ((TURNS % 2) == 0){
+                [self speak:@"The current fragment is not a valid prefix. Player two wins"];
+            }
+            else{
+                [self speak:@"The current fragment is not a valid prefix. Player one wins"];
+            }
+        }
+        
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:6.5
+                                             target:self
+                                           selector:@selector(gameOver:)
+                                           userInfo:nil
+                                            repeats:NO];
+}
+
+-(void)checkComplete:(UITapGestureRecognizer *)completeTap
+{
+    if ([fragmentLetters length] < 3){
+        [self speak:@"The fragment is not yet 3 letters long"];
+        return;
+    }
+    
+    //Figure out which message to say based on whether it's single or multi-player and whose turn it is
+    if (!isWord){
+        if (playingSingle){
+            [self speak:@"Sorry. The current fragment is not a complete word. You lose"];
+        }
+        else{
+            if ((TURNS % 2) == 0){
+                [self speak:@"Sorry. The current word is not a complete word. Player one wins"];
+            }
+            else{
+                [self speak:@"Sorry. The current word is not a complete word. Player two wins"];
+            }
+        }
+    }
+    else{
+        if (playingSingle){
+            [self speak:@"The current fragment is a complete word. You win"];
+        }
+        else{
+            if ((TURNS % 2) == 0){
+                [self speak:@"The current word is a complete word. Player two wins"];
+            }
+            else{
+                [self speak:@"The current word is a complete word. Player one wins"];
+            }
+        }
+        
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:5
+                                             target:self
+                                           selector:@selector(gameOver:)
+                                           userInfo:nil
+                                            repeats:NO];
+    
+}
+
+
+//speak a string
+-(void)speak:(NSString*)msg
+{
+	if (UIAccessibilityIsVoiceOverRunning()) {
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification,msg);
+    }
+    else{
+        [fliteEngine speakText:msg];
+    }
+}
+
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    
+    //make the screne directly accessible 
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        self.view.accessibilityTraits=UIAccessibilityTraitAllowsDirectInteraction;
+    }
+    
+    //Set up the double tap gestures for all of the buttons
+    UITapGestureRecognizer *completeTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(checkComplete:)];
+    UITapGestureRecognizer *prefixTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(checkPrefix:)];
+    UITapGestureRecognizer *backTap = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(goBack:)];
+    
+    completeTap.numberOfTapsRequired=2;
+    prefixTap.numberOfTapsRequired=2;
+    backTap.numberOfTapsRequired=2;
+  
+    if (UIAccessibilityIsVoiceOverRunning()) {
+        completeTap.numberOfTapsRequired=1;
+        prefixTap.numberOfTapsRequired=1;
+        backTap.numberOfTapsRequired=1;
+    }
+    else{
+        completeTap.numberOfTapsRequired=2;
+        prefixTap.numberOfTapsRequired=2;
+        backTap.numberOfTapsRequired=2;
+    }
+    
+    [self.completeWord addGestureRecognizer:completeTap];
+    [self.invalidPrefix addGestureRecognizer:prefixTap];
+    [self.goBack addGestureRecognizer:backTap];
+    
+    //create an sql query to find words that start with fragment
+    static sqlite3_stmt *statement = nil;
+    
+    NSString *match = [NSString stringWithString:fragmentLetters];
+    NSArray *query = [[NSArray alloc] initWithObjects:@"select word from ", table, @" where word like '",match,@"%'", nil];
+    NSString *joinedString = [query componentsJoinedByString:@""];
+    const char *query_stmt = [joinedString UTF8String];
+    //---------------------------
+
+    word = nil; //a word that starts with fragment
+    isWord = NO; //is the fragment a word?
+    isPrefix = YES; //is there a word that starts with fragment?
+    NSString *currWord = [NSString stringWithString:fragmentLetters];
+    
+    if (sqlite3_prepare_v2(database,
+                           query_stmt, -1, &statement, NULL) == SQLITE_OK)
+    {
+        
+        //Look at all of the words that start with fragment
+        count = 0;
+        while (sqlite3_step(statement) == SQLITE_ROW)
+        {
+            count = count+1;
+            word = [[NSString alloc] initWithUTF8String:
+                    (const char *) sqlite3_column_text(statement, 0)];
+            //if one of them is equal to fragment then fragment is a word
+            if ([word isEqualToString:currWord]){
+                isWord = YES;
+            }
+        }
+        
+        sqlite3_reset(statement);
+        //pick a random word that starts with fragment if there is one
+        if (count != 0){
+            count = (arc4random()%count) + 1;
+            for (int i = 0; i<count; i++){
+                sqlite3_step(statement);
+            }
+            word = [[NSString alloc] initWithUTF8String:
+                (const char *) sqlite3_column_text(statement, 0)];
+        }
+    }
+    //if no word was found that starts with fragment, then word is nil
+    if (word == nil){
+        isPrefix = NO;
+    }
+}
+
+- (void) noteTouches: (NSSet *) touches
+{
+    //The following is simply used to detect when a users finger is over a button and then to state the numbe of the button if the users finger begins to be over the button
+    //This is sort of lengthy, because whenever one button is selected, we have to make sure that the other buttons are unselected
+    for(UITouch *touch in touches) {
+        NSString *msg;
+        CGPoint p = [touch locationInView: self.view];
+        if (p.y < self.completeWord.frame.size.height){
+            if (!completeSelected){
+                msg=@"Complete Word";
+                self.completeWord.highlighted=YES;
+                completeSelected = YES;
+                self.invalidPrefix.highlighted = NO;
+                prefixSelected = NO;
+                self.goBack.highlighted = NO;
+                backSelected = NO;
+            }
+        }
+        else if (p.y < 2*self.completeWord.frame.size.height){
+            if (!prefixSelected){
+                msg=@"Invalid Prefix";
+                self.completeWord.highlighted=NO;
+                completeSelected = NO;
+                self.invalidPrefix.highlighted = YES;
+                prefixSelected = YES;
+                self.goBack.highlighted = NO;
+                backSelected = NO;
+            }
+        }
+        else if (p.y < 3*self.completeWord.frame.size.height){
+            if (!backSelected){
+                msg=@"Go Back";
+                self.completeWord.highlighted=NO;
+                completeSelected = NO;
+                self.invalidPrefix.highlighted = NO;
+                prefixSelected = NO;
+                self.goBack.highlighted = YES;
+                backSelected = YES;
+            }
+        }
+        
+        if (msg){
+            [self speak:msg];
+        }
+    }
+ 
+}
+
+- (void) touchesBegan: (NSSet *) touches withEvent:(UIEvent *) event
+{
+    numTouches = numTouches+1;
+    if (numTouches < 2){
+        [self noteTouches: touches];
+    }
+    
+    
+}
+
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self noteTouches: touches];
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    prefixSelected = NO;
+    completeSelected = NO;
+    backSelected = NO;
+    numTouches = numTouches-1;
+}
+
+- (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    haveTouch = NO;
+    prefixSelected = NO;
+    completeSelected = NO;
+    backSelected = NO;
+    numTouches=numTouches-1;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{    return NO;
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+
+@end

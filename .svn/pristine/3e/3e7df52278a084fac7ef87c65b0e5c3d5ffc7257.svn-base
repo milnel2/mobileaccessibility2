@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="ButtonTTT">
+<attr name="method" format="string"/>
+<attr name="tapped" format="string"/>
+<attr name="whenSelected" format="string"/>
+<attr name="position" format="integer"/>
+</declare-styleable>
+<declare-styleable name="CheckBoxTTT">
+<attr name="method"/>
+<attr name="tapped"/>
+<attr name="whenSelected"/>
+<attr name="position"/>
+</declare-styleable>
+</resources>

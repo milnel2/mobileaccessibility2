@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="cs.washington.edu.buddies"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" 
+    	android:label="@string/app_name">
+        <activity android:name=".BrailleBuddiesMenu"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Game"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+	    <activity android:name=".ReadBrailleGame"
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+		</activity>     
+		<activity android:name=".WriteBrailleGame"
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+		</activity>
+		<activity android:name=".BrailleWords"
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+		</activity>
+		<activity android:name=".Keypad"
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+		</activity>
+        <activity android:name=".Instructions"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>   
+ 		<activity android:name=".InstructionsReader"
+ 			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+		</activity>
+        <activity android:name=".SettingsGUI"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+		<activity android:name=".Play"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".PetGUI"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".Groom"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".Money"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".FeedPet"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+		<activity android:name=".Store"
+        	android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+			android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation"
+			android:launchMode="singleTop">
+        </activity>
+
+    </application>
+    
+    <uses-sdk android:minSdkVersion="4" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest> 

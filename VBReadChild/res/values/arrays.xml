@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--  DATA FOR INPUT TYPE MENU -->
+	<!-- array for text that's written on menu option.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_text_array" 
+		Only include as many items as there are options on the menu. -->
+	<string-array name="inputselectionmenu_option_text_array">
+		<item>QWERTY Keypad</item>
+		<item>Alphabetic Keypad</item>
+		<item>Simple AlphaKeypad</item>
+		<item>Speech Input</item>
+		<item>Tap Hold Input</item>
+	</string-array>
+	
+	<!-- array for text that's spoken when menu option is touched.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_tag_array"
+		Only include as many items as there are options on the menu. -->
+	<string-array name="inputselectionmenu_option_tag_array">
+		<item>QWURTY Keepad</item>
+		<item>Alphabetic Keepad</item>
+		<item>Simple AlphaKeepad</item>
+		<item>Speech In put</item>
+		<item>Tap Hold In put</item>
+	</string-array>
+	
+	<!--  option attribute arrays.  Name array as
+			"{name of the AccessibleMenu subclass, in lower case}_option_attributes_array" -->
+	<array name="inputselectionmenu_option_attributes_array">
+		<item>20</item>			<!-- text size: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+		<item>#ffffff</item>	<!-- text color -->
+		<item>#00000000</item>  <!-- background color --> 
+		<item>#ffff00</item>	<!-- text highlight -->
+		<item>100</item>			<!-- option height: specify in pixels where 1 inch = 160 pixels. (Menu will automatically scale for higher/lower density devices.) -->
+	</array>
+	
+	<!--  action arrays (corresponds to intent filter actions set for each activity 
+		  called from the menu). Add action arrays named with the name of the AccessibleMenu 
+		  subclass (in lower case) followed by 
+		  		"_option{option number, starting at 1 for first option}_action_array" 
+		  Include one array for each option.  First element of array is action that
+		  is taken if option is selected.  For options with suboptions, add an item to
+		  the option's array for each action taken if the suboption is selected.  (Add
+		  actions in the order the suboptions appear.  If action is activity developed
+		  by you, include package name with action.
+		  In manifest XML file, be sure that the activity corresponding to each menu option 
+		  or suboption has an intent filter defined for the action listed below.)  -->
+	<string-array name="inputselectionmenu_option1_action_array">
+		<item>MAIN</item>
+	</string-array>
+	<string-array name="inputselectionmenu_option2_action_array">
+		<item>MAIN</item>
+	</string-array>
+	<string-array name="inputselectionmenu_option3_action_array">
+		<item>MAIN</item>
+	</string-array>
+	<string-array name="inputselectionmenu_option4_action_array">
+		<item>MAIN</item>
+	</string-array>
+	<string-array name="inputselectionmenu_option5_action_array">
+		<item>MAIN</item>
+	</string-array>
+	
+</resources>

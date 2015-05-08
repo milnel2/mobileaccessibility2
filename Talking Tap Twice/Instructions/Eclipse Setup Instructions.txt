@@ -1,0 +1,12 @@
+Eclipse Setup Instructions
+
+The TTT was created in Eclipse and can easily be imported into Eclipse for usage and modification by performing the following steps (assuming that the code has already been downloaded and saved to a location):
+
+1. Open Eclipse.
+2. Create a new Android project with android_talking_software.development.talking_tap_twice as the package
+3. Delete the res folder of the new project.
+4. If you have not done so already, download the TTT code, and import it into Eclipse.
+5. In the properties for the new project, under Java Build Path, Resource, link to the res folder of the TTT project and the tsrc folder of the TTT project, calling them res and TTTCode, respectively (the tsrc folder link can have any name, but the res folder link must be called res in order for it to replaced the removed res).
+
+Eclipse may show an error for the new project missing the gen folder. To fix this, open any of the files, make and then erase a modification, and then select save to trigger a rebuild.
+Send any questions to: ntorcoli@cs.washington.edu

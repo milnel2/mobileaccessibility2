@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background">
+	<ScrollView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0">
+    	<LinearLayout 
+ 		    android:orientation="vertical"
+    	 	android:layout_width="fill_parent"
+     		android:layout_height="fill_parent">
+     		<Button android:id="@+id/add_schedule_task_selector"
+   				android:text="Choose a task"
+      			android:layout_width="fill_parent"
+     			android:layout_height="wrap_content"
+     			android:textColor="#000000"
+      			android:textSize="20dp" 
+      			android:layout_marginTop="10dp"
+      			android:layout_marginLeft="5dp"
+      			android:layout_marginRight="5dp"
+      			android:layout_marginBottom="10dp" 
+      		/>
+      		<TextView
+      			android:id="@+id/add_schedule_task_name"
+      			android:layout_width="fill_parent"
+     			android:layout_height="wrap_content"
+      			android:layout_marginLeft="10dp"
+      			android:layout_marginRight="5dp"
+      			android:layout_marginBottom="10dp"
+      			android:textSize="20dp"
+      			android:textColor="@color/black"
+     			android:hint="Not selected yet"
+     			/>
+     		
+        	<CheckBox android:id="@+id/add_schedule_important"
+				android:layout_width="wrap_content"
+ 				android:layout_height="wrap_content"
+ 				android:layout_marginLeft="5dp"
+      			android:layout_marginRight="5dp"
+      			android:layout_marginBottom="10dp"
+      			android:checked="false"
+ 				android:textColor="@color/black"
+ 				android:textSize="13dp"
+ 				android:text="Check to send SMS notification when user skips this schedule." />
+     		
+			<TimePicker
+     			android:id="@+id/add_schedule_time_picker"
+     			android:layout_height="wrap_content"
+        		android:layout_width="fill_parent"
+        		android:layout_marginTop="10dp"
+        		android:layout_marginBottom="10dp"
+        		/>
+        		
+      		<Button android:id="@+id/add_schedule_add_task"
+   				android:text="Add it to Schedule"
+      			android:layout_width="fill_parent"
+     			android:layout_height="wrap_content"
+     			android:textColor="@color/green"
+      			android:textSize="20dp" 
+      			android:layout_marginLeft="5dp"
+      			android:layout_marginRight="5dp"
+      			android:layout_marginBottom="10dp" 
+      		/> 
+		</LinearLayout>
+	</ScrollView>
+	<LinearLayout
+        android:orientation="horizontal"
+       	android:layout_width="fill_parent"
+       	android:layout_height="wrap_content">
+  		<Button android:id="@+id/add_schedule_help"
+       		android:text="@string/help"
+       		android:layout_width="fill_parent"
+       		android:layout_height="fill_parent"
+       		android:textColor="#000000"
+       		android:textSize="18dp"
+       		android:layout_weight="0.5"/>
+  		<Button android:id="@+id/add_schedule_exit" 
+       		android:text="@string/exit"
+			android:layout_width="fill_parent"
+       		android:layout_height="fill_parent"
+       		android:textColor="#000000"
+       		android:gravity="center"
+       		android:textSize="18dp"
+       		android:layout_weight="0.5"/>
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,35 @@
+//
+//  ttsViewController.h
+//  tts
+//
+//  Created by Sam Foster on 8/11/09.
+//  Copyright 2009. All rights reserved.
+//
+
+#import "FliteTTS.h"x
+#import <AVFoundation/AVAudioPlayer.h>
+#import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h>
+#import <sqlite3.h>
+
+@class VBWriterTTS;
+
+@interface MainViewController : UIViewController {
+	
+}
+
+extern sqlite3 *database;
+extern FliteTTS *fliteEngine;
+extern NSArray *alphabet;
+extern NSArray *NATO;
+extern BOOL firstQuery;
+extern BOOL playingSingle;
+extern BOOL playingMulti;
+extern BOOL goingBack;
+extern NSString *table;
+extern NSMutableString *fragmentLetters;
+extern NSMutableString *fragment;
+extern int TURNS;
+extern int GAMES;
+@end
+

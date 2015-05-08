@@ -1,0 +1,140 @@
+<?php
+	///// order time
+	///// fix fetch array
+	$p_id = $_GET['p_id'];
+	$con = mysql_connect("vergil.u.washington.edu:21988", "root", "capstone");
+	if (!$con){
+		die('Could not connect: ' . mysql_error());
+	}
+	mysql_select_db("DTT", $con);
+	$p_name = "SELECT * FROM  `Patients` WHERE patientId = $p_id LIMIT 1";
+	$p_name = mysql_query($p_name);
+	$name = mysql_fetch_array($p_name);
+	$first = $name['firstName'];
+	$last = $name['lastName'];
+	
+	$tasks = mysql_query("SELECT * FROM `Tasks` WHERE patientId = $p_id ORDER BY `taskName` ASC");
+	$schedule = "SELECT * FROM `patientTasks` WHERE patientId = $p_id ORDER BY `time` ASC";
+	$result = mysql_query($schedule);
+	include ("edit_schedule_func.php");
+		if (isset($_POST['add'])) {
+			add_schedule();
+		}
+
+		if (isset($_POST['delete'])) {
+			delete_schedule();
+		}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title><?=$first?>  <?=$last?>'s Schedule<title/>
+	</head>
+	<link rel="stylesheet" href="patient.css" />
+	<body>
+	<div id="header"><?=$first?>  <?=$last?> </div>
+		<div id="main">
+			<div id="left">
+			<div id="edit">
+				<h1> Edit the schedule here.</h1>
+				<form method="post" src="">
+				Add SMS notifictions
+				<input type="checkbox" name="SMS"  value="1" ><br />
+				Task:
+				<select name="taskName">
+				<?php
+					while($row = mysql_fetch_array($tasks)){
+						$t_name = $row['taskName'];
+				?>
+					<option><?=$t_name ?></option>
+				<?php 
+					}					
+				?>
+				</select>
+				<br />
+				Time: 
+<! todo:  CHECK IF TIME IS VALID >
+<!ERIC ERIC ERIC HERE HERE HERE>
+				<input type = "text" name = "time"/>
+				<br />
+				<input type="Submit" value = "Add Now" name="add" id="add" />
+
+				</form>
+
+				</div>
+				<div id="navigation">
+				<h1> Navigate </h1>
+				<a href=settings.php> Edit Settings </a><br />
+				<a href=DTT.php> Go back to Patients List </a>
+				</div>
+			</div>
+			<div id = "schedule">
+				<h1> This is the current schedule.</h1>
+				<form method=post src="">
+				<table CELLPADDING="7" CELLSPACING="3" border = "1">
+					<caption><?=$first?>  <?=$last?></caption>
+					<tr>
+						<th align="center">Time</th>
+						<th align="center">Task</th>
+						<th align="center">SMS</th>
+						<th align="center">Status</th>
+						<th align="center">Delete</th>
+					</tr>
+					<?php 
+					while($row = mysql_fetch_array($result)){
+						if($row['patientId'] == $p_id){
+							$t_id = $row['taskId'];
+							$t_time = $row['time'];
+							$t_flag = (int)$row['flag'];
+							$t_status = (int)$row['status'];
+							
+							$t_name = mysql_query("SELECT * FROM `Tasks` WHERE patientId = $p_id AND taskId = $t_id");
+							$row2 = mysql_fetch_array($t_name);
+							$t_task = $row2['taskName'];
+							
+							
+							$length = strlen($t_time);
+							if($length == 1){
+								$time = "00:0" . $t_time[0];
+							}else if ($length == 3){
+								$time = "0" . $t_time[0] . ":" . $t_time[1] . $t_time[2];
+							}else if ($length == 2){
+								$time = "00:" .  $t_time[0] . $t_time[1];
+							}else{
+								$time = $t_time[0] . $t_time[1] . ":" . $t_time[2] . $t_time[3];
+							}
+		
+							if($t_status == 0){
+								$status = "Upcoming";
+							}else if($t_status == 1){
+								$status = "Skipped";
+							}else if($t_status == 2){
+								$status = "Completed";
+							}else{
+								$status = "Unavailable";
+							}
+							?>
+							<tr>
+								<td align ="center"><?=$time?></td>
+								<td align ="center"><?=$t_task?></td>
+								<td align="center"><?php if($t_flag){?> YES <?php }else{?> NO <?php } ?></td>
+								<td align="center"><?=$status?></td>
+								<td align="center"><input type="checkbox" name="delete_tasks[]" value="<?=$t_time?> <?=$t_id?> <?=$t_flag?> <?=$t_status?>" ></td>
+							</tr>
+					<?php
+						}
+					 }
+					?>
+				</table>
+				<div id = "deleteButton">
+				<input type="Submit" value="Delete Now" name="delete" id="delete" />
+				</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
+<?php
+mysql_close($con);
+?>

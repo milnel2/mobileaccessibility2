@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, LinkUp!</string>
+    <string name="app_name">LinkUp</string>
+    <string name="tapLocation">Tap the Screen for the Current Location</string>
+    <string name="reviewLocations">Swipe left\nor\nswipe right to review saved locations.</string>
+    <string name="getFriends">Find Nearby Friends \n \n \n Please scroll left and right</string>
+    <string name="recordInstructions">\n \nPlease tap once to begin recording the name of the location. Tap again to end recording.</string>
+</resources>

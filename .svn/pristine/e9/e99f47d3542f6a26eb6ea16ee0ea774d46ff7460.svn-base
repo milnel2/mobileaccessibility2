@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, VB Read &amp; Write</string>
+    <string name="app_name">VB Read &amp; Write</string>
+    <string name="greeting">Welcome to VB Read and Write</string>
+    <string name="goodbye">Goodbye!</string>
+    <string name="redisplay">Braille cell displayed</string>
+    <string name="voice_not_installed">voice recognition is not installed</string>
+    <string name="voice_network_error">a network error occurred</string>
+    <string name="voice_server_error">an error occurred on the voice recognition server</string>
+    <string name="voice_audio_error">an error occurred with the audio service</string>
+    <string name="voice_speech_timeout">speech was not heard before application timed out</string>
+    <string name="voice_no_match">could not find a match for the speech input</string>
+    <string name="voice_error">an unknown error occurred</string>
+    
+    <!--  Required strings for InputSelectionMenu class -->
+    <string name="inputselectionmenu_greeting">input selection Menu displayed, Please select the desired input method or fling down with one finger for help</string>
+    <string name="inputselectionmenu_goodbye">Returning</string>
+    <string name="inputselectionmenu_redisplay">on input selection menu</string>
+    
+    <!--  Required strings for MainMenu class -->
+    <string name="mainmenu_greeting">on V B Reed and Write Main Menu, please select an option or fling down with one finger for help</string>
+    <string name="mainmenu_goodbye">Goodbye!</string>
+    <string name="mainmenu_redisplay">on V B Reed and Write Main Menu</string>
+    
+    <!--  Required strings for InstructionsMenu class -->
+    <string name="instructionsmenu_greeting">on instructions menu, Please select an application or fling down with one finger for help</string>
+    <string name="instructionsmenu_goodbye">back to previous menu</string>
+    <string name="instructionsmenu_redisplay">on instructions menu</string>
+    
+    <!--  Required strings for SpeechRateSelectionMenu class -->
+    <string name="speechrateselectionmenu_greeting">on speech rate menu, Please select the desired speech rate or fling down with one finger for help</string>
+    <string name="speechrateselectionmenu_goodbye">back to Settings menu</string>
+    <string name="speechrateselectionmenu_redisplay">on speech rate menu</string>
+    
+    <!--  Required strings for VersionSelectionMenu class -->
+    <string name="versionselectionmenu_greeting">on version menu, Please select the desired version or fling down with one finger for help</string>
+    <string name="versionselectionmenu_goodbye">back to Settings menu</string>
+    <string name="versionselectionmenu_redisplay">on version menu</string>
+    
+    <!--  Required strings for SettingsMenu class -->
+    <string name="settingsmenu_greeting">on settings menu, please select an option or fling down with one finger for help</string>
+    <string name="settingsmenu_goodbye">back to main menu</string>
+    <string name="settingsmenu_redisplay">on settings menu</string>
+    
+      	
+  	<!--  All Menus -->
+  	<string name="no_more_options_label"></string>
+  	<string name="no_more_options_tag">End of Menu</string>
+</resources>
+

@@ -1,0 +1,28 @@
+<html>
+<head>
+	<link rel="stylesheet" href="login.css" />
+	<title>ezTrainer Login<title/>
+</head>
+<body>
+	<div id="logo"> <img src="EZ.png"/><br /></div>
+
+<form action="DTT.php">
+	<table align=center>
+	<tr>
+		<td align = "center">Login Id:</td>
+		<td align = "right"><input type="text" /></td>
+	</tr>
+	
+	<tr>
+		<td align = "center">Password:</td>
+		<td align = "right"><input type="text" /></td>
+	</tr>
+	
+	<tr>
+		<td align = "center"></td>
+		<td align = "left"><input type="submit" value="Log In" /></td>
+	</tr>
+	</table>
+</form>
+</body>	
+</html>

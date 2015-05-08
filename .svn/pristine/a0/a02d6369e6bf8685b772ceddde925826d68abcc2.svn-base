@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contents for Home.java -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:padding="0dp"
+	android:background="@drawable/main_background_radial"
+	android:gravity="center">
+	
+	<TextView 
+		android:id="@+id/speech_box"
+		android:layout_width="fill_parent"
+		android:layout_height="30dp"
+		android:textSize="14dp"
+		android:textColor="#ffffff"
+		android:padding="4dp"
+		android:gravity="center_vertical"
+		android:background="@drawable/main_background_linear"
+		android:text="Kittens are Awesome!" />
+		
+	<GridView
+	    android:id="@+id/gridview"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:numColumns="5"
+	    android:verticalSpacing="10dp"
+	    android:horizontalSpacing="10dp"
+	    android:gravity="center"/>
+		
+</LinearLayout>

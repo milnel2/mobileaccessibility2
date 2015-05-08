@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pic2Speech</string>
+
+
+	<!-- Menu button titles -->
+	<string name="menu_back_button">Back</string>
+	<string name="menu_type_button">Type</string>
+	<string name="menu_home_button">Home</string>
+	<string name="menu_options_button">Options</string>
+
+
+	<!-- Type screen stuff -->
+	<string name="type_box">Enter text to be spoken</string>
+	<string name="type_button">Speak!</string>
+
+	
+	<!-- Edit icon screen stuff -->
+	<string name="edit_header">Editing an Item</string>
+	<string name="edit_title">Change icon options</string>
+	<string name="edit_caption_title">Icon title</string>
+	<string name="edit_caption_summary">Edit icon title</string>
+	<string name="edit_caption_dialog">Enter icon title</string>
+	<string name="edit_speech_title">Icon text</string>
+	<string name="edit_speech_summary">Edit text spoken by icon</string>
+	<string name="edit_speech_dialog">Enter icon text</string>
+	<string name="edit_image_title">Icon image</string>
+	<string name="edit_image_summary">Change the icon image</string>
+	
+	<!-- New icon screen stuff -->
+	<string name="new_header">New Item</string>
+	
+	
+	<!-- Options screen stuff -->
+	<string name="opt_header">Options for Pic2Speech</string>
+		<!-- Layout section -->	
+		<string name="opt_layout">Layout Options</string>
+		<string name="opt_layout_columns_title">Number of columns</string>
+		<string name="opt_layout_columns_summary">Change the number of horizontal columns</string>
+		<string name="opt_layout_column_dialog">Select number of columns</string>
+		<string-array name="opt_layout_column_widths">
+			<item>2</item>
+			<item>3</item>
+			<item>4</item>
+			<item>5</item>
+			<item>6</item>
+		</string-array>
+		<!-- Items section -->	
+		<string name="opt_icon_title">Item Options</string>
+		<string name="opt_icon_new">New icon</string>
+		<string name="opt_icon_new_summary">Add a new icon</string>
+
+
+<string name="menu_cam_button">QuickCam</string>
+</resources>

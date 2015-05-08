@@ -1,0 +1,92 @@
+PhoneWand README File
+
+This application was initially created by Michael Lam (mqtlam@cs.washington.edu), Levi Lindsey (levisl@cs.washington.edu), and Chris Raastad (craastad@cs.washington.edu) toward completion of requirements for the University of Washington Computer Science Winter 2011 accessibility capstone course.
+
+The purpose of the PhoneWand application is to provide a blind-accessible interface for route-finding and walking navigation using the Google Directions API and Android devices’ location and orientation sensors with vibration feedback.
+
+The PhoneWand application consists of seven distinct screens, and the primary method of navigating from one to the another is via vertical or horizontal swipes* (see the screen transition diagram below).  Each of these screens is implemented in its own Activity class and there are also two other abstract classes which encompass the commonality between and are implemented by various of these screen classes.
+
+
+PhoneWandActivity
+
+The PhoneWandActivity abstract class contains methods and fields which are common to most of the PhoneWand application’s screens.  This common code helps manage things such as: vibrations, text-to-speech, database access, screen transitions, location-finding updates, gesture detection, and basic Activity lifecycle events.  Every other PhoneWand class extends the PhoneWandActivity class except for the TouchKeyboard (which was designed to be relatively self-contained and more easily allow for the possibility of being integrated a different application) and the RouteOrienter (which had to extend the MapActivity class instead, so that a map and route could be displayed).  Every PhoneWandActivity screen will speak its own unique instructions for use when a long press is activated.
+
+
+SlideRuleActivity
+
+The SlideRuleActivity abstract class extends the PhoneWandActivity abstract class and contains methods and fields which are used for creating a vertical list of items, which are spoken when the user slides a finger over them and are selected on a double tap.  This class also creates a next screen button and/or previous screen button for “scrolling” to the next or previous group of items in the list and contains code for refreshing the contents of the list when these buttons are selected.  The RouteArchive, PossibleAddresses, and DirectionsDisplay classes extend SlideRuleActivity.
+
+
+RouteArchive
+
+The RouteArchive class extends the SlideRuleActivity abstract class to display a list of all valid destination addresses that the user has previously entered either in the TouchKeyboard screen or in the CurrentLocation screen.  Swiping left in this screen cancels this screen and returns RESULT_CANCELED to the RouteInput screen.
+
+
+PossibleAddresses
+
+The PossibleAddresses class extends the SlideRuleActivity abstract class to display a list of up to five potential address matches for a given location.  This screen can be called either from the RouteInput screen after the user enters a new destination address in the TouchKeyboard screen, in which case this screen is being used for geocoding a user-entered location address into a latitude-longitude pair, or from the CurrentLocation screen, in which case this screen is being used for reverse-geocoding the user’s current location from a latitude-longitude pair into an address which the user recognizes.
+
+
+DirectionsDisplay
+
+The DirectionsDisplay class extends the SlideRuleActivity abstract class to display all of the steps in the current route and is opened from the RouteOrienter screen.  Swiping right in this screen cancels this screen and returns RESULT_CANCELED to the RouteOrienter screen (RESULT_CANCELED is the only result this screen returns).
+
+
+RouteInput
+
+The RouteInput class extends the PhoneWandActivity abstract class and is the screen that is opened when the application first starts.  This screen displays the currently entered destination address; double tapping the screen causes this address to be spoken.  Swiping right in this screen opens the RouteArchive screen, which should return a destination location.  Swiping left in this screen attempts to open the RouteOrienter screen with the current destination location; this fails if the current destination is invalid, if the device does not have an Internet connection, or if the device does not have a fix on the current location.  Swiping up in this screen opens the TouchKeyboard screen, which should return a new destination location.  Swiping down in this screen opens the CurrentLocation screen, which will return nothing.  This screen is actually never destroyed and rather stays open in a paused state when any other screen is active; every other screen in the survey is called via the startActivityForResult() method.
+
+
+RouteOrienter**
+The RouteOrienter class contains most of the same functionalities as the other classes; however, in order to display a map and route, this class had to extend Android’s MapActivity class rather than extending the PhoneWandActivity, so there is a large degree of redundant code between these two classes.
+
+
+CurrentLocation
+The CurrentLocation button serves two functions.  First it acts as a means to verify if the phone’s current location is relevant by looking up the nearest geopoint address and reading this to the user for verification.  The second function is to save the current location as a future route usable by the route finder. The current location screen is accessible via RouteInput screen for easy access upon starting and the RouteOrienter for verifying the current location and saving the current location as a future destination.
+
+
+TouchKeyboard
+This touch was created to emulate the familiar iPhone keyboard familiar to many blind users.  The user uses the keyboard by holding down on the screen and releasing when the desired letter is called.  There is functionality for reading out the entered text, backspace, readout of cursor location, and other features.  The done button searches for a route best matching the entered text.
+
+
+There are also quite a few resource XML files used in the PhoneWand application.
+
+
+The layout folder:
+Contains the basic .xml layouts of the activity screens. This also includes description file for keyboard keys and settings.
+
+
+The values folder:
+Contains xml files for our strings, dimensions, colors, and styles.
+
+
+The dawable(-hdpi/-mdpi/-ldpi) folders:
+These contain image files used by the program including the phone wand icon, the destination target, and the current location cursor.
+
+
+The drawable folder:
+Contains backgrounds.
+
+
+Miscellaneous:
+The orientation of each screen is fixed to portrait mode in the Manifest file.
+Both the title bar and the progress bar is removed in the style screen.
+
+
+**A note on the extension of MapActivity in the RouteOrienter class:
+The RouteOrienter class extends Android’s MapActivity, and the layout for this Activity contains a special view called MapView.  Because Google wants to keep track of, and actually put a daily limit on, any given application’s Google Maps accesses, the MapView view must be declared with a special android:apiKey attribute.  The value for this attribute must be encoded from the fingerprint of the encrypted keyfile that is used in signing the application when it is compiled.  If this value does not match the compiled .apk file’s signature’s fingerprint, then the MapView will not be displayed properly.
+
+The current android:apiKey value is the signature of Levi Lindsey’s personal keyfile which was used to publish the PhoneWand application originally.  This value will need to be changed in order for anyone else to compile this application.  The easiest way to do this is to find the default .android/debug.keystore file on your own system, generate the fingerprint for this encrypted keystore file (using the Java keytool command), encode this fingerprint into an API key value at http://code.google.com/android/maps-api-signup.html, and then finally change the android:apiKey value to this fingerprint.  This will allow you to compile and run a debug version of the PhoneWand application through the Run button in Eclipse.
+
+
+*PhoneWand screen transition diagram
+                   
+                   [CurrentLocation]   
+                         /|\
+                          |
+                         \|/
+[RouteArchive] <--> [RouteInput] <--> [RouteOrienter] <--> [DirectionsDisplay]
+                         /|\
+                          |
+                         \|/
+                    [TouchKeyboard]
