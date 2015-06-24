@@ -1,3 +1,30 @@
+// Copyright (c) 2014 University of Washington
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+// - Redistributions of source code must retain the above copyright notice,
+// this list of conditions and the following disclaimer.
+// - Redistributions in binary form must reproduce the above copyright
+// notice, this list of conditions and the following disclaimer in the
+// documentation and/or other materials provided with the distribution.
+// - Neither the name of the University of Washington nor the names of its
+// contributors may be used to endorse or promote products derived from this
+// software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE UNIVERSITY OF WASHINGTON AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+// TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+// PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE UNIVERSITY OF WASHINGTON OR
+// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+// ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 package edu.washington.cs.scopejumper.views;
 
 import java.util.ArrayList;
@@ -27,23 +54,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 
 
-/**
- * This sample class demonstrates how to plug-in a new
- * workbench view. The view shows data obtained from the
- * model. The sample creates a dummy model on the fly,
- * but a real implementation would connect to the model
- * available either in this or another plug-in (e.g. the workspace).
- * The view is connected to the model using a content provider.
- * <p>
- * The view uses a label provider to define how model
- * objects should be presented in the view. Each
- * view can present the same model objects using
- * different labels and icons, if needed. Alternatively,
- * a single label provider can be shared between views
- * in order to ensure that objects of the same type are
- * presented in the same way everywhere.
- * <p>
- */
+
 
 public class ScopeTreeView extends ViewPart {
 
@@ -69,6 +80,14 @@ public class ScopeTreeView extends ViewPart {
 	 */
 	 
 	class TreeObject implements IAdaptable {
+		/*
+		 * Stores three locations: where an element starts and ends 
+		 * and where the line indicating its start ends 
+		 * (i.e. with a for loop, start is where the word for starts, 
+		 * end is the closing bracket of the loop, and endLine is
+		 * the end of the for declaration
+		 */
+		
 		private String name;
 		private int end;
 		private int start;
@@ -197,16 +216,16 @@ public class ScopeTreeView extends ViewPart {
 				return ((TreeParent)parent).hasChildren();
 			return false;
 		}
-/*
- * This code sets up a modelWe will set up a dummy model to initialize tree hierarchy.
- * In a real code, you will connect to a real model and
- * expose its hierarchy.
- */
-		
+
+		/*
+		 * This code initializes the tree that we need to create
+		 */
 		private void initialize(){
+			//Create an invisible root to attach children too (not shown in tree)
 			invisibleRoot = new TreeParent("",0,0,0);
 			String str = "";
 			elseIf = false;
+			//Get the code (currently can't handle case where no workbook is open)
 			IWorkbench bench = PlatformUI.getWorkbench(); 
 			if(bench != null){
 				IEditorPart part = bench.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -221,14 +240,22 @@ public class ScopeTreeView extends ViewPart {
 			ASTParser parser = ASTParser.newParser(AST.JLS3);
 			parser.setSource(str.toCharArray());
 			parser.setKind(ASTParser.K_COMPILATION_UNIT);
+			//Stores code sections
 			treeLeafs = new Stack<TreeObject>();
+			//Stores nodes that can have children
 			treeNodes = new Stack<TreeParent>();
 			treeNodes.add(invisibleRoot);
 			final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
 	 
 			cu.accept(new ASTVisitor() {
 	 
-				
+				/*
+				 * Following methods have similar set ups. General set-up
+				 * Step 1: If there is a code section before, update end values
+				 * Step 2: Create string that is what is in the tree
+				 * Step 3: Create node and push on stack
+				 */
+
 	 
 				public boolean visit(ForStatement node) {
 					if(!treeLeafs.isEmpty()){
@@ -240,7 +267,7 @@ public class ScopeTreeView extends ViewPart {
 					String temp = node.initializers().toString();
 					String name = "for("+temp.substring(1,temp.length()-1) +"; ";
 					temp = node.getExpression().toString();
-					name = name+temp.substring(0, temp.length()-1)+"; ";
+					name = name+temp+"; ";
 					temp = node.updaters().toString();
 					name = name + temp.substring(1, temp.length()-1)+")";
 					TreeParent add = new TreeParent(name,node.getStartPosition(), node.getStartPosition()+node.getLength(),node.getBody().getStartPosition());
@@ -268,10 +295,10 @@ public class ScopeTreeView extends ViewPart {
 					String name = "";
 					String temp = "";
 					if(node.isInterface()){
-						name = " interface";
+						name = "interface ";
 					}
 					else{
-						name = " class";
+						name = "class ";
 					}
 					name = name +node.getName().toString();
 					if(node.getSuperclassType() != null){
@@ -516,14 +543,13 @@ public class ScopeTreeView extends ViewPart {
 						temp.setEndLine(node.getStartPosition());
 					}
 					TreeParent par = treeNodes.peek();
-					String name = node.getName().toString();
+					String name = "enum " + node.getName().toString();
 					if(node.superInterfaceTypes()!=null){
 						name = name+" implements "+node.superInterfaceTypes().toString();
 					}
 					if(node.modifiers()!= null){
 						name = name+" Modifiers: "+node.modifiers().toString();
 					}
-					name = name + " enum";
 					int loc = node.toString().indexOf('{');
 					TreeParent add = new TreeParent(name,node.getStartPosition(), node.getStartPosition()+node.getLength(),node.getStartPosition()+loc);
 					par.addChild(add);
@@ -619,6 +645,9 @@ public class ScopeTreeView extends ViewPart {
 					return true;
 				}
 				
+				/*
+				 * This is the general set-up for nodes that would be part of Code sections
+				 */
 				public boolean visit(Statement node){
 					
 					
@@ -892,66 +921,78 @@ public class ScopeTreeView extends ViewPart {
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setInput(getViewSite());
 		viewer.expandAll();
-		final Class<? extends ScopeTreeView>  compare = this.getClass();
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		/*
+		 * Code for auto actions when selected. Removed as not working well and 
+		 * changed some design decisions
+		 */
+		//final Class<? extends ScopeTreeView>  compare = this.getClass();
+		//IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
         //IWorkbenchPart active = page.getActivePart();
-        IPartListener pl = new IPartListener(){
-        	 
-        	//Listener so that when enter StructTree View, will go to the location
-        	//in the tree corresponding to the cursor location
-        	@Override
-        	public void partActivated(IWorkbenchPart part) {
-        		//Does not update cursor loc if not a java file
-        		//System.out.println("Where");
-        		IWorkbench bench = PlatformUI.getWorkbench();
-        		if(bench != null){
-        			//System.out.println("Did");
-        			IEditorPart part2 = bench.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-        			if(part !=null){
-        				//System.out.println("It");
-        				if(part.getClass().equals(compare) && part2.getTitle().contains(".java")){
-        					//DO SEARCH
-        					//System.out.println("Stop");
-        					//System.out.println("start");
-        					MoveToCursor();
-        					//System.out.println("Done");
-        				}
-        			}
-        		}
-        	}
-        	@Override
-            public void partBroughtToTop(IWorkbenchPart part) {
-                    // TODO Auto-generated method stub
-                   
-            }
-
-            @Override
-            public void partClosed(IWorkbenchPart part) {
-                    // TODO Auto-generated method stub
-                   
-            }
-
-            @Override
-            public void partDeactivated(IWorkbenchPart part) {
-                    // TODO Auto-generated method stub
-                    //showMessage("part deactivated");
-            }
-
-            @Override
-            public void partOpened(IWorkbenchPart part) {
-            	// TODO Auto-generated method stub
-
-            }
-
-        };
-        page.addPartListener(pl);
-
+        
+//		IPartListener pl = new IPartListener(){
+//        	 
+//        	//Listener so that when enter StructTree View, will go to the location
+//        	//in the tree corresponding to the cursor location
+//        	@Override
+//        	public void partActivated(IWorkbenchPart part) {
+//        		//Does not update cursor loc if not a java file
+//        		//System.out.println("Where");
+//        		
+//        		IWorkbench bench = PlatformUI.getWorkbench();
+//        		if(bench != null){
+//        			//System.out.println("Did");
+//        			IEditorPart part2 = bench.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+//        			if(part !=null){
+//        				//System.out.println("It");
+//        				if(part.getClass().equals(compare) && part2.getTitle().contains(".java")){
+//        					//DO SEARCH
+//        					//System.out.println("Stop");
+//        					//System.out.println("start");
+//        					MoveToCursor();
+//        					//System.out.println("Done");
+//        				}
+//        			}
+//        			else{
+//        				viewer.setSelection(null);
+//        			}
+//        		}
+//        		
+//        	}
+//        	@Override
+//            public void partBroughtToTop(IWorkbenchPart part) {
+//                    // TODO Auto-generated method stub
+//                   
+//            }
+//
+//            @Override
+//            public void partClosed(IWorkbenchPart part) {
+//                    // TODO Auto-generated method stub
+//                   
+//            }
+//
+//            @Override
+//            public void partDeactivated(IWorkbenchPart part) {
+//                    // TODO Auto-generated method stub
+//                
+//            	
+//            }
+//
+//            @Override
+//            public void partOpened(IWorkbenchPart part) {
+//            	// TODO Auto-generated method stub
+//
+//            }
+//
+//        };
+//        page.addPartListener(pl);
+        
         // Create the help context id for the viewer's control
         PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "edu.washington.cs.scopejumper.viewer");
         makeActions();
         hookContextMenu();
         hookDoubleClickAction();
         contributeToActionBars();
+        MoveToTop();
 	}
 
 	private void hookContextMenu() {
@@ -1016,6 +1057,9 @@ public class ScopeTreeView extends ViewPart {
 		action2.setToolTipText("Action 2 tooltip");
 		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
 				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+		/*
+		 * Switches to editing mode on double click
+		 */
 		doubleClickAction = new Action() {
 			public void run() {
 				//ISelection selection = viewer.getSelection();
@@ -1026,6 +1070,10 @@ public class ScopeTreeView extends ViewPart {
 		};
 	}
 	
+	/*
+	 * Moves cursor to beginning of selected node and puts
+	 * editor in focus
+	 */
 	private void switchToEditingMode(){
 		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
@@ -1053,6 +1101,10 @@ public class ScopeTreeView extends ViewPart {
 				doubleClickAction.run();
 			}
 		});
+		
+		/*
+		 * Key listener which we set key actions
+		 */
 		viewer.getControl().addKeyListener(new KeyListener() {
 			public void keyPressed(KeyEvent event) {
 				event.doit = true;
@@ -1095,12 +1147,21 @@ public class ScopeTreeView extends ViewPart {
 		});
 	}
 	
+	/*
+	 * Moves selected node to be first node of top level
+	 */
 	private void MoveToTop(){
 		ViewContentProvider vcp2 = (ViewContentProvider) viewer.getContentProvider();
 		TreeObject firstChild = (TreeObject) vcp2.getRoot()[0];
 		viewer.setSelection(new StructuredSelection(firstChild));
 	}
+	
+	/*
+	 * Recreates tree in order to reflect any changes in the code
+	 */
 	private void updateTree(){
+		//Dispose of old contentprovider and create new
+		viewer.getContentProvider().dispose();
 		ViewContentProvider vcp = new ViewContentProvider();
 		viewer.setContentProvider(vcp);
 		viewer.setLabelProvider(new ViewLabelProvider());
@@ -1108,7 +1169,12 @@ public class ScopeTreeView extends ViewPart {
 		viewer.expandAll();
 		// Create the help context id for the viewer's control
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "edu.washington.cs.scopejumper.viewer");
+		MoveToCursor();
 	}
+	
+	/*
+	 * Moves to first child if there is one, otherwise does nothing
+	 */
 	private void MoveToChild(){
 		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
@@ -1122,6 +1188,10 @@ public class ScopeTreeView extends ViewPart {
 		}
 	}
 	
+	/*
+	 *Selects the node represented by cursor location
+	 */
+
 	private void MoveToCursor(){
 		ViewContentProvider vcp2 = (ViewContentProvider) viewer.getContentProvider();
 		TreeObject[] nodes = (TreeObject[]) vcp2.getRoot();
@@ -1144,19 +1214,22 @@ public class ScopeTreeView extends ViewPart {
 			while(!found){
 				change = false;
 				for(int i = 0; i<nodes.length && !change && !found; i++){
-					//System.out.println(nodes[i].getEndLine() +" "+nodes[i].getEnd());
+					//cursor location is in the line of the node currently looking at
 					if(nodes[i].getEndLine()>cursorLoc){
 						found = true;
 						select = (TreeObject) nodes[i];
 						break;
 					}
+					//cursor location is between endline and end 
 					else if(nodes[i].getEnd()>cursorLoc){
+						//node has no children, so current node
 						if(!vcp2.hasChildren(nodes[i])){
 							select = nodes[i];
 							found = true;
 							//System.out.println("found");
 							break;
 						}
+						//correct node is a descendant
 						else{
 							nodes = (TreeObject[]) vcp2.getChildren(nodes[i]);
 							change = true;
@@ -1176,6 +1249,9 @@ public class ScopeTreeView extends ViewPart {
 		}
 	}
 	
+	/*
+	 * Updates selected node to next child. Does nothing if there is not a next child
+	 */
 	private void MoveToNextChild(){
 		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
@@ -1193,6 +1269,9 @@ public class ScopeTreeView extends ViewPart {
 		}
 	}
 	
+	/*
+	 * Updates selected node to previous child. Does nothing if there is not a previous child
+	 */
 	private void MoveToPreviousChild(){
 		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
@@ -1210,6 +1289,9 @@ public class ScopeTreeView extends ViewPart {
 		}
 	}
 	
+	/*
+	 * Updates selected node to parent. Does nothing if the parent is invisible node
+	 */
 	private void MoveToParent(){
 		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
