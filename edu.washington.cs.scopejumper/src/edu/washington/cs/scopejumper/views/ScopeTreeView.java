@@ -94,7 +94,7 @@ public class ScopeTreeView extends ViewPart {
 		private TreeParent parent;
 		private int childIndex;
 		private int endLine;
-		
+		private int lastChild;		
 		
 		public TreeObject(String name, int start, int end) {
 			this.name = name;
@@ -102,6 +102,8 @@ public class ScopeTreeView extends ViewPart {
 			this.childIndex =0;
 			this.start = start;
 			this.endLine = end;
+			this.lastChild = 0;
+			
 		}
 		public TreeObject(String name, int start, int end, int endLine){
 			this.name = name;
@@ -109,9 +111,16 @@ public class ScopeTreeView extends ViewPart {
 			this.childIndex =0;
 			this.start = start;
 			this.endLine = endLine;
+			this.lastChild = 0;
 		}
 		public String getName() {
 			return name;
+		}
+		public void setLastChild(int val) {
+			this.lastChild = val;
+		}
+		public int getLastChild() {
+			return lastChild;
 		}
 		public void setParent(TreeParent parent) {
 			this.parent = parent;
@@ -1106,6 +1115,8 @@ public class ScopeTreeView extends ViewPart {
 		 * Key listener which we set key actions
 		 */
 		viewer.getControl().addKeyListener(new KeyListener() {
+			boolean shift = false;
+			
 			public void keyPressed(KeyEvent event) {
 				event.doit = true;
 				/*if(getNavigationRoot() == null || getCurrentNode() == null) {
@@ -1118,10 +1129,16 @@ public class ScopeTreeView extends ViewPart {
 					}	
 				}*/
 				
-				if(event.keyCode == SWT.ARROW_LEFT) {
+				if(event.keyCode == SWT.SHIFT) {
+					shift = true;
+				} else if(event.keyCode == SWT.ARROW_LEFT) {
 					MoveToParent();
 				} else if(event.keyCode == SWT.ARROW_RIGHT) {
-					MoveToChild();
+					if(shift) {
+						MoveToLast();
+					} else {
+						MoveToChild();
+					}
 				} else if(event.keyCode == SWT.ARROW_UP) {
 					MoveToPreviousChild();
 				} else if(event.keyCode == SWT.ARROW_DOWN) {
@@ -1143,8 +1160,34 @@ public class ScopeTreeView extends ViewPart {
 			
 			public void keyReleased(KeyEvent event) {
 				//handleKeyReleased(event);
+				if(event.keyCode == SWT.SHIFT) {
+					shift = false;
+				}
 			}
 		});
+	}
+	
+	/*
+	 * Moves selected node to be last chosen child from current node
+	 */
+	private void MoveToLast() {
+		ISelection selection = viewer.getSelection();
+		Object obj = ((IStructuredSelection)selection).getFirstElement();
+		if (obj instanceof TreeParent){
+			TreeParent parentObj = (TreeParent)obj;
+			
+			if(parentObj.hasChildren()){
+				int val = 0;
+				for(TreeObject par : parentObj.getChildren()) {
+					if(par.getLastChild() != 0) {
+						val = par.getChildIndex();
+						break;
+					}
+				}
+				TreeObject firstChild = parentObj.getChildren()[val];
+				viewer.setSelection(new StructuredSelection(firstChild));
+			}
+		}
 	}
 	
 	/*
@@ -1182,6 +1225,7 @@ public class ScopeTreeView extends ViewPart {
 			TreeParent parentObj = (TreeParent)obj;
 			if(parentObj.hasChildren()){
 				TreeObject firstChild = parentObj.getChildren()[0];
+				firstChild.setLastChild(1);
 				//showMessage("Child node "+ firstChild.toString());
 				viewer.setSelection(new StructuredSelection(firstChild));
 			}
@@ -1191,7 +1235,6 @@ public class ScopeTreeView extends ViewPart {
 	/*
 	 *Selects the node represented by cursor location
 	 */
-
 	private void MoveToCursor(){
 		ViewContentProvider vcp2 = (ViewContentProvider) viewer.getContentProvider();
 		TreeObject[] nodes = (TreeObject[]) vcp2.getRoot();
@@ -1215,6 +1258,7 @@ public class ScopeTreeView extends ViewPart {
 				change = false;
 				for(int i = 0; i<nodes.length && !change && !found; i++){
 					//cursor location is in the line of the node currently looking at
+					nodes[i].setLastChild(0);
 					if(nodes[i].getEndLine()>cursorLoc){
 						found = true;
 						select = (TreeObject) nodes[i];
@@ -1237,6 +1281,7 @@ public class ScopeTreeView extends ViewPart {
 							break;
 						}
 					}
+					System.out.println(nodes[i].lastChild + " " + nodes[i].toString());
 				}
 				if(!found && !change){
 					select = (TreeObject) vcp2.getParent(nodes[0]);
@@ -1245,6 +1290,7 @@ public class ScopeTreeView extends ViewPart {
 				}
 			}
 			//System.out.println("cursor loc: "+cursorLoc+" "+select.getStart()+" "+select.getEndLine()+" "+select.getEnd());
+			select.setLastChild(1);
 			viewer.setSelection(new StructuredSelection(select));
 		}
 	}
@@ -1263,6 +1309,8 @@ public class ScopeTreeView extends ViewPart {
 				if(parent.getChildren().length-1 >index){
 					//showMessage("Current node index "+ index + " parentLength " +parent.getChildren().length);
 					viewer.setSelection(new StructuredSelection(parent.getChildren()[index+1]));
+					parent.getChildren()[index].setLastChild(0);
+					parent.getChildren()[index+1].setLastChild(1);
 					//showMessage("New selection "+ parent.getChildren()[index+1].toString());
 				}
 			}
@@ -1283,6 +1331,8 @@ public class ScopeTreeView extends ViewPart {
 				if(index>0){
 					//showMessage("Current node index "+ index + " parentLength " +parent.getChildren().length);
 					viewer.setSelection(new StructuredSelection(parent.getChildren()[index-1]));
+					parent.getChildren()[index].setLastChild(0);
+					parent.getChildren()[index-1].setLastChild(1);
 					//showMessage("New selection "+ parent.getChildren()[index-1].toString());
 				}
 			}
@@ -1298,6 +1348,7 @@ public class ScopeTreeView extends ViewPart {
 		if (obj instanceof TreeObject){
 			TreeObject treeObj = (TreeObject)obj;
 			if(treeObj.getParent().getParent()!=null){
+				treeObj.getParent().setLastChild(1);
 				viewer.setSelection(new StructuredSelection(treeObj.getParent()));
 			}
 		}
