@@ -1,0 +1,6 @@
+
+Account Info:
+Edit the email information of DBSC here. Do not change the format of this page. Make sure there are no extra spaces or carriage returns after the email and password and that there is a space after each colon.
+
+CF Coordinator: cfinvoices@seattledbsc.org
+SSP Coordinator: sspinvoices@seattledbsc.org

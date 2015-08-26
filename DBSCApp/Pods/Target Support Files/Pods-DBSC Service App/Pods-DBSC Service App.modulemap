@@ -1,0 +1,6 @@
+framework module Pods_DBSC_Service_App {
+  umbrella header "Pods-DBSC Service App-umbrella.h"
+
+  export *
+  module * { export * }
+}

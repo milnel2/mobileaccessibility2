@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C3B2A85649EAB922E89C8D0 /* Pods_DBSC_Service_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9C4372885059DDCBD5DD831 /* Pods_DBSC_Service_App.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B30D9BB61B61C41B004E702F /* EmailFunctionsOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D9BB51B61C41B004E702F /* EmailFunctionsOld.swift */; };
+		B30D9BEE1B6889C6004E702F /* ServicesLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D9BED1B6889C6004E702F /* ServicesLogViewController.swift */; };
+		B30D9BF01B688C14004E702F /* PastServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30D9BEF1B688C14004E702F /* PastServiceCell.swift */; };
+		B3348EF51B88082200068DC8 /* DBSCINFORMATIONHERETEST.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3348EF41B88082200068DC8 /* DBSCINFORMATIONHERETEST.txt */; };
+		B336D45E1B6183FF00FF7799 /* InternetReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B336D45D1B6183FF00FF7799 /* InternetReachable.swift */; };
+		B33811B41B72AAC90053F564 /* CustomBorderTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33811B31B72AAC90053F564 /* CustomBorderTop.swift */; };
+		B33811B61B73FB8E0053F564 /* DBSCINFORMATIONHERE.txt in Resources */ = {isa = PBXBuildFile; fileRef = B33811B51B73FB8E0053F564 /* DBSCINFORMATIONHERE.txt */; };
+		B338123B1B7714D30053F564 /* TimeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338123A1B7714D30053F564 /* TimeFunctions.swift */; };
+		B338B6C61B7FF72600163D64 /* EmailFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338B6C51B7FF72600163D64 /* EmailFunctions.swift */; };
+		B338B6F61B8108AA00163D64 /* PastServiceCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338B6F51B8108AA00163D64 /* PastServiceCell2.swift */; };
+		B338B6F81B83D91600163D64 /* privacy-policy in Resources */ = {isa = PBXBuildFile; fileRef = B338B6F71B83D91600163D64 /* privacy-policy */; };
+		B338B6FA1B83DA2000163D64 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338B6F91B83DA2000163D64 /* PrivacyPolicyViewController.swift */; };
+		B338B6FC1B869B4600163D64 /* digital-dream.fat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B338B6FB1B869A7400163D64 /* digital-dream.fat.ttf */; };
+		B33BFAFC1B4E2F6D0000EEEF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BFAFB1B4E2F6D0000EEEF /* SettingsViewController.swift */; };
+		B33BFAFE1B4E3C3B0000EEEF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BFAFD1B4E3C3A0000EEEF /* SummaryViewController.swift */; };
+		B33BFB001B4E437F0000EEEF /* CommentFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BFAFF1B4E437F0000EEEF /* CommentFeedViewController.swift */; };
+		B3536A3B1B50774A00BD3EDD /* QRVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3536A3A1B50774A00BD3EDD /* QRVideoViewController.swift */; };
+		B396F16E1B4B1C37004EE34C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396F16D1B4B1C37004EE34C /* AppDelegate.swift */; };
+		B396F1701B4B1C37004EE34C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396F16F1B4B1C37004EE34C /* ViewController.swift */; };
+		B396F1731B4B1C37004EE34C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B396F1711B4B1C37004EE34C /* Main.storyboard */; };
+		B396F1751B4B1C37004EE34C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B396F1741B4B1C37004EE34C /* Images.xcassets */; };
+		B396F1781B4B1C37004EE34C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B396F1761B4B1C37004EE34C /* LaunchScreen.xib */; };
+		B396F1841B4B1C37004EE34C /* SSP_Service_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396F1831B4B1C37004EE34C /* SSP_Service_TrackerTests.swift */; };
+		B396F1901B4B2851004EE34C /* ServiceRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396F18F1B4B2851004EE34C /* ServiceRunningViewController.swift */; };
+		B3FF6F281B5CC49C007037BC /* CommentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FF6F271B5CC49C007037BC /* CommentTableCell.swift */; };
+		B3FF6F2B1B5DAFD7007037BC /* DBSCDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3FF6F291B5DAFD7007037BC /* DBSCDataModel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B396F17E1B4B1C37004EE34C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B396F1601B4B1C37004EE34C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B396F1671B4B1C37004EE34C;
+			remoteInfo = "SSP Service Tracker";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		050541557562443E6290F31A /* Pods-DBSC Service App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBSC Service App.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBSC Service App/Pods-DBSC Service App.release.xcconfig"; sourceTree = "<group>"; };
+		74150A2F619289A20F262CF9 /* Pods-DBSC Service App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBSC Service App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DBSC Service App/Pods-DBSC Service App.debug.xcconfig"; sourceTree = "<group>"; };
+		A9C4372885059DDCBD5DD831 /* Pods_DBSC_Service_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBSC_Service_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B30D9BB51B61C41B004E702F /* EmailFunctionsOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailFunctionsOld.swift; sourceTree = "<group>"; };
+		B30D9BB71B61D339004E702F /* Let's go Digital Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Let's go Digital Regular.ttf"; sourceTree = "<group>"; };
+		B30D9BB81B61D393004E702F /* digital-7 (italic).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7 (italic).ttf"; sourceTree = "<group>"; };
+		B30D9BB91B61D393004E702F /* digital-7 (mono italic).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7 (mono italic).ttf"; sourceTree = "<group>"; };
+		B30D9BBA1B61D393004E702F /* digital-7 (mono).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7 (mono).ttf"; sourceTree = "<group>"; };
+		B30D9BBB1B61D393004E702F /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
+		B30D9BBD1B61E14C004E702F /* digital-dream.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-dream.regular.ttf"; sourceTree = "<group>"; };
+		B30D9BED1B6889C6004E702F /* ServicesLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServicesLogViewController.swift; path = ../ServicesLogViewController.swift; sourceTree = "<group>"; };
+		B30D9BEF1B688C14004E702F /* PastServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastServiceCell.swift; sourceTree = "<group>"; };
+		B3348EF41B88082200068DC8 /* DBSCINFORMATIONHERETEST.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DBSCINFORMATIONHERETEST.txt; sourceTree = "<group>"; };
+		B336D45D1B6183FF00FF7799 /* InternetReachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetReachable.swift; sourceTree = "<group>"; };
+		B33811B31B72AAC90053F564 /* CustomBorderTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBorderTop.swift; sourceTree = "<group>"; };
+		B33811B51B73FB8E0053F564 /* DBSCINFORMATIONHERE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DBSCINFORMATIONHERE.txt; sourceTree = "<group>"; };
+		B33811C31B7409500053F564 /* DBSC Service App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DBSC Service App-Bridging-Header.h"; sourceTree = "<group>"; };
+		B338123A1B7714D30053F564 /* TimeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFunctions.swift; sourceTree = "<group>"; };
+		B338B6C51B7FF72600163D64 /* EmailFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailFunctions.swift; sourceTree = "<group>"; };
+		B338B6F51B8108AA00163D64 /* PastServiceCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastServiceCell2.swift; sourceTree = "<group>"; };
+		B338B6F71B83D91600163D64 /* privacy-policy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "privacy-policy"; sourceTree = "<group>"; };
+		B338B6F91B83DA2000163D64 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		B338B6FB1B869A7400163D64 /* digital-dream.fat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-dream.fat.ttf"; sourceTree = "<group>"; };
+		B33BFAFB1B4E2F6D0000EEEF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B33BFAFD1B4E3C3A0000EEEF /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		B33BFAFF1B4E437F0000EEEF /* CommentFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedViewController.swift; sourceTree = "<group>"; };
+		B3536A3A1B50774A00BD3EDD /* QRVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRVideoViewController.swift; sourceTree = "<group>"; };
+		B396F1681B4B1C37004EE34C /* DBSC Service App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DBSC Service App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B396F16C1B4B1C37004EE34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B396F16D1B4B1C37004EE34C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B396F16F1B4B1C37004EE34C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B396F1721B4B1C37004EE34C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B396F1741B4B1C37004EE34C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B396F1771B4B1C37004EE34C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B396F17D1B4B1C37004EE34C /* DBSC Service AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DBSC Service AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B396F1821B4B1C37004EE34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B396F1831B4B1C37004EE34C /* SSP_Service_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSP_Service_TrackerTests.swift; sourceTree = "<group>"; };
+		B396F18F1B4B2851004EE34C /* ServiceRunningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRunningViewController.swift; sourceTree = "<group>"; };
+		B3FF6F271B5CC49C007037BC /* CommentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableCell.swift; sourceTree = "<group>"; };
+		B3FF6F2A1B5DAFD7007037BC /* DBSCDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBSCDataModel.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B396F1651B4B1C37004EE34C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C3B2A85649EAB922E89C8D0 /* Pods_DBSC_Service_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B396F17A1B4B1C37004EE34C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B4CFC660B69DE97919F3B0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74150A2F619289A20F262CF9 /* Pods-DBSC Service App.debug.xcconfig */,
+				050541557562443E6290F31A /* Pods-DBSC Service App.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5CEAF3874391B537ECC5D54E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9C4372885059DDCBD5DD831 /* Pods_DBSC_Service_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B33811B71B74006D0053F564 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B33811B31B72AAC90053F564 /* CustomBorderTop.swift */,
+				B30D9BEF1B688C14004E702F /* PastServiceCell.swift */,
+				B338B6F51B8108AA00163D64 /* PastServiceCell2.swift */,
+				B3FF6F271B5CC49C007037BC /* CommentTableCell.swift */,
+			);
+			name = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		B33811B81B74008A0053F564 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B396F16F1B4B1C37004EE34C /* ViewController.swift */,
+				B30D9BED1B6889C6004E702F /* ServicesLogViewController.swift */,
+				B33BFAFF1B4E437F0000EEEF /* CommentFeedViewController.swift */,
+				B33BFAFB1B4E2F6D0000EEEF /* SettingsViewController.swift */,
+				B338B6F91B83DA2000163D64 /* PrivacyPolicyViewController.swift */,
+				B3536A3A1B50774A00BD3EDD /* QRVideoViewController.swift */,
+				B396F18F1B4B2851004EE34C /* ServiceRunningViewController.swift */,
+				B33BFAFD1B4E3C3A0000EEEF /* SummaryViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B33811B91B7400A40053F564 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B30D9BB51B61C41B004E702F /* EmailFunctionsOld.swift */,
+				B338B6C51B7FF72600163D64 /* EmailFunctions.swift */,
+				B336D45D1B6183FF00FF7799 /* InternetReachable.swift */,
+				B338123A1B7714D30053F564 /* TimeFunctions.swift */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		B33811BA1B7400BA0053F564 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B30D9BB71B61D339004E702F /* Let's go Digital Regular.ttf */,
+				B30D9BBD1B61E14C004E702F /* digital-dream.regular.ttf */,
+				B338B6FB1B869A7400163D64 /* digital-dream.fat.ttf */,
+				B30D9BB81B61D393004E702F /* digital-7 (italic).ttf */,
+				B30D9BB91B61D393004E702F /* digital-7 (mono italic).ttf */,
+				B30D9BBA1B61D393004E702F /* digital-7 (mono).ttf */,
+				B30D9BBB1B61D393004E702F /* digital-7.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		B396F15F1B4B1C37004EE34C = {
+			isa = PBXGroup;
+			children = (
+				B396F16A1B4B1C37004EE34C /* DBSC Service App */,
+				B396F1801B4B1C37004EE34C /* DBSC Service AppTests */,
+				B396F1691B4B1C37004EE34C /* Products */,
+				5B4CFC660B69DE97919F3B0F /* Pods */,
+				5CEAF3874391B537ECC5D54E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B396F1691B4B1C37004EE34C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B396F1681B4B1C37004EE34C /* DBSC Service App.app */,
+				B396F17D1B4B1C37004EE34C /* DBSC Service AppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B396F16A1B4B1C37004EE34C /* DBSC Service App */ = {
+			isa = PBXGroup;
+			children = (
+				B33811B51B73FB8E0053F564 /* DBSCINFORMATIONHERE.txt */,
+				B3348EF41B88082200068DC8 /* DBSCINFORMATIONHERETEST.txt */,
+				B396F16D1B4B1C37004EE34C /* AppDelegate.swift */,
+				B33811B71B74006D0053F564 /* Custom Classes */,
+				B33811B81B74008A0053F564 /* View Controllers */,
+				B33811B91B7400A40053F564 /* Helper Classes */,
+				B33811BA1B7400BA0053F564 /* Fonts */,
+				B396F1711B4B1C37004EE34C /* Main.storyboard */,
+				B396F1741B4B1C37004EE34C /* Images.xcassets */,
+				B396F1761B4B1C37004EE34C /* LaunchScreen.xib */,
+				B3FF6F291B5DAFD7007037BC /* DBSCDataModel.xcdatamodeld */,
+				B33811C31B7409500053F564 /* DBSC Service App-Bridging-Header.h */,
+				B338B6F71B83D91600163D64 /* privacy-policy */,
+				B396F16B1B4B1C37004EE34C /* Supporting Files */,
+			);
+			name = "DBSC Service App";
+			path = "SSP Service Tracker";
+			sourceTree = "<group>";
+		};
+		B396F16B1B4B1C37004EE34C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B396F16C1B4B1C37004EE34C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B396F1801B4B1C37004EE34C /* DBSC Service AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				B396F1831B4B1C37004EE34C /* SSP_Service_TrackerTests.swift */,
+				B396F1811B4B1C37004EE34C /* Supporting Files */,
+			);
+			name = "DBSC Service AppTests";
+			path = "SSP Service TrackerTests";
+			sourceTree = "<group>";
+		};
+		B396F1811B4B1C37004EE34C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B396F1821B4B1C37004EE34C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B396F1671B4B1C37004EE34C /* DBSC Service App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B396F1871B4B1C37004EE34C /* Build configuration list for PBXNativeTarget "DBSC Service App" */;
+			buildPhases = (
+				741C7682BF25B3445207B2C7 /* Check Pods Manifest.lock */,
+				B396F1641B4B1C37004EE34C /* Sources */,
+				B396F1651B4B1C37004EE34C /* Frameworks */,
+				B396F1661B4B1C37004EE34C /* Resources */,
+				24C4DD34BA5E9D2379C3A9E9 /* Embed Pods Frameworks */,
+				8A2C2B103BB08341B7675343 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DBSC Service App";
+			productName = "SSP Service Tracker";
+			productReference = B396F1681B4B1C37004EE34C /* DBSC Service App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B396F17C1B4B1C37004EE34C /* DBSC Service AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B396F18A1B4B1C37004EE34C /* Build configuration list for PBXNativeTarget "DBSC Service AppTests" */;
+			buildPhases = (
+				B396F1791B4B1C37004EE34C /* Sources */,
+				B396F17A1B4B1C37004EE34C /* Frameworks */,
+				B396F17B1B4B1C37004EE34C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B396F17F1B4B1C37004EE34C /* PBXTargetDependency */,
+			);
+			name = "DBSC Service AppTests";
+			productName = "SSP Service TrackerTests";
+			productReference = B396F17D1B4B1C37004EE34C /* DBSC Service AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B396F1601B4B1C37004EE34C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = AppMaker;
+				TargetAttributes = {
+					B396F1671B4B1C37004EE34C = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 6F3U4HX6V7;
+					};
+					B396F17C1B4B1C37004EE34C = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = B396F1671B4B1C37004EE34C;
+					};
+				};
+			};
+			buildConfigurationList = B396F1631B4B1C37004EE34C /* Build configuration list for PBXProject "DBSC Service App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B396F15F1B4B1C37004EE34C;
+			productRefGroup = B396F1691B4B1C37004EE34C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B396F1671B4B1C37004EE34C /* DBSC Service App */,
+				B396F17C1B4B1C37004EE34C /* DBSC Service AppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B396F1661B4B1C37004EE34C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B338B6FC1B869B4600163D64 /* digital-dream.fat.ttf in Resources */,
+				B396F1731B4B1C37004EE34C /* Main.storyboard in Resources */,
+				B396F1781B4B1C37004EE34C /* LaunchScreen.xib in Resources */,
+				B338B6F81B83D91600163D64 /* privacy-policy in Resources */,
+				B396F1751B4B1C37004EE34C /* Images.xcassets in Resources */,
+				B3348EF51B88082200068DC8 /* DBSCINFORMATIONHERETEST.txt in Resources */,
+				B33811B61B73FB8E0053F564 /* DBSCINFORMATIONHERE.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B396F17B1B4B1C37004EE34C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24C4DD34BA5E9D2379C3A9E9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBSC Service App/Pods-DBSC Service App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		741C7682BF25B3445207B2C7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8A2C2B103BB08341B7675343 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DBSC Service App/Pods-DBSC Service App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B396F1641B4B1C37004EE34C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3FF6F2B1B5DAFD7007037BC /* DBSCDataModel.xcdatamodeld in Sources */,
+				B336D45E1B6183FF00FF7799 /* InternetReachable.swift in Sources */,
+				B396F1701B4B1C37004EE34C /* ViewController.swift in Sources */,
+				B33BFB001B4E437F0000EEEF /* CommentFeedViewController.swift in Sources */,
+				B338B6C61B7FF72600163D64 /* EmailFunctions.swift in Sources */,
+				B338123B1B7714D30053F564 /* TimeFunctions.swift in Sources */,
+				B30D9BF01B688C14004E702F /* PastServiceCell.swift in Sources */,
+				B396F16E1B4B1C37004EE34C /* AppDelegate.swift in Sources */,
+				B30D9BEE1B6889C6004E702F /* ServicesLogViewController.swift in Sources */,
+				B396F1901B4B2851004EE34C /* ServiceRunningViewController.swift in Sources */,
+				B33BFAFC1B4E2F6D0000EEEF /* SettingsViewController.swift in Sources */,
+				B33811B41B72AAC90053F564 /* CustomBorderTop.swift in Sources */,
+				B3536A3B1B50774A00BD3EDD /* QRVideoViewController.swift in Sources */,
+				B338B6F61B8108AA00163D64 /* PastServiceCell2.swift in Sources */,
+				B30D9BB61B61C41B004E702F /* EmailFunctionsOld.swift in Sources */,
+				B338B6FA1B83DA2000163D64 /* PrivacyPolicyViewController.swift in Sources */,
+				B3FF6F281B5CC49C007037BC /* CommentTableCell.swift in Sources */,
+				B33BFAFE1B4E3C3B0000EEEF /* SummaryViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B396F1791B4B1C37004EE34C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B396F1841B4B1C37004EE34C /* SSP_Service_TrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B396F17F1B4B1C37004EE34C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B396F1671B4B1C37004EE34C /* DBSC Service App */;
+			targetProxy = B396F17E1B4B1C37004EE34C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B396F1711B4B1C37004EE34C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B396F1721B4B1C37004EE34C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B396F1761B4B1C37004EE34C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B396F1771B4B1C37004EE34C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B396F1851B4B1C37004EE34C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B396F1861B4B1C37004EE34C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B396F1881B4B1C37004EE34C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74150A2F619289A20F262CF9 /* Pods-DBSC Service App.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "SSP Service Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "DBSC Service App";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SSP Service Tracker/DBSC Service App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B396F1891B4B1C37004EE34C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 050541557562443E6290F31A /* Pods-DBSC Service App.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mobile Accessibility (6F3U4HX6V7)";
+				INFOPLIST_FILE = "SSP Service Tracker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "DBSC Service App";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SSP Service Tracker/DBSC Service App-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B396F18B1B4B1C37004EE34C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SSP Service TrackerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "DBSC Service AppTests";
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
+		B396F18C1B4B1C37004EE34C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SSP Service TrackerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "DBSC Service AppTests";
+				TEST_HOST = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B396F1631B4B1C37004EE34C /* Build configuration list for PBXProject "DBSC Service App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B396F1851B4B1C37004EE34C /* Debug */,
+				B396F1861B4B1C37004EE34C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B396F1871B4B1C37004EE34C /* Build configuration list for PBXNativeTarget "DBSC Service App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B396F1881B4B1C37004EE34C /* Debug */,
+				B396F1891B4B1C37004EE34C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B396F18A1B4B1C37004EE34C /* Build configuration list for PBXNativeTarget "DBSC Service AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B396F18B1B4B1C37004EE34C /* Debug */,
+				B396F18C1B4B1C37004EE34C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3FF6F291B5DAFD7007037BC /* DBSCDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3FF6F2A1B5DAFD7007037BC /* DBSCDataModel.xcdatamodel */,
+			);
+			currentVersion = B3FF6F2A1B5DAFD7007037BC /* DBSCDataModel.xcdatamodel */;
+			path = DBSCDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B396F1601B4B1C37004EE34C /* Project object */;
+}
